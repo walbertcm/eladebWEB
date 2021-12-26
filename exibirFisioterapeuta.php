@@ -31,7 +31,7 @@
          echo "<td>".$dado['email']."</td>";
          echo "<td>".$dado['registro_profissional']."</td>";
          echo "<td>".$dado['senha']."</td>";
-         echo "<td>".date('d/m/Y', strtotime($dado['dt_cadastro']))."</td>";           
+         echo "<td>".date('d/m/Y H:i:s', strtotime($dado['dt_cadastro']))."</td>";           
         echo"</tr>";
         } 
         ?> 

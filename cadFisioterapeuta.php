@@ -2,13 +2,13 @@
 
 include('conexaoBancoDados.php');
 
-$txtnome=$_POST['NomeFisioterapeuta'];
-$txtemail=$_POST['EmailFisioterapeuta'];
-$txtsenha=$_POST['Senha'];
-$txtregistro_profissional=$_POST['RegistroFisioterapeuta'];
+$nome=$_POST['NomeFisioterapeuta'];
+$email=$_POST['EmailFisioterapeuta'];
+$senha=$_POST['Senha'];
+$registro_profissional=$_POST['RegistroFisioterapeuta'];
 
 $sql = "INSERT INTO `fisioterapeuta` (`idterapeuta`, `nome`, `email`, `senha`, `registro_profissional`, `dt_cadastro`) 
-VALUES ('', '$txtnome', '$txtemail', '$txtsenha', '$txtregistro_profissional', NOW())";
+VALUES ('', '$nome', '$email', '$senha', '$registro_profissional', NOW())";
 
 
 if (mysqli_query($conn, $sql)) {
@@ -17,6 +17,13 @@ if (mysqli_query($conn, $sql)) {
     echo "Error: " . $sql . ":-" . mysqli_error($conn);
  }
  mysqli_close($conn);
-
-
 ?>
+<!DOCTYPE html>
+<head></head>
+<body>
+    <br>
+    <h3><a href="index.html">Inicio</a></h3>
+    <br>
+
+</body>
+</html>

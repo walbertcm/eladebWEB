@@ -33,7 +33,7 @@
          echo "<td>".$dado['Telefone']."</td>";
          echo "<td>".$dado['EmailPaciente']."</td>";
          echo "<td>".$dado['senha']."</td>";
-         echo "<td>".date('d/m/Y', strtotime($dado['dt_cadastro']))."</td>";           
+         echo "<td>".date('d/m/Y H:i:s', strtotime($dado['dt_cadastro']))."</td>";           
         echo"</tr>";
         } 
         ?> 

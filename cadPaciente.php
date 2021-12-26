@@ -2,15 +2,15 @@
 
 include('conexaoBancoDados.php');
 
-$txtnomepaciente=$_POST['NomePaciente'];
-$txtnomeresponsavel=$_POST['NomeResponsavel'];
-$txtemail=$_POST['EmailPaciente'];
-$txttelefone=$_POST['Telefone'];
-$txtsenha=$_POST['Senha'];
+$nomepaciente=$_POST['NomePaciente'];
+$nomeresponsavel=$_POST['NomeResponsavel'];
+$email=$_POST['EmailPaciente'];
+$telefone=$_POST['Telefone'];
+$senha=$_POST['Senha'];
 
 
 $sql = "INSERT INTO `paciente`(  `NomePaciente`, `NomeResponsavel`, `Telefone`, `EmailPaciente`, `senha`) 
-VALUES ('$txtnomepaciente','$txtnomeresponsavel','$txttelefone','$txtemail','$txtsenha')";
+VALUES ('$nomepaciente','$nomeresponsavel','$telefone','$email','$senha')";
 
 
 if (mysqli_query($conn, $sql)) {
@@ -19,6 +19,4 @@ if (mysqli_query($conn, $sql)) {
     echo "Error: " . $sql . ":-" . mysqli_error($conn);
  }
  mysqli_close($conn);
-
-
 ?>

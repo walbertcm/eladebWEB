@@ -14,13 +14,13 @@
     <title>Cadastrar Consultas</title> 
 </head> 
 <body>
-</br>
-</br>
+<br>
+<br>
 <label >Marcar Consultas</label> 
-</br>
-</br>
+<br>
+<br>
 <label >Selecione o Paciente</label> 
-</br>
+<br>
 <select multiple>
     <?php
         $i=0;
@@ -32,13 +32,15 @@
     }
 ?>
 </select>
-</br>
-</br>
-</br>
+<br>
+<br>
+<br>
 <label >Selecione o Fisioterapeuta</label> 
-</br>
-
-
+<br>
 </body> 
+
+    <br>
+    <h3><a href="index.html">Inicio</a></h3>
+    <br>
 
 </html>
