@@ -19,7 +19,7 @@
           <td>Pergunta</td> 
           <td>Imagem</td> 
           <td>Data Cadastro</td> 
-          <td>Selecionar</td>
+          <!-- <td>Selecionar</td> -->
           <td>Excluir</td>
         </tr> 
        
@@ -29,8 +29,8 @@
          echo "<td>".$dado['pergunta']."</td>";
          echo "<td>".'<img width="100" height="100" src="data:image/jpeg;charset=utf8;base64,'.base64_encode( $dado['imagem'] ).'"/>'."</td>";
          echo "<td>".date('d/m/Y H:i:s', strtotime($dado['dtcadastro']))."</td>";
-         echo "<td>".'<a href="ver_imagem.php?id='.$dado['idperguntas'].'">Imagem '.$dado['idperguntas'] ."</td>";           
-         echo "<td>".'<a href="excluir.php?id='.$dado['idperguntas'].'">Excluir'."</td>";
+         //echo "<td>".'<a href="cadCenario.php?id='.$dado['idperguntas'].'">Imagem '.$dado['idperguntas'] ."</td>";           
+         echo "<td>".'<a href="excluirPerguntas.php?id='.$dado['idperguntas'].'">Excluir'."</td>";
          echo"</tr>";
         } 
         ?> 
