@@ -20,3 +20,7 @@ if (mysqli_query($conn, $sql)) {
  }
  mysqli_close($conn);
 ?>
+</br>
+    <h3>
+       <a href="index.html">Inicio</a>
+   </h3>

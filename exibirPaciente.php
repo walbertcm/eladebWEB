@@ -5,7 +5,9 @@
         $sql = "SELECT `pacienteid`, `NomePaciente`, `NomeResponsavel`, `Telefone`, `EmailPaciente`, `senha`, `dt_cadastro`
         FROM `paciente`";
 
-        $query = mysqli_query($conn,$sql); ?>
+        $query = mysqli_query($conn,$sql); 
+
+?>
 
 <!DOCTYPE html> 
   <html> 

@@ -35,13 +35,15 @@ mysqli_close($conn);
       <br><br> 
       <label>Fisioterapeuta: Fisioterapeuta01</label> 
       <br><br>
-      <label>Selecione o Paciente</label> 
-      <br>
+
       <form name="cadCenario" method="post" acion="">
+
       <label>Nome do Cenário: </label>
         <br>
         <input type="text" name="nomeCenario" size="60">
         <br><br>
+        <label>Selecione o Paciente</label> 
+         <br>
          <select multiple name="pacienteId">
             <?php
                $i=0;

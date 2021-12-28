@@ -19,12 +19,11 @@
           <td>Pergunta</td> 
           <td>Imagem</td> 
           <td>Data Cadastro</td> 
-          <!-- <td>Selecionar</td> -->
           <td>Excluir</td>
         </tr> 
        
         <?php 
-        while($dado = mysqli_fetch_assoc($query)) { 
+        while($dado = mysqli_fetch_array($query)) { 
         echo "<tr>";
          echo "<td>".$dado['pergunta']."</td>";
          echo "<td>".'<img width="100" height="100" src="data:image/jpeg;charset=utf8;base64,'.base64_encode( $dado['imagem'] ).'"/>'."</td>";
