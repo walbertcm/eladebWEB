@@ -1,15 +1,38 @@
 <!DOCTYPE html>
     <head>
-     
+        <meta charset="UTF-8">
+        <!--Css produzido por Walbert Monteiro --> 
+        <link rel="stylesheet" type="text/css" href="css/avaliacao.css">
+        <!--Css Bootstrap5 Renderização --> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--Css Bootstrap5 --> 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        
+       
+
     </head>
     <body>
-        <h1> </h1>
-        <h1 id="prime"> A </h1>
-        <img src="img/"></img>
-        </img>
-        
-
-        <script src="js/eladeb.js"></script>
+        <!--Css Conteiner de largura total --> 
+        <div class="container-fluid container-md mt-3 border">
+            <h2>Carta Número: <h1 id="counter-label" class="text-left">0</h1> </h2>
+            <br>             
+            <img id="images" width="400" height="400" class="mx-auto d-block"></img>
+            <br>
+         
+       <center> <div>
+                <button type="button" value="1" onclick="nextImage()" id="next" class="btn btn-success btn-lg">NÃO PROBLEMA</button>
+                <button type="button" value="1" onclick="hideShow()" id="show" class="btn btn-warning btn-lg ">PROBLEMA</button>            
+            <br>
+            <br>
+            <div id="third" style="display: none; position: -ms-page;" >
+                <button type="button" value="1" onclick="nextImage(); hideShow()" id="next" class="btn btn-success btn-danger">PEQUENO PROBLEMA <br>IMPORTANTE</button>
+                <button type="button" value="1" onclick="nextImage(); hideShow()" id="next" class="btn btn-warning btn-danger ">PROBLEMA <br>IMPORTANTE</button>
+                <button type="button" value="1" onclick="nextImage(); hideShow()" id="next" class="btn btn-warning btn-danger ">MUITO PROBLEMA <br>IMPORTANTE</button>
+            </div>
+        </div></center>
+    </div>
+        <script src="js/eladeb.js"></script>   
     </body>
 
 </html>
