@@ -25,40 +25,40 @@ imgArray[19] = new Image();
 //imgArray[0].src ="http://www.terra.com.br/img1.jpeg";
 
 //Codigo para imagem do diretorio local
-imgArray[0] = "img1.jpg";
-imgArray[1] = "img2.jpg";
-imgArray[2] = "img3.jpg";
-imgArray[3] = "img4.jpg";
-imgArray[4] = "img5.jpg";
-imgArray[5] = "img6.jpg";
-imgArray[6] = "img7.jpg";
-imgArray[7] = "img8.jpg";
-imgArray[8] = "img9.jpg";
-imgArray[9] = "img10.jpg";
-imgArray[10] = "img11.jpg";
-imgArray[11] = "img12.jpg";
-imgArray[12] = "img13.jpg";
-imgArray[13] = "img14.jpg";
-imgArray[14] = "img15.jpg";
-imgArray[15] = "img16.jpg";
-imgArray[16] = "img17.jpg";
-imgArray[17] = "img18.jpg";
-imgArray[18] = "img19.jpg";
-imgArray[19] = "img20.jpg";
+imgArray[0] = "img0.jpg";
+imgArray[1] = "img1.jpg";
+imgArray[2] = "img2.jpg";
+imgArray[3] = "img3.jpg";
+imgArray[4] = "img4.jpg";
+imgArray[5] = "img5.jpg";
+imgArray[6] = "img6.jpg";
+imgArray[7] = "img7.jpg";
+imgArray[8] = "img8.jpg";
+imgArray[9] = "img9.jpg";
+imgArray[10]= "img10.jpg";
+imgArray[11] = "img11.jpg";
+imgArray[12] = "img12.jpg";
+imgArray[13] = "img13.jpg";
+imgArray[14] = "img14.jpg";
+imgArray[15] = "img15.jpg";
+imgArray[16] = "img16.jpg";
+imgArray[17] = "img17.jpg";
+imgArray[18] = "img18.jpg";
+imgArray[19] = "img19.jpg";
 
 var counterVal = 0
 
 var i = 0;
 
-//Funções de uso geral
 //Funcao criar nova janela com tamanho fixo
+//Utilizada na pagina index.
 function novaJanela() {
-    var nj = window.open('avaliacaoB.html', '', 'width=800, height=600');
+    var nj = window.open('avaliacaoA.php', '', 'width=800, height=700');
 }
 
 //Função para exibir imagens
-function showImage(j) {
-    document.getElementById("images").src = "img/" + imgArray[j];
+function showImage(numImagem) {
+    document.getElementById("images").src = "img/" + imgArray[numImagem];
 }
 
 //Exibe o numero da imagem
@@ -72,38 +72,40 @@ function updateDisplayNecessidade(valB) {
 
 //Redirecionadores com alert
 function fimPrimeiraEtapa() {
-    alert("Fim da Etapa 01  ");
+    alert("Etapa 01 - FIM");
     window.location.href = 'avaliacaoCA.php';
 }
 
 function fimSegundaEtapa() {
-    alert("Fim da Etapa 02  ");
-    window.location.href = 'avaliacaoCB.html';
+    alert("Etapa 02 - FIM");
+    window.location.href = 'avaliacaoCB.php';
 }
 
 function fimTerceiraEtapa() {
-    alert("Fim da Etapa 03  ");
+    alert("Etapa 03 - FIM");
     window.location.href = 'avaliacaoCC.php';
 }
 
 function fimqQuartaEtapa() {
-    alert("Fim da Etapa 04  ");
+    alert("Etapa 04 - FIM");
+    window.location.href = 'index.html';
 }
 
 //Variaveis
 var endArray = imgArray.length; //Fim do array de imagens
-var x = 0; // implementação do contador de nextImage()
+// implementação do contador de nextImage()
 
 //Função para contar o array das imagens
+var x = 0; 
 function nextImage() {
     if (x == endArray) {
         fimPrimeiraEtapa();
     } else {
         //document.getElementById("images").src = "img/"+ imgArray[counterVal];
         showImage(x);
-        //counterVal++;
-        x = x + 1;
         updateDisplay(x);
+        x = x + 1;
+        
         //document.getElementById("images").src = imgArray[counterVal].src; --> show image web     
     }
 }
@@ -112,10 +114,23 @@ function nextImage() {
 //Fase01
 //arquivo - avaliaçãoC.html
 
-//Objeto 
-let questoesProblemaObj = { nq: null, status: null, etapa: null };
+//Objeto - Questões da etapa 01
+//nq -> Numero da questão
+//status -> Valor da questão (0,1)
+//etapa -> Etapa da avaliação (1,2,3,4)
+//gp -> Numero do grupo
+let questoesProblemaObj = { 
+    fisioterapeuta:null,
+    paciente:null, 
+    avaliacao:null,
+    nq: null, 
+    status: null, 
+    etapa: null, 
+    gp:null };
 
-//JSON
+
+//JSON - Variavel que ira armazenar o arquivo JSON q 
+//será enviado para o PHP
 var jsonA;
 
 function enviaServidorPhp(jsonY) {
@@ -126,16 +141,74 @@ function enviaServidorPhp(jsonY) {
     request.send("x=" + jsonY);
 }
 
-function questoesProblemaA() {
+//Função para gerar a classificação do Grupo
+function selecionaGrupoPontucao(numeroQuestaoX){
+    var grupoPontuacao = 99;
+    switch(numeroQuestaoX){
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+            return grupoPontuacao = 1;
+            break;
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+            return grupoPontuacao = 2;
+            break;
+        case 9:
+        case 10:
+        case 11:
+        case 12:
+            return grupoPontuacao = 3;
+            break;
+        case 13:
+        case 14:
+        case 15:
+        case 16:
+        case 17:
+        case 18:
+        case 19:
+            return grupoPontuacao = 4;
+            break;
+        default:
+            return grupoPontuacao =99;
+    }
+}
+
+//
+var idFisioterapeuta=99;
+var idPaciente=99;
+var idAvaliacao=99;
+const recebePaciente = function (recFisioterapeuta, recPaciente, recAvaliacao){
+    this.idFisioterapeuta = recFisioterapeuta;
+    this.idPaciente = recPaciente;
+    this.idAvaliacao = recAvaliacao;
+    //return idPaciente;
+}
+
+
+//Função do botão Não Problema Etapa01
+function questoesProblemaA() {    
     //Recebe as questões que tem problema
     numeroQuestao = document.getElementById("counter-label").innerHTML;
     botaoA = document.getElementById("botaoA").value;
+    grupoPontuacao = selecionaGrupoPontucao(Number(numeroQuestao));
+
     //Objeto
+    questoesProblemaObj.fisioterapeuta = idFisioterapeuta;
+    questoesProblemaObj.paciente = idPaciente;
+    questoesProblemaObj.avaliacao = idAvaliacao;
     questoesProblemaObj.nq = numeroQuestao;
     questoesProblemaObj.status = botaoA;
     questoesProblemaObj.etapa = 1;
+    questoesProblemaObj.gp = grupoPontuacao;
+
     //Converte para JSON
     jsonA = JSON.stringify(questoesProblemaObj);
+
     //
     enviaServidorPhp(jsonA);
     console.log(jsonA);
@@ -143,14 +216,22 @@ function questoesProblemaA() {
     return true;
 }
 
+//Função do botão Problema Etapa01
 function questoesProblemaB() {
     //Recebe as questões que tem problema
     numeroQuestao = document.getElementById("counter-label").innerHTML;
     botaoB = document.getElementById("botaoB").value;
+    grupoPontuacao = selecionaGrupoPontucao(Number(numeroQuestao));
+
     //Objeto
+    questoesProblemaObj.fisioterapeuta = idFisioterapeuta;
+    questoesProblemaObj.paciente = idPaciente;
+    questoesProblemaObj.avaliacao = idAvaliacao;
     questoesProblemaObj.nq = numeroQuestao;
     questoesProblemaObj.status = botaoB;
     questoesProblemaObj.etapa = 1;
+    questoesProblemaObj.gp = grupoPontuacao;
+    
     //Converte para JSON
     jsonB = JSON.stringify(questoesProblemaObj);
     //
@@ -165,16 +246,35 @@ function questoesProblemaB() {
 //Avaliação dos problemas
 
 //Objeto 
-let subQuestoesProblemaObj = { nq: null, status: null, etapa: null };
+
+//nq -> Numero da questão
+//status -> Valor da questão (0,1)
+//etapa -> Etapa da avaliação (1,2,3,4)
+//gp -> Numero do grupo
+let subQuestoesProblemaObj = { 
+    fisioterapeuta:null,
+    paciente:null, 
+    avaliacao:null,
+    nq: null, 
+    status: null, 
+    etapa: null, 
+    gp:null };
 
 function questoesProblemaC() {
     //Recebe as questões que tem problema
     numeroQuestao = document.getElementById("counter-label").innerHTML;
     botaoC = document.getElementById("botaoC").value;
+    grupoPontuacao = selecionaGrupoPontucao(Number(numeroQuestao));
+
     //Objeto
+    subQuestoesProblemaObj.fisioterapeuta = idFisioterapeuta;
+    subQuestoesProblemaObj.paciente = idPaciente;
+    subQuestoesProblemaObj.avaliacao = idAvaliacao;
     subQuestoesProblemaObj.nq = numeroQuestao;
     subQuestoesProblemaObj.status = botaoC;
     subQuestoesProblemaObj.etapa = 2;
+    subQuestoesProblemaObj.gp = grupoPontuacao;
+
     //Converte para JSON
     jsonC = JSON.stringify(subQuestoesProblemaObj);
     //
@@ -188,10 +288,17 @@ function questoesProblemaD() {
     //Recebe as questões que tem problema
     numeroQuestao = document.getElementById("counter-label").innerHTML;
     botaoD = document.getElementById("botaoD").value;
+    grupoPontuacao = selecionaGrupoPontucao(Number(numeroQuestao));
+
     //Objeto
+    subQuestoesProblemaObj.fisioterapeuta = idFisioterapeuta;
+    subQuestoesProblemaObj.paciente = idPaciente;
+    subQuestoesProblemaObj.avaliacao = idAvaliacao;
     subQuestoesProblemaObj.nq = numeroQuestao;
     subQuestoesProblemaObj.status = botaoD;
     subQuestoesProblemaObj.etapa = 2;
+    subQuestoesProblemaObj.gp = grupoPontuacao;
+
     //Converte para JSON
     jsonD = JSON.stringify(subQuestoesProblemaObj);
     //
@@ -205,12 +312,20 @@ function questoesProblemaE() {
     //Recebe as questões que tem problema
     numeroQuestao = document.getElementById("counter-label").innerHTML;
     botaoE = document.getElementById("botaoE").value;
+    grupoPontuacao = selecionaGrupoPontucao(Number(numeroQuestao));
+
     //Objeto
+    subQuestoesProblemaObj.fisioterapeuta = idFisioterapeuta;
+    subQuestoesProblemaObj.paciente = idPaciente;
+    subQuestoesProblemaObj.avaliacao = idAvaliacao;
     subQuestoesProblemaObj.nq = numeroQuestao;
     subQuestoesProblemaObj.status = botaoE;
     subQuestoesProblemaObj.etapa = 2;
+    subQuestoesProblemaObj.gp = grupoPontuacao;
+
     //Converte para JSON
     jsonE = JSON.stringify(subQuestoesProblemaObj);
+
     //
     enviaServidorPhp(jsonE);
     console.log(jsonE);
@@ -219,25 +334,26 @@ function questoesProblemaE() {
 }
 
 //Recebe o array do BANCO de DADOS/PHP com as questões com problema
-var j = [];
+var arrayJ = [];
 var jj = [];
-const numQuestaoFase02 = function (j) {
-    this.jj = j;
-    //console.log(jj);
-    return jj;
+const recebeQuestoesProblemaFase02 = function (arrayJ) {
+    this.jj = arrayJ;
+    //return jj;
 }
 
 //Exibe as questoes selecionadas com problemas na 1º Etapa
-var z = 0;
+var countZ = 0;
+
 function reavaliacaoNextImage() {
     //console.log(tt);
-    if (z == (jj.length - 1)) {
+    if (countZ == (jj.length)) {
         fimSegundaEtapa();
     } else {
         //console.log(z+ " "+j[z])
-        showImage(jj[z]);
-        z = z + 1;
-        updateDisplay(jj[z]);
+        showImage(jj[countZ]);
+        updateDisplay(jj[countZ]);
+        countZ = countZ + 1;
+        
     }
 }
 
@@ -245,29 +361,43 @@ function reavaliacaoNextImage() {
 ////////////////////////////////////////////////////////////////////////////
 //Fase 03, arquivo -- avaliacaçãoCC.html
 //Função para contar o array das imagens
-var w = 0;
+var countW = 0;
 //endArray - > utiliza o array padrão das imagens originais.. todas
 function necessidadeNextImage() {
-    if (w == endArray) {
+    if (countW==endArray) {
         fimTerceiraEtapa();
     } else {
-        showImage(w);
-        w = w + 1;
-        updateDisplayNecessidade(w);
-
+        showImage(countW);
+        updateDisplayNecessidade(countW);
+        countW = countW + 1;
     }
 }
 //Objeto 
-let questoesNecessidadeObj = { nq: null, status: null, etapa: null };
+let questoesNecessidadeObj = { 
+    fisioterapeuta:null,
+    paciente:null, 
+    avaliacao:null,
+    nq: null, 
+    status: null, 
+    etapa: null, 
+    gp:null };
+
 
 function questoesNecessidadeA() {
     //Recebe as questões que tem problema
     numeroQuestao = document.getElementById("counter-labelA").innerHTML;
     botaoAA = document.getElementById("botaoAA").value;
+    grupoPontuacao = selecionaGrupoPontucao(Number(numeroQuestao));
+
     //Objeto
+    questoesNecessidadeObj.fisioterapeuta = idFisioterapeuta;
+    questoesNecessidadeObj.paciente = idPaciente;
+    questoesNecessidadeObj.avaliacao = idAvaliacao;
     questoesNecessidadeObj.nq = numeroQuestao;
     questoesNecessidadeObj.status = botaoAA;
     questoesNecessidadeObj.etapa = 3;
+    questoesNecessidadeObj.gp = grupoPontuacao;
+
     //Converte para JSON
     jsonAA = JSON.stringify(questoesNecessidadeObj);
     //
@@ -281,10 +411,18 @@ function questoesNecessidadeB() {
     //Recebe as questões que tem problema
     numeroQuestao = document.getElementById("counter-labelA").innerHTML;
     botaoBB = document.getElementById("botaoBB").value;
+    grupoPontuacao = selecionaGrupoPontucao(Number(numeroQuestao));
+
     //Objeto
+    questoesNecessidadeObj.fisioterapeuta = idFisioterapeuta;
+    questoesNecessidadeObj.paciente = idPaciente;
+    questoesNecessidadeObj.avaliacao = idAvaliacao;
     questoesNecessidadeObj.nq = numeroQuestao;
     questoesNecessidadeObj.status = botaoBB;
     questoesNecessidadeObj.etapa = 3;
+    questoesNecessidadeObj.gp = grupoPontuacao;
+
+
     //Converte para JSON
     jsonBB = JSON.stringify(questoesNecessidadeObj);
     //
@@ -299,16 +437,30 @@ function questoesNecessidadeB() {
 //Avaliação das necessidades
 
 //Objeto 
-let subQuestoesNecessidadesObj = { nq: null, status: null, etapa: null };
+let subQuestoesNecessidadesObj = { 
+    fisioterapeuta:null,
+    paciente:null, 
+    avaliacao:null,
+    nq: null, 
+    status: null, 
+    etapa: null, 
+    gp:null };
 
 function questoesNecessidadeC() {
     //Recebe as questões que tem problema
     numeroQuestao = document.getElementById("counter-label").innerHTML;
     botaoCC = document.getElementById("botaoCC").value;
+    grupoPontuacao = selecionaGrupoPontucao(Number(numeroQuestao));
+
     //Objeto
+    subQuestoesNecessidadesObj.fisioterapeuta = idFisioterapeuta;
+    subQuestoesNecessidadesObj.paciente = idPaciente;
+    subQuestoesNecessidadesObj.avaliacao = idAvaliacao;
     subQuestoesNecessidadesObj.nq = numeroQuestao;
     subQuestoesNecessidadesObj.status = botaoCC;
     subQuestoesNecessidadesObj.etapa = 4;
+    subQuestoesNecessidadesObj.gp = grupoPontuacao;
+
     //Converte para JSON
     jsonCC = JSON.stringify(subQuestoesNecessidadesObj);
     //
@@ -322,10 +474,17 @@ function questoesNecessidadeD() {
     //Recebe as questões que tem problema
     numeroQuestao = document.getElementById("counter-label").innerHTML;
     botaoDD = document.getElementById("botaoDD").value;
+    grupoPontuacao = selecionaGrupoPontucao(Number(numeroQuestao));
+
     //Objeto
+    subQuestoesNecessidadesObj.fisioterapeuta = idFisioterapeuta;
+    subQuestoesNecessidadesObj.paciente = idPaciente;
+    subQuestoesNecessidadesObj.avaliacao = idAvaliacao;
     subQuestoesNecessidadesObj.nq = numeroQuestao;
     subQuestoesNecessidadesObj.status = botaoDD;
     subQuestoesNecessidadesObj.etapa = 4;
+    subQuestoesNecessidadesObj.gp = grupoPontuacao;
+
     //Converte para JSON
     jsonDD = JSON.stringify(subQuestoesNecessidadesObj);
     //
@@ -339,10 +498,17 @@ function questoesNecessidadeE() {
     //Recebe as questões que tem problema
     numeroQuestao = document.getElementById("counter-label").innerHTML;
     botaoEE = document.getElementById("botaoEE").value;
+    grupoPontuacao = selecionaGrupoPontucao(Number(numeroQuestao));
+
     //Objeto
+    subQuestoesNecessidadesObj.fisioterapeuta = idFisioterapeuta;
+    subQuestoesNecessidadesObj.paciente = idPaciente;
+    subQuestoesNecessidadesObj.avaliacao = idAvaliacao;
     subQuestoesNecessidadesObj.nq = numeroQuestao;
     subQuestoesNecessidadesObj.status = botaoEE;
     subQuestoesNecessidadesObj.etapa = 4;
+    subQuestoesNecessidadesObj.gp = grupoPontuacao;
+
     //Converte para JSON
     jsonEE = JSON.stringify(subQuestoesNecessidadesObj);
     //
@@ -355,23 +521,23 @@ function questoesNecessidadeE() {
 //Recebe o array do BANCO de DADOS/PHP com as questões com problema
 var k = [];
 var kk = [];
-const numQuestaoFase03 = function (k) {
+const recebeQuestoesProblemaFase04 = function (k) {
     this.kk = k;
-    //console.log(jj);
     return kk;
 }
 
-//Exibe as questoes selecionadas com problemas na 1º Etapa
-var u = 0;
+//Exibe as questoes selecionadas com necessidades na 3º Etapa
+var countU = 0;
 function reavaliacaoNecessidadeNextImage() {
     //console.log(tt);
-    if (u == (kk.length - 1)) {
+    if (countU == (kk.length)) {
         fimqQuartaEtapa();
     } else {
         //console.log(z+ " "+j[z])
-        showImage(kk[u]);
-        u = u + 1;
-        updateDisplay(kk[u]);
+        showImage(kk[countU]);
+        updateDisplay(kk[countU]);
+        countU = countU + 1;
+        
     }
 }
 
