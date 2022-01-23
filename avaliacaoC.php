@@ -1,11 +1,20 @@
 <?php
-    $idfisioterapeuta = 88;//$_POST["id_paciente"];
+
+    if(count($_COOKIE) > 0){
+        setcookie("idfisioterapeuta", "", time()-1800);
+        setcookie("idpaciente", "", time()-1800); 
+        setcookie("idavaliacao", "", time()-1800); 
+    }
+
+    $idfisioterapeuta = $_POST["id_fisioterapeuta"];
     $idpaciente = $_POST["id_paciente"];
-    $idavaliacao = 88;//$_POST["id_paciente"];
+    $idavaliacao = 99;//$_POST["id_paciente"];
 
     setcookie("idfisioterapeuta", $idfisioterapeuta, time()+3600, "/","", 0);
     setcookie("idpaciente", $idpaciente, time()+3600, "/","", 0); 
     setcookie("idavaliacao", $idavaliacao, time()+3600, "/", "", 0); 
+
+     print_r($_COOKIE);
 ?>
 <!DOCTYPE html>
     <head>

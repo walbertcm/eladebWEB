@@ -1,12 +1,10 @@
-<?php
-        
-        include('conexaoBancoDados.php');
+<?php        
+       include('conexaoBancoDados.php');
 
         $sql = "SELECT `pacienteid`, `NomePaciente`, `NomeResponsavel`, `Telefone`, `EmailPaciente`, `senha`, `dt_cadastro`
         FROM `paciente`";
 
         $query = mysqli_query($conn,$sql); 
-
 ?>
 
 <!DOCTYPE html> 
@@ -41,7 +39,7 @@
         ?> 
       </table> 
       </br>
-    <h3><a href="index.html">Inicio</a></h3>
+    <h3><a href="index.php">Inicio</a></h3>
     </body>
 
 

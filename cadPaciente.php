@@ -22,5 +22,5 @@ if (mysqli_query($conn, $sql)) {
 ?>
 </br>
     <h3>
-       <a href="index.html">Inicio</a>
+       <a href="index.php">Inicio</a>
    </h3>

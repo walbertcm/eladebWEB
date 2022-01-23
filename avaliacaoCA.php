@@ -10,7 +10,7 @@
      
     $query = mysqli_query($conn,$sqlA);
 
-     //print_r($_COOKIE);
+     print_r($_COOKIE);
 ?>  
 <!DOCTYPE html>
     <head>

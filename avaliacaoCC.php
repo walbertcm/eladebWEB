@@ -9,6 +9,8 @@
     WHERE `idfisioterapeuta`='$idfisioterapeuta' AND `idpaciente`='$idpaciente' AND `idavaliacao` = '$idavaliacao' AND `resultado`=1 AND `etapa`=3;";
 
     $query = mysqli_query($conn, $sqlA);
+
+     print_r($_COOKIE);
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +63,8 @@
             recebePaciente(idfisioterapeuta_javascript, idpaciente_javascript,idavaliacao_javascript);                      
             recebeQuestoesProblemaFase04(javascript_arrayQuestoesA); //Recebe o array do php e repassa para o javascript
             reavaliacaoNecessidadeNextImage();
-    </script>        
+    </script> 
+   
 </body>
 
 </html>

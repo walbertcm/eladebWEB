@@ -11,7 +11,7 @@ for($i=0;$i<$questoes;$i++) {
     mysqli_query($conn, "INSERT INTO `cenario` (`idpaciente`,`idpergunta`, `nomecenario`, `dtcadastro`) 
     VALUES ('$paciente', '".$_POST['users'][$i]."', '$nomeCenario', NOW())");
     }
-    header("Location:index.html");
+    header("Location:index.php");
 
 
 //Fecha a conexão

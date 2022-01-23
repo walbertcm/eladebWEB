@@ -2,6 +2,8 @@
     $idfisioterapeuta = $_COOKIE["idfisioterapeuta"];     
     $idpaciente = $_COOKIE["idpaciente"];    
     $idavaliacao = $_COOKIE["idavaliacao"]; 
+
+     print_r($_COOKIE);
 ?>  
 
 <!DOCTYPE html>

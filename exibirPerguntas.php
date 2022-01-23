@@ -35,7 +35,7 @@
         ?> 
       </table> 
       </br>
-    <h3><a href="index.html">Inicio</a></h3>
+    <h3><a href="index.php">Inicio</a></h3>
     </body>
  
 </html>

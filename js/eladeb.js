@@ -88,7 +88,8 @@ function fimTerceiraEtapa() {
 
 function fimqQuartaEtapa() {
     alert("Etapa 04 - FIM");
-    window.location.href = 'index.html';
+    //window.location.href = 'index.php';
+    window.close();
 }
 
 //Variaveis
