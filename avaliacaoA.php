@@ -6,12 +6,12 @@
     $sqlA = "SELECT `idterapeuta`,`nome`,`email` FROM `fisioterapeuta`;";
 
     //Instrução SQL selecionar Paciente
-    $sqlB = "SELECT `pacienteid`,`NomePaciente`,`NomeResponsavel`,`Telefone`,`EmailPaciente`,`dt_cadastro` 
-    FROM `paciente` ORDER BY `NomePaciente` ASC";
+   // $sqlB = "SELECT `pacienteid`,`NomePaciente`,`NomeResponsavel`,`Telefone`,`EmailPaciente`,`dt_cadastro` 
+    //FROM `paciente` ORDER BY `NomePaciente` ASC";
 
     //Executa a instrução SQLA  
     $queryA = mysqli_query($conn,$sqlA);
-    $queryB = mysqli_query($conn,$sqlB);
+    //$queryB = mysqli_query($conn,$sqlB);
 ?>
 
 <!DOCTYPE html>

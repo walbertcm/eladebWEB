@@ -9,7 +9,7 @@ $telefone=$_POST['Telefone'];
 $senha=$_POST['Senha'];
 
 
-$sql = "INSERT INTO `paciente`(  `NomePaciente`, `NomeResponsavel`, `Telefone`, `EmailPaciente`, `senha`) 
+$sql = "INSERT INTO `paciente`( `NomePaciente`, `NomeResponsavel`, `Telefone`, `EmailPaciente`, `senha`) 
 VALUES ('$nomepaciente','$nomeresponsavel','$telefone','$email','$senha')";
 
 

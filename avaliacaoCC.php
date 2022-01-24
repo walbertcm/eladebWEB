@@ -44,7 +44,7 @@
         
         if(javascript_arrayQuestoesA==0){
             alert("Etapa 04 não necessaria. \n Fim do Teste !");
-            window.location.href = '../eladeb/index.html';
+            window.location.href = '../eladeb/index.php';
         }
     </script>
     <!--Css Conteiner de largura total -->

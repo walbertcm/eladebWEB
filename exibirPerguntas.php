@@ -29,7 +29,7 @@
          echo "<td>".'<img width="100" height="100" src="data:image/jpeg;charset=utf8;base64,'.base64_encode( $dado['imagem'] ).'"/>'."</td>";
          echo "<td>".date('d/m/Y H:i:s', strtotime($dado['dtcadastro']))."</td>";
          //echo "<td>".'<a href="cadCenario.php?id='.$dado['idperguntas'].'">Imagem '.$dado['idperguntas'] ."</td>";           
-         echo "<td>".'<a href="excluirPerguntas.php?id='.$dado['idperguntas'].'">Excluir'."</td>";
+         echo "<td>".'<a href="excluirPerguntas.php?id='.$dado['idperguntas'].'">Excluir'."</a></td>";
          echo"</tr>";
         } 
         ?> 

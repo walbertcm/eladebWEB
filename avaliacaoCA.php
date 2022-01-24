@@ -5,9 +5,9 @@
     
     include('conexaoBancoDados.php');
     
-    $sqlA = "SELECT `numquestao` FROM `avaliacao` WHERE `idpaciente` = '$idpaciente' AND `idfisioterapeuta` = '$idfisioterapeuta' AND `resultado` = 1;";
-    //"SELECT 'numquestao' FROM 'avaliacao' WHERE 'resultado'= 1 AND 'idpaciente'= '$idpaciente' AND 'idfisioterapeuta'= 1 AND 'etapa' = 1;";
-     
+    $sqlA  = "SELECT numquestao FROM avaliacao WHERE resultado= 1 AND idpaciente= '$idpaciente' AND idfisioterapeuta= '$idfisioterapeuta' AND etapa = 1 AND idavaliacao= '$idavaliacao';";
+    //"SELECT `numquestao` FROM `avaliacao` WHERE `idpaciente` = '$idpaciente' AND `idfisioterapeuta` = '$idfisioterapeuta' AND `resultado` = 1;";
+    
     $query = mysqli_query($conn,$sqlA);
 
      print_r($_COOKIE);

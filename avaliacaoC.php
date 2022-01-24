@@ -5,10 +5,19 @@
         setcookie("idpaciente", "", time()-1800); 
         setcookie("idavaliacao", "", time()-1800); 
     }
-
-    $idfisioterapeuta = $_POST["id_fisioterapeuta"];
+    include('conexaoBancoDados.php');  
     $idpaciente = $_POST["id_paciente"];
-    $idavaliacao = 99;//$_POST["id_paciente"];
+    $idfisioterapeuta = $_POST["id_fisioterapeuta"];
+
+    $sqlA = "SELECT DISTINCT `idavaliacao` FROM `avaliacao` WHERE `idpaciente` = '$idpaciente';";
+    
+    $queryA = mysqli_query($conn,$sqlA);
+
+    while($dadoA = mysqli_fetch_array($queryA)){
+        $idavaliacaoA = $dadoA['idavaliacao'];
+    }
+    
+    $idavaliacao = $idavaliacaoA + 1;
 
     setcookie("idfisioterapeuta", $idfisioterapeuta, time()+3600, "/","", 0);
     setcookie("idpaciente", $idpaciente, time()+3600, "/","", 0); 
