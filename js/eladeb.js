@@ -53,7 +53,7 @@ var i = 0;
 //Funcao criar nova janela com tamanho fixo
 //Utilizada na pagina index.
 function novaJanela() {
-    var nj = window.open('avaliacaoA.php', '', 'width=800, height=700');
+    var nj = window.open('avaliacaoA.php', '', 'width=1072, height=685');
 }
 
 //Função para exibir imagens
@@ -88,6 +88,7 @@ function fimTerceiraEtapa() {
 
 function fimqQuartaEtapa() {
     alert("Etapa 04 - FIM");
+    window.open('index.php', '_blank');
     //window.location.href = 'index.php';
     window.close();
 }

@@ -11,13 +11,11 @@
     
 </head>    
     <body>
-        <h1>WireFrame</h1><br>
-
-        <h1>Fisioterapeuta</h1>
+        <h1>Terapeuta</h1>
         <br>
-        <h3><a href="cadastrarFisioterapeuta.html">Cadastrar Fisioterapeuta</a></h3>
+        <h3><a href="cadastrarFisioterapeuta.html">Cadastrar Terapeuta</a></h3>
         <br>
-        <h3><a href="exibirFisioterapeuta.php">Exibir Fisioterapeuta</a></h3>
+        <h3><a href="exibirFisioterapeuta.php">Exibir Terapeuta</a></h3>
         <br>
         <br>
         <h1>Paciente</h1>

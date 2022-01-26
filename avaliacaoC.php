@@ -5,7 +5,9 @@
         setcookie("idpaciente", "", time()-1800); 
         setcookie("idavaliacao", "", time()-1800); 
     }
-    include('conexaoBancoDados.php');  
+    include('conexaoBancoDados.php');
+    
+    $idavaliacao = 0;
     $idpaciente = $_POST["id_paciente"];
     $idfisioterapeuta = $_POST["id_fisioterapeuta"];
 
@@ -23,7 +25,7 @@
     setcookie("idpaciente", $idpaciente, time()+3600, "/","", 0); 
     setcookie("idavaliacao", $idavaliacao, time()+3600, "/", "", 0); 
 
-     print_r($_COOKIE);
+     //print_r($_COOKIE);
 ?>
 <!DOCTYPE html>
     <head>
@@ -46,7 +48,7 @@
     </head>
     <body >   
     <div class="container-fluid container-md mt-3 border">
-        <h2>Carta Número: <h1 id="counter-label" class="text-left"> 0 </h1> </h2><br>                   
+        <h2 style="color: white;">Carta Número: <h1 id="counter-label" class="text-left" style="color: white;"> 0 </h1> </h2><br>                   
         <img id="images" width="400" height="400" class="mx-auto d-block"></img><br>
         <div class="text-center">
             <button type="button" onclick="questoesProblemaA()" id="botaoA" value="0" name="problema" class="btn btn-success btn-lg ">NÃO PROBLEMA</button>

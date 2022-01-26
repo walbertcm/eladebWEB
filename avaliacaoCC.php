@@ -10,7 +10,7 @@
 
     $query = mysqli_query($conn, $sqlA);
 
-     print_r($_COOKIE);
+     //print_r($_COOKIE);
 ?>
 
 <!DOCTYPE html>
@@ -49,12 +49,12 @@
     </script>
     <!--Css Conteiner de largura total -->
     <div class="container-fluid container-md mt-3 border">
-        <h2>Carta Número: <h1 id="counter-label" class="text-left">0</h1></h2><br>
+        <h2 style="color: white;">Carta Número: <h1 id="counter-label" class="text-left" style="color: white;">0</h1></h2><br>
         <img id="images" width="400" height="400" class="mx-auto d-block"></img><br>
         <div class="text-center">
-            <button type="button" onclick="questoesNecessidadeC()" id="botaoCC" value="1" name="necessidadeA" class="btn btn-success btn-danger">PRECISO DE AJUDA NÃO URGENTE <br>( MAIS DE 03 MESES )</button>
-            <button type="button" onclick="questoesNecessidadeD()" id="botaoDD" value="2" name="necessidadeA" class="btn btn-warning btn-danger ">PRECISO DE AJUDA MODERADAMENTE URGENTE <br>( ENTRE 01 E 03 MESES )</button>
-            <button type="button" onclick="questoesNecessidadeE()" id="botaoEE" value="3" name="necessidadeA" class="btn btn-warning btn-danger ">PRECISO DE AJUDA URGENTE <br>( DENTRO DE 30 DIAS )</button>
+            <button type="button" onclick="questoesNecessidadeC()" id="botaoCC" value="1" name="necessidadeA" class="btn btn-success btn-danger">PRECISO DE AJUDA <br>NÃO URGENTE <br>( MAIS DE 03 MESES )</button>
+            <button type="button" onclick="questoesNecessidadeD()" id="botaoDD" value="2" name="necessidadeA" class="btn btn-warning btn-danger ">PRECISO DE AJUDA <br> MODERADAMENTE URGENTE <br>( ENTRE 01 E 03 MESES )</button>
+            <button type="button" onclick="questoesNecessidadeE()" id="botaoEE" value="3" name="necessidadeA" class="btn btn-warning btn-danger ">PRECISO DE AJUDA <br>URGENTE <br>( DENTRO DE 30 DIAS )</button>
         <br><br>
         </div>
     </div>

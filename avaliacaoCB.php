@@ -3,7 +3,7 @@
     $idpaciente = $_COOKIE["idpaciente"];    
     $idavaliacao = $_COOKIE["idavaliacao"]; 
 
-     print_r($_COOKIE);
+     //print_r($_COOKIE);
 ?>  
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@
             var idavaliacao_javascript = "<?php echo $idavaliacao;?>";
     </script>  
         <div class="container-fluid container-md mt-3 border">
-            <h2>Carta Número: <h1 id="counter-labelA" class="text-left">0</h1> </h2><br>             
+            <h2 style="color: white;">Carta Número: <h1 id="counter-labelA" class="text-left" style="color: white;">0</h1> </h2><br>             
             <img id="images" width="400" height="400" class="mx-auto d-block"></img><br>
         <div class="text-center">
             <button type="button" onclick="questoesNecessidadeA()" id="botaoAA" value="0" name="necessidade" class="btn btn-warning btn-lg">NÃO HÁ NECESSIDADE <br> AJUDA ADICIONAL</button>

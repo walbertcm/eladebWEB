@@ -14,7 +14,8 @@ VALUES ('$nomepaciente','$nomeresponsavel','$telefone','$email','$senha')";
 
 
 if (mysqli_query($conn, $sql)) {
-    echo "New record has been added successfully !";
+    echo "New record has been added successfully !";  
+
  } else {
     echo "Error: " . $sql . ":-" . mysqli_error($conn);
  }

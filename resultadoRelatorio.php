@@ -442,7 +442,7 @@
     <th class="tg-7zrl"></th>
     <th class="tg-7zrl"></th>
     <th class="tg-8d8j" colspan="2">Dificuldades</th>
-    <th class="tg-8d8j" colspan="3">Preciso de Ajuda</th>
+    <th class="tg-8d8j" colspan="3">Necessidade de Ajuda</th>
   </tr>
 </thead>
 <tbody>
@@ -492,9 +492,9 @@
     <td class="tg-7zrl"></td>
     <td class="tg-7zrl">Subtotal</td>
     <td class="tg-u4qn"><?php  echo $subtotalA1?>/4</td>
-    <td class="tg-u4qn"><?php  echo $subtotalB1?>/4</td>
+    <td class="tg-u4qn"><?php  echo $subtotalB1?>/12</td>
     <td class="tg-u4qn"><?php  echo $subtotalC1?>/4</td>
-    <td class="tg-u4qn"><?php  echo $subtotalD1?>/4</td>
+    <td class="tg-u4qn"><?php  echo $subtotalD1?>/12</td>
     <td ><?php  //echo $subtotalE1?></td>
   </tr>
   <tr>
@@ -515,7 +515,7 @@
     <td class="tg-7zrl"><?php  echo $etapaE6?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">7.Limpeza</td>
+    <td class="tg-2b7s">7.Tarefas Domesticas</td>
     <td class="tg-7zrl"><?php  echo $etapaA7?></td>
     <td class="tg-7zrl"><?php  echo $etapaB7?></td>
     <td class="tg-7zrl"><?php  echo $etapaC7?></td>
@@ -542,14 +542,14 @@
     <td class="tg-7zrl"></td>
     <td class="tg-7zrl">Subtotal</td>
     <td class="tg-u4qn"><?php  echo $subtotalA2?>/5</td>
-    <td class="tg-u4qn"><?php  echo $subtotalB2?>/5</td>
+    <td class="tg-u4qn"><?php  echo $subtotalB2?>/15</td>
     <td class="tg-u4qn"><?php  echo $subtotalC2?>/5</td>
-    <td class="tg-u4qn"><?php  echo $subtotalD2?>/5</td>
+    <td class="tg-u4qn"><?php  echo $subtotalD2?>/15</td>
     <td ><?php  //echo $subtotalE2?></td>
   </tr>
   <tr>
     <td class="tg-0lax" rowspan="4">Relacionamentos</td>
-    <td class="tg-2b7s">10.Conhecidos/Amizades</td>
+    <td class="tg-2b7s">10.Amizades</td>
     <td class="tg-7zrl"><?php  echo $etapaA10?></td>
     <td class="tg-7zrl"><?php  echo $etapaB10?></td>
     <td class="tg-7zrl"><?php  echo $etapaC10?></td>
@@ -584,9 +584,9 @@
     <td class="tg-7zrl"></td>
     <td class="tg-7zrl">Subtotal</td>
     <td class="tg-u4qn"><?php  echo $subtotalA3?>/4</td>
-    <td class="tg-u4qn"><?php  echo $subtotalB3?>/4</td>
+    <td class="tg-u4qn"><?php  echo $subtotalB3?>/12</td>
     <td class="tg-u4qn"><?php  echo $subtotalC3?>/4</td>
-    <td class="tg-u4qn"><?php  echo $subtotalD3?>/4</td>
+    <td class="tg-u4qn"><?php  echo $subtotalD3?>/12</td>
     <td ><?php  //echo $subtotalE3?></td>
   </tr>
   <tr>
@@ -650,18 +650,18 @@
     <td class="tg-7zrl"></td>
     <td class="tg-7zrl">Subtotal</td>
     <td class="tg-u4qn"><?php  echo $subtotalA4?>/7</td>
-    <td class="tg-u4qn"><?php  echo $subtotalB4?>/7</td>
+    <td class="tg-u4qn"><?php  echo $subtotalB4?>/21</td>
     <td class="tg-u4qn"><?php  echo $subtotalC4?>/7</td>
-    <td class="tg-u4qn"><?php  echo $subtotalD4?>/7</td>
+    <td class="tg-u4qn"><?php  echo $subtotalD4?>/21</td>
     <td ><?php  //echo $subtotalE4?></td>
   </tr>
   <tr>
     <td class="tg-7zrl"></td>
     <td class="tg-7zrl">Total</td>
     <td class="tg-u4qn"><?php  echo $totalA1?>/20</td>
-    <td class="tg-u4qn"><?php  echo $totalB1?>/20</td>
+    <td class="tg-u4qn"><?php  echo $totalB1?>/60</td>
     <td class="tg-u4qn"><?php  echo $totalC1?>/20</td>
-    <td class="tg-u4qn"><?php  echo $totalD1?>/20</td>
+    <td class="tg-u4qn"><?php  echo $totalD1?>/60</td>
     <td ><?php  //echo $totalE1?></td>
   </tr>
 </tbody>

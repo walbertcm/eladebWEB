@@ -47,7 +47,7 @@
 
 
         <div class="container-fluid container-md mt-3 border">
-            <h2>Carta Número: <h1 id="counter-label" class="text-left">0</h1> </h2><br>             
+            <h2 style="color: white;">Carta Número: <h1 id="counter-label" class="text-left" style="color: white;">0</h1> </h2><br>             
             <img id="images" width="400" height="400" class="mx-auto d-block"></img><br>
         <div class="text-center">
             <button type="button" onclick="questoesProblemaC()" id="botaoC" value="1" class="btn btn-success btn-danger">PROBLEMA<br>NÃO IMPORTANTE</button>

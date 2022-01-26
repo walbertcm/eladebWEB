@@ -16,9 +16,9 @@
     <body> 
       <table border="1"> 
         <tr> 
-          <td>Nome Fisioterapeuta</td> 
-          <td>Email Fisioterapeuta</td> 
-          <td>Registro Fisioterapeuta</td> 
+          <td>Nome</td> 
+          <td>Email</td> 
+          <td>Registro</td> 
           <td>Senha</td> 
           <td>Data Cadastro</td> 
         </tr> 
