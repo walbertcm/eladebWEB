@@ -1,3 +1,12 @@
+<?php
+//Metodo para iniciar a sessao
+session_start();
+
+//Sessao
+$_SESSION["email"];
+$_SESSION["id"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,5 +17,11 @@
 </head>
 <body>
 <h1>Paciente</h1>
+<?php echo $_SESSION["email"]; ?>
+<br>
+<br>
+<br>
+<br>
+<h2><a href="../logOff.php">Logoff</a></h2>
 </body>
 </html>

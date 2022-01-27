@@ -1,70 +1,59 @@
 <?php
  //Conexão do banco de dados online
- include('conexaoDataBaseV2.php');
+ include('controller/conexaoDataBaseV2.php');
+
+ //Metodo para iniciar a sessao
+ session_start();
 
  //Recebe elementos POST
- $email = "administrador01@mail.com";//$_POST['email'];
- $pass = "123456";//$_POST['pass'];
+ $emailA = $_POST['email'];
+ $pass = $_POST['pass'];
 
 //Seleção no banco de dados
-$sqlA = "SELECT * FROM `loginSistema` WHERE `usuario` = '$email' AND `senha` = '$pass' ";
+$sqlA = "SELECT * FROM `loginSistema` WHERE `usuario` = '$emailA' AND `senha` = '$pass' ";
 
 //Query
- $query = mysqli_query($conn, $sqlA);
+ $queryA = mysqli_query($conn, $sqlA);
+
+ //Função para cadastrar o Login
+ function cadastraLogAcesso($email){
+    include('controller/conexaoDataBaseV2.php');
+    $sqlB = "INSERT INTO `loginLogger` (`id`, `datahora`, `email`, `horalogin`) VALUES (NULL, CURRENT_TIMESTAMP, '$email', CURRENT_TIMESTAMP); ";
+    $queryB = mysqli_query($conn, $sqlB);
+}
 
  //Tratamento da resposta
- while($dados = mysqli_fetch_assoc($query)){
+ while($dados = mysqli_fetch_assoc($queryA)){
     $id=$dados["id"];
-    $nome=$dados["usuario"];
+    $emailB=$dados["usuario"]; //usuario tem somente email nao é o nome --> Tab. loginSistemas
     $tipo=$dados['tipo'];
-            echo $id;
-            echo $nome;
-            echo $tipo;
+
     switch($tipo){
         case 1:
-            header("Location: useradministrador/principaladministrador.php?email=$nome");
-            echo $id;
-            echo $nome;
-            echo $tipo;
+            //Configura a sessao
+            $_SESSION["email"] = $emailB;
+            $_SESSION["id"] = $id;
+            header("Location: useradministrador/principaladministrador.php?email=$emailB");
+            cadastraLogAcesso($emailB);
             break;
         case 2:
-            header("Location: userterapeuta/principalterapeuta.php?email=$nome");
-            echo $id;
-            echo $nome;
-            echo $tipo;
+            //Configura a sessao
+            $_SESSION["email"] = $emailB;
+            $_SESSION["id"] = $id;
+            header("Location: userterapeuta/principalterapeuta.php?email=$emailB");
+            cadastraLogAcesso($emailB);
             break;
         case 3:
-            header("Location: userpaciente/principalpaciente.php?email=$nome");
-            echo $id;
-            echo $nome;
-            echo $tipo;
+            //Configura a sessao
+            $_SESSION["email"] = $emailB;
+            $_SESSION["id"] = $id;
+            header("Location: userpaciente/principalpaciente.php?email=$emailB");
+            cadastraLogAcesso($emailB);
             break;
+        default:
+            header("Location: index.html");
     }
-    
-    
  }
  ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <?
-    while($dados = mysqli_fetch_assoc($query)){
-        $id=$dados["id"];
-        $nome=$dados["usuario"];
-        $tipo=$dados['tipo'];
-                echo $id;
-                echo $nome;
-                echo $tipo;
-    }
-    ?>
-</body>
-</html>
-
 
 
