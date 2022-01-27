@@ -27,7 +27,9 @@ $sqlA = "SELECT * FROM `loginSistema` WHERE `usuario` = '$emailA' AND `senha` = 
     $id=$dados["id"];
     $emailB=$dados["usuario"]; //usuario tem somente email nao é o nome --> Tab. loginSistemas
     $tipo=$dados['tipo'];
+    $permissao = $dados['permissao'];
 
+    if($permissao == 1){
     switch($tipo){
         case 1:
             //Configura a sessao
@@ -53,7 +55,7 @@ $sqlA = "SELECT * FROM `loginSistema` WHERE `usuario` = '$emailA' AND `senha` = 
         default:
             header("Location: index.html");
     }
- }
+ }else {header("Location: index.html");}
  ?>
 
 
