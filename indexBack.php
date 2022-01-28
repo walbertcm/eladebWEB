@@ -56,6 +56,7 @@ $sqlA = "SELECT * FROM `loginSistema` WHERE `usuario` = '$emailA' AND `senha` = 
             header("Location: index.html");
     }
  }else {header("Location: index.html");}
+}
  ?>
 
 

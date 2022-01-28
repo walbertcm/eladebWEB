@@ -21,6 +21,6 @@ $_SESSION["id"];
 <br>
 <br>
 <br>
-<h2><a href="../logOff.php">Logoff</a></h2>
+<h2><a href="../logout.php">Logout</a></h2>
 </body>
 </html>
