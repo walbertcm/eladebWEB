@@ -1,6 +1,7 @@
 <?php
 //Metodo para iniciar a sessao
 session_start();
+
 //Avalia se a sessao tem valores, foi definida, caso nao retorna o user para o login
 if(!isset($_SESSION["email"]) AND !isset($_SESSION["id"])){
     header("Location: ../index.html");
@@ -10,28 +11,30 @@ if(!isset($_SESSION["email"]) AND !isset($_SESSION["id"])){
     $id = $_SESSION["id"];
 }
 
-//Seleção dos pacientes para exibição
-//Conexão com o banco de dados
 include('../controller/conexaoDataBaseV2.php');
 
-//Seleciona o numero de pacientes
-$sql = "SELECT `pacienteid`, `NomePaciente`, `NomeResponsavel`, `Telefone`, `EmailPaciente`, `dt_cadastro` FROM `paciente` ORDER BY `NomePaciente` ";
-$query = mysqli_query($conn,$sql);
+$sql = "SELECT t.nome, p.NomePaciente,a.`idpaciente`,a.`resultado`, DATE_FORMAT(a.`datahora`,'%d/%m/%Y %T') as dataa,a.`idavaliacao` FROM `avaliacao` as a RIGHT JOIN paciente as p ON a.`idpaciente` = p.pacienteid RIGHT JOIN terapeuta as t ON a.`idterapeuta`=t.idterapeuta WHERE a.`idpaciente`='$id' group by a.`idpaciente`, a.`idavaliacao`;";
+    
+$query = mysqli_query($conn, $sql);
 
-//Função para calcular o numero de avaliações
-function calcularNumeroAvaliacoes($idPacienteA){
-    include('../controller/conexaoDataBaseV2.php');
-    $sqlN = "SELECT MAX(`idavaliacao`) as numero FROM `avaliacao` WHERE `idpaciente` = '$idPacienteA'"; 
+function statusAvaliacao($statusAvaliacao){
+  if($statusAvaliacao == 0){
+    $statusAvaliacaoTexto = "Incompleta";
+    return $statusAvaliacaoTexto;
+  }else {
+    $statusAvaliacaoTexto = "Completa";
+    return $statusAvaliacaoTexto;
+  }
+
+  /* include('../controller/conexaoDataBaseV2.php');
+    $sqlN = "SELECT `resultado` FROM `avaliacao` WHERE `idpaciente` = '$idPacienteA'"; 
     $queryA = mysqli_query($conn,$sqlN);
     while($avaliacaoes = mysqli_fetch_array($queryA)) { 
         $resultado = $avaliacaoes["numero"];
-        return $resultado; 
+ */
+        //return $resultado; 
     }
-        
-}
 ?>
-<!--Template-->
-<!--view-source:https://getbootstrap.com/docs/4.0/examples/starter-template/-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -85,28 +88,28 @@ function calcularNumeroAvaliacoes($idPacienteA){
         <div class="col-md-12">
             <div class="table-responsive">
                 <table id="mytable" class="table table-bordred table-striped">
-                    <thead>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Responsavel</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Telefone</th>
-                    <th scope="col">Quant. Avaliações</th>
-                    <th scope="col">Resultados</th>
+                  <h2>Resultados do Paciente</h2>  
+                  <thead>
+                    <tr>
+                      <th scope="col">Nome do Terapeuta</th>
+                      <th scope="col">Nome do Paciente</th>
+                      <th scope="col">Status da Avaliação</th>
+                      <th scope="col">Data</th>
+                      <th scope="col">Tabela de Pontuação</th>
+                    </tr>
                     </thead>
                     <!-- Corpo da Tabela-->
                     <!--https://bootsnipp.com/snippets/2P90-- Exemplo parcial>-->
                     <tbody>
-
                     <?php 
-                        while($dado = mysqli_fetch_array($query)) {
-                            $aaa = $dado['pacienteid'];
+                        while($dado = mysqli_fetch_assoc($query)) {
+                            $aaa = $dado['resultado'];
                             echo "<tr>";
+                            echo "<td>".$dado['nome']."</td>";
                             echo "<td>".$dado['NomePaciente']."</td>";
-                            echo "<td>".$dado['NomeResponsavel']."</td>";
-                            echo "<td>".$dado['EmailPaciente']."</td>";
-                            echo "<td>".$dado['Telefone']."</td>";
-                            echo "<td>".calcularNumeroAvaliacoes($aaa)."</td>";
-                            echo "<td>".'<a href="resultadoExibir.php?id='.$dado['pacienteid'].'&email='.$dado['EmailPaciente'].' " class="btn btn-primary btn-md" role="button" aria-pressed="true">Acessar</a>'."</td>";                            
+                            echo "<td>".statusAvaliacao($aaa)."</td>";
+                            echo "<td>".$dado['dataa']."</td>";    
+                            echo "<td>".'<a href="resultadoRelatorio.php?id='.$dado['idavaliacao'].'&idpc='.$dado['idpaciente'].' " class="btn btn-primary btn-md" role="button" aria-pressed="true">Verificar</a>'."</td>";                            
                             echo"</tr>";
                             
                         } 
