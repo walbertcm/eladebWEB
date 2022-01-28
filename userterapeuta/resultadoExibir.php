@@ -85,10 +85,10 @@ function statusAvaliacao($statusAvaliacao){
                   <h2>Resultados do Paciente</h2>  
                   <thead>
                     <tr>
-                      <th scope="col">Nome do Terapeuta</th>
-                      <th scope="col">Nome do Paciente</th>
+                      <th scope="col">Terapeuta</th>
+                      <th scope="col">Paciente</th>
                       <th scope="col">Status da Avaliação</th>
-                      <th scope="col">Data</th>
+                      <th scope="col">Data/Hora</th>
                       <th scope="col">Tabela de Pontuação</th>
                     </tr>
                     </thead>

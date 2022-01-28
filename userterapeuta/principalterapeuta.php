@@ -85,11 +85,11 @@ function calcularNumeroAvaliacoes($idPacienteA){
      <div class="row">
         <div class="col-md-12">
             <div class="table-responsive">
-            <h2>Pacientes do terapeuta</h2>  
+            <h2>Pacientes</h2>  
                 <table id="mytable" class="table table-bordred table-striped">
                     <thead>
                     <th scope="col">Nome</th>
-                    <th scope="col">Responsavel</th>
+                    <th scope="col">Responsável</th>
                     <th scope="col">Email</th>
                     <th scope="col">Telefone</th>
                     <th scope="col">Quant. Avaliações</th>
