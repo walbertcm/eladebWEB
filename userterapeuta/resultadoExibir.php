@@ -10,10 +10,11 @@ if(!isset($_SESSION["email"]) AND !isset($_SESSION["id"])){
     $email = $_SESSION["email"];
     $id = $_SESSION["id"];
 }
+$idpaciente = $_GET["id"];
 
 include('../controller/conexaoDataBaseV2.php');
 
-$sql = "SELECT t.nome, p.NomePaciente,a.`idpaciente`,a.`resultado`, DATE_FORMAT(a.`datahora`,'%d/%m/%Y %T') as dataa,a.`idavaliacao` FROM `avaliacao` as a RIGHT JOIN paciente as p ON a.`idpaciente` = p.pacienteid RIGHT JOIN terapeuta as t ON a.`idterapeuta`=t.idterapeuta WHERE a.`idpaciente`='$id' group by a.`idpaciente`, a.`idavaliacao`;";
+$sql = "SELECT t.nome, p.NomePaciente,a.`idpaciente`, a.idterapeuta,a.`resultado`, DATE_FORMAT(a.`datahora`,'%d/%m/%Y %T') as dataa,a.`idavaliacao` FROM `avaliacao` as a RIGHT JOIN paciente as p ON a.`idpaciente` = p.pacienteid RIGHT JOIN terapeuta as t ON a.`idterapeuta`=t.idterapeuta WHERE a.`idpaciente`='$idpaciente' group by a.`idpaciente`, a.`idavaliacao`;";
     
 $query = mysqli_query($conn, $sql);
 
@@ -25,15 +26,7 @@ function statusAvaliacao($statusAvaliacao){
     $statusAvaliacaoTexto = "Completa";
     return $statusAvaliacaoTexto;
   }
-
-  /* include('../controller/conexaoDataBaseV2.php');
-    $sqlN = "SELECT `resultado` FROM `avaliacao` WHERE `idpaciente` = '$idPacienteA'"; 
-    $queryA = mysqli_query($conn,$sqlN);
-    while($avaliacaoes = mysqli_fetch_array($queryA)) { 
-        $resultado = $avaliacaoes["numero"];
- */
-        //return $resultado; 
-    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -50,6 +43,7 @@ function statusAvaliacao($statusAvaliacao){
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css" rel="stylesheet">
 </head>
+<body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <a class="navbar-brand" href="http://localhost/eladeb/userterapeuta/principalterapeuta.php">Início</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,7 +103,7 @@ function statusAvaliacao($statusAvaliacao){
                             echo "<td>".$dado['NomePaciente']."</td>";
                             echo "<td>".statusAvaliacao($aaa)."</td>";
                             echo "<td>".$dado['dataa']."</td>";    
-                            echo "<td>".'<a href="resultadoRelatorio.php?id='.$dado['idavaliacao'].'&idpc='.$dado['idpaciente'].' " class="btn btn-primary btn-md" role="button" aria-pressed="true">Verificar</a>'."</td>";                            
+                            echo "<td>".'<a href="resultadoTabelaPontos.php?id='.$dado['idavaliacao'].'&idpc='.$dado['idpaciente'].'&idt='.$dado['idterapeuta'].' " class="btn btn-primary btn-md" role="button" aria-pressed="true">Verificar</a>'."</td>";                            
                             echo"</tr>";
                             
                         } 

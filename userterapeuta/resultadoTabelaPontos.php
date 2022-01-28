@@ -1,15 +1,24 @@
 <?php
-     include('conexaoBancoDados.php');
-    
-     $idpaciente = $_GET['idpc']; 
-     $idavaliacao = $_GET['id']; 
-     
+    //Metodo para iniciar a sessao
+session_start();
 
-     $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` 
-     FROM `avaliacao` WHERE `idfisioterapeuta` = 1 AND `idpaciente`='$idpaciente' AND `idavaliacao`=$idavaliacao ORDER BY etapa, numquestao;";
-    
-     //$sqlA = "SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao` 
-    //WHERE `idfisioterapeuta` = 1 AND `idpaciente`=2 AND `etapa`= 1 ORDER BY etapa, numquestao";
+//Avalia se a sessao tem valores, foi definida, caso nao retorna o user para o login
+if(!isset($_SESSION["email"]) AND !isset($_SESSION["id"])){
+    header("Location: ../index.html");
+    die();
+}else{
+    $email = $_SESSION["email"];
+    $id = $_SESSION["id"];
+}
+
+$idterapeuta = $_GET["idt"];
+$idpaciente = $_GET["idpc"];
+$idavaliacao = $_GET["id"];
+
+include('../controller/conexaoDataBaseV2.php');
+
+$sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao` WHERE `idterapeuta` = '$idterapeuta' AND `idpaciente`='$idpaciente' AND `idavaliacao`=$idavaliacao ORDER BY etapa, numquestao;";
+
     //Variaveis
     $etapaA1=0;
     $etapaA2=0;
@@ -152,6 +161,7 @@
         $numquestao = $dados['numquestao'];
         $resultado = $dados['resultado'];
         $grupopontuacao = $dados['grupopontuacao'];
+
 //Decisao        
         if ($numquestao ==0  and  $etapa==1) {
             $etapaA1 = $resultado;
@@ -416,12 +426,20 @@
 //Termina a decisao
     //Subtotal GrupoA - Presença
     
-
 ?>
 
 <!DOCTYPE html>
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>...::: Terapeuta :::... </title>
 
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css" rel="stylesheet">
 </head>
 <body>
     <style type="text/css">
@@ -436,7 +454,49 @@
     .tg .tg-0lax{text-align:center;vertical-align:top}
     .tg .tg-u4qn{background-color:#D9D9D9;text-align:center;vertical-align:bottom;font-weight: bold}
     </style>
-<table class="tg">
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="http://localhost/eladeb/userterapeuta/principalterapeuta.php">Início</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Paciente</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">Informações Gerais </a>
+              <a class="dropdown-item" href="#">Acompanhar Avaliação</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+         <form class="form-inline my-2 my-lg-0" action="../logout.php">
+          <button class="btn btn-danger my-2 my-sm-0" type="submit">Sair do Sistema</button>
+        </form>
+      </div>
+</nav>
+
+
+
+
+
+
+<main role="main" class="container">
+<div class="col-md-12">
+<div class="table-responsive">
+<table id="mytable" class="table table-bordred table-striped">
 <thead>
   <tr>
     <th class="tg-7zrl"></th>
@@ -666,6 +726,12 @@
   </tr>
 </tbody>
 </table>
-
+    </div>
+    </div>
+</main>
+ <!--Bootstrap e JS-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>

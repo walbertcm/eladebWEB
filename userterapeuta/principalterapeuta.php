@@ -47,6 +47,7 @@ function calcularNumeroAvaliacoes($idPacienteA){
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css" rel="stylesheet">
 </head>
+<body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <a class="navbar-brand" href="http://localhost/eladeb/userterapeuta/principalterapeuta.php">Início</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,6 +85,7 @@ function calcularNumeroAvaliacoes($idPacienteA){
      <div class="row">
         <div class="col-md-12">
             <div class="table-responsive">
+            <h2>Pacientes do terapeuta</h2>  
                 <table id="mytable" class="table table-bordred table-striped">
                     <thead>
                     <th scope="col">Nome</th>
