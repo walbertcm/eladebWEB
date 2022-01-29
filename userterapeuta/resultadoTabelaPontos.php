@@ -449,10 +449,11 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
     font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
     .tg .tg-2b7s{text-align:left;vertical-align:bottom}
-    .tg .tg-7zrl{text-align:center;vertical-align:bottom}
+    .tg .tg-7zrl text-center{text-align:center;vertical-align:bottom}
     .tg .tg-8d8j{text-align:center;vertical-align:bottom}
     .tg .tg-0lax{text-align:center;vertical-align:top}
     .tg .tg-u4qn{background-color:#D9D9D9;text-align:center;vertical-align:bottom;font-weight: bold}
+    .rotate{transform-origin: 80% 10%; transform: rotate(-90deg);}
     </style>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -488,240 +489,236 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
       </div>
 </nav>
 
-
-
-
-
-
 <main role="main" class="container">
 <div class="col-md-12">
 <div class="table-responsive">
 <table id="mytable" class="table table-bordred table-striped">
+    <h2 class="text-center">Tabela de Pontuação</h2>
 <thead>
   <tr>
-    <th class="tg-7zrl"></th>
-    <th class="tg-7zrl"></th>
-    <th class="tg-8d8j" colspan="2">Dificuldades</th>
-    <th class="tg-8d8j" colspan="3">Necessidade de Ajuda</th>
+    <th class="tg-7zrl text-center"></th>
+    <th class="tg-7zrl text-center"></th>
+    <th class="tg-8d8j text-center" colspan="2">Dificuldades</th>
+    <th class="tg-8d8j text-center" colspan="3">Necessidade de Ajuda</th>
   </tr>
 </thead>
 <tbody>
   <tr>
-    <td class="tg-7zrl"></td>
-    <td class="tg-7zrl"></td>
-    <td class="tg-8d8j">Presença</td>
-    <td class="tg-8d8j">Intensidade</td>
-    <td class="tg-8d8j">Presença</td>
-    <td class="tg-8d8j">Grau de Urgência</td>
-    <td class="tg-8d8j">Origem</td>
+    <td class="tg-7zrl text-center"></td>
+    <td class="tg-7zrl text-center"></td>
+    <td class="tg-8d8j font-weight-bold text-center">Presença</td>
+    <td class="tg-8d8j font-weight-bold text-center">Intensidade</td>
+    <td class="tg-8d8j font-weight-bold text-center">Presença</td>
+    <td class="tg-8d8j font-weight-bold text-center">Grau de Urgência</td>
+    <td class="tg-8d8j font-weight-bold text-center">Origem</td>
   </tr>
   <tr>
-    <td class="tg-0lax" rowspan="4">Condições de Vida</td>
-    <td class="tg-2b7s">1.Lugar de Vida</td>
-    <td class="tg-7zrl"><?php  echo $etapaA1?></td>
-    <td class="tg-7zrl"><?php  echo $etapaB1?></td>
-    <td class="tg-7zrl"><?php  echo $etapaC1?></td>
-    <td class="tg-7zrl"><?php  echo $etapaD1?></td>
-    <td class="tg-7zrl"><?php  echo $etapaE1?></td>
+    <td class="tg-0lax rotate" rowspan="4">Condições de Vida</td>
+    <td class="tg-2b7s">1. Lugar de Vida</td>
+    <td class="tg-7zrl text-center text-center"><?php  echo $etapaA1?></td>
+    <td class="tg-7zrl text-center text-center"><?php  echo $etapaB1?></td>
+    <td class="tg-7zrl text-center text-center"><?php  echo $etapaC1?></td>
+    <td class="tg-7zrl text-center text-center"><?php  echo $etapaD1?></td>
+    <td class="tg-7zrl text-center text-center"><?php  echo $etapaE1?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">2.Finanças</td>
-    <td class="tg-7zrl"><?php  echo $etapaA2?></td>
-    <td class="tg-7zrl"><?php  echo $etapaB2?></td>
-    <td class="tg-7zrl"><?php  echo $etapaC2?></td>
-    <td class="tg-7zrl"><?php  echo $etapaD2?></td>
-    <td class="tg-7zrl"><?php  echo $etapaE2?></td>
+    <td class="tg-2b7s">2. Finanças</td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaA2?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaB2?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaC2?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaD2?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaE2?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">3.Trabalho</td>
-    <td class="tg-7zrl"><?php  echo $etapaA3?></td>
-    <td class="tg-7zrl"><?php  echo $etapaB3?></td>
-    <td class="tg-7zrl"><?php  echo $etapaC3?></td>
-    <td class="tg-7zrl"><?php  echo $etapaD3?></td>
-    <td class="tg-7zrl"><?php  echo $etapaE3?></td>
+    <td class="tg-2b7s">3. Trabalho</td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaA3?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaB3?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaC3?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaD3?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaE3?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">4.Lei e Justiça</td>
-    <td class="tg-7zrl"><?php  echo $etapaA4?></td>
-    <td class="tg-7zrl"><?php  echo $etapaB4?></td>
-    <td class="tg-7zrl"><?php  echo $etapaC4?></td>
-    <td class="tg-7zrl"><?php  echo $etapaD4?></td>
-    <td class="tg-7zrl"><?php  echo $etapaE4?></td>
+    <td class="tg-2b7s">4. Lei e Justiça</td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaA4?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaB4?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaC4?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaD4?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaE4?></td>
   </tr>
   <tr>
-    <td class="tg-7zrl"></td>
-    <td class="tg-7zrl">Subtotal</td>
-    <td class="tg-u4qn"><?php  echo $subtotalA1?>/4</td>
-    <td class="tg-u4qn"><?php  echo $subtotalB1?>/12</td>
-    <td class="tg-u4qn"><?php  echo $subtotalC1?>/4</td>
-    <td class="tg-u4qn"><?php  echo $subtotalD1?>/12</td>
+    <td class="tg-7zrl text-center font-weight-bold"></td>
+    <td class="tg-7zrl text-center font-weight-bold">Subtotal</td>
+    <td class="tg-7zrl text-center font-weight-bold"><?php  echo $subtotalA1?>/4</td>
+    <td class="tg-7zrl text-center font-weight-bold"><?php  echo $subtotalB1?>/12</td>
+    <td class="tg-7zrl text-center font-weight-bold"><?php  echo $subtotalC1?>/4</td>
+    <td class="tg-7zrl text-center font-weight-bold"><?php  echo $subtotalD1?>/12</td>
     <td ><?php  //echo $subtotalE1?></td>
   </tr>
   <tr>
-    <td class="tg-0lax" rowspan="5">Prática diária</td>
-    <td class="tg-2b7s">5.Tempo Livre</td>
-    <td class="tg-7zrl"><?php  echo $etapaA5?></td>
-    <td class="tg-7zrl"><?php  echo $etapaB5?></td>
-    <td class="tg-7zrl"><?php  echo $etapaC5?></td>
-    <td class="tg-7zrl"><?php  echo $etapaD5?></td>
-    <td class="tg-7zrl"><?php  echo $etapaE5?></td>
+    <td class="tg-0lax rotate" rowspan="5">Prática diária</td>
+    <td class="tg-2b7s">5. Tempo Livre</td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaA5?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaB5?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaC5?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaD5?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaE5?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">6.Tarefas Administrativas</td>
-    <td class="tg-7zrl"><?php  echo $etapaA6?></td>
-    <td class="tg-7zrl"><?php  echo $etapaB6?></td>
-    <td class="tg-7zrl"><?php  echo $etapaC6?></td>
-    <td class="tg-7zrl"><?php  echo $etapaD6?></td>
-    <td class="tg-7zrl"><?php  echo $etapaE6?></td>
+    <td class="tg-2b7s">6. Tarefas Administrativas</td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaA6?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaB6?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaC6?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaD6?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaE6?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">7.Tarefas Domesticas</td>
-    <td class="tg-7zrl"><?php  echo $etapaA7?></td>
-    <td class="tg-7zrl"><?php  echo $etapaB7?></td>
-    <td class="tg-7zrl"><?php  echo $etapaC7?></td>
-    <td class="tg-7zrl"><?php  echo $etapaD7?></td>
-    <td class="tg-7zrl"><?php  echo $etapaE7?></td>
+    <td class="tg-2b7s">7. Tarefas Domesticas</td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaA7?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaB7?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaC7?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaD7?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaE7?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">8.Viagem</td>
-    <td class="tg-7zrl"><?php  echo $etapaA8?></td>
-    <td class="tg-7zrl"><?php  echo $etapaB8?></td>
-    <td class="tg-7zrl"><?php  echo $etapaC8?></td>
-    <td class="tg-7zrl"><?php  echo $etapaD8?></td>
-    <td class="tg-7zrl"><?php  echo $etapaE8?></td>
+    <td class="tg-2b7s">8. Viagem</td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaA8?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaB8?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaC8?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaD8?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaE8?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">9.Presença de locais públicos</td>
-    <td class="tg-7zrl"><?php  echo $etapaA9?></td>
-    <td class="tg-7zrl"><?php  echo $etapaB9?></td>
-    <td class="tg-7zrl"><?php  echo $etapaC9?></td>
-    <td class="tg-7zrl"><?php  echo $etapaD9?></td>
-    <td class="tg-7zrl"><?php  echo $etapaE9?></td>
+    <td class="tg-2b7s">9. Presença de locais públicos</td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaA9?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaB9?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaC9?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaD9?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaE9?></td>
   </tr>
   <tr>
-    <td class="tg-7zrl"></td>
-    <td class="tg-7zrl">Subtotal</td>
-    <td class="tg-u4qn"><?php  echo $subtotalA2?>/5</td>
-    <td class="tg-u4qn"><?php  echo $subtotalB2?>/15</td>
-    <td class="tg-u4qn"><?php  echo $subtotalC2?>/5</td>
-    <td class="tg-u4qn"><?php  echo $subtotalD2?>/15</td>
+    <td class="tg-7zrl text-center"></td>
+    <td class="tg-7zrl text-center font-weight-bold">Subtotal</td>
+    <td class="tg-7zrl text-center font-weight-bold"><?php  echo $subtotalA2?>/5</td>
+    <td class="tg-7zrl text-center font-weight-bold"><?php  echo $subtotalB2?>/15</td>
+    <td class="tg-7zrl text-center font-weight-bold"><?php  echo $subtotalC2?>/5</td>
+    <td class="tg-7zrl text-center font-weight-bold"><?php  echo $subtotalD2?>/15</td>
     <td ><?php  //echo $subtotalE2?></td>
   </tr>
   <tr>
-    <td class="tg-0lax" rowspan="4">Relacionamentos</td>
-    <td class="tg-2b7s">10.Amizades</td>
-    <td class="tg-7zrl"><?php  echo $etapaA10?></td>
-    <td class="tg-7zrl"><?php  echo $etapaB10?></td>
-    <td class="tg-7zrl"><?php  echo $etapaC10?></td>
-    <td class="tg-7zrl"><?php  echo $etapaD10?></td>
-    <td class="tg-7zrl"><?php  echo $etapaE10?></td>
+    <td class="tg-0lax rotate" rowspan="4">Relacionamentos</td>
+    <td class="tg-2b7s">10. Amizades</td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaA10?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaB10?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaC10?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaD10?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaE10?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">11.Família</td>
-    <td class="tg-7zrl"><?php  echo $etapaA11?></td>
-    <td class="tg-7zrl"><?php  echo $etapaB11?></td>
-    <td class="tg-7zrl"><?php  echo $etapaC11?></td>
-    <td class="tg-7zrl"><?php  echo $etapaD11?></td>
-    <td class="tg-7zrl"><?php  echo $etapaE11?></td>
+    <td class="tg-2b7s">11. Família</td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaA11?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaB11?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaC11?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaD11?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaE11?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">12.Filhos</td>
-    <td class="tg-7zrl"><?php  echo $etapaA12?></td>
-    <td class="tg-7zrl"><?php  echo $etapaB12?></td>
-    <td class="tg-7zrl"><?php  echo $etapaC12?></td>
-    <td class="tg-7zrl"><?php  echo $etapaD12?></td>
-    <td class="tg-7zrl"><?php  echo $etapaE12?></td>
+    <td class="tg-2b7s">12. Filhos</td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaA12?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaB12?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaC12?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaD12?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaE12?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">13.Relacionamentos românticos</td>
-    <td class="tg-7zrl"><?php  echo $etapaA13?></td>
-    <td class="tg-7zrl"><?php  echo $etapaB13?></td>
-    <td class="tg-7zrl"><?php  echo $etapaC13?></td>
-    <td class="tg-7zrl"><?php  echo $etapaD13?></td>
-    <td class="tg-7zrl"><?php  echo $etapaE13?></td>
+    <td class="tg-2b7s">13. Relacionamentos românticos</td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaA13?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaB13?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaC13?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaD13?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaE13?></td>
   </tr>
   <tr>
-    <td class="tg-7zrl"></td>
-    <td class="tg-7zrl">Subtotal</td>
-    <td class="tg-u4qn"><?php  echo $subtotalA3?>/4</td>
-    <td class="tg-u4qn"><?php  echo $subtotalB3?>/12</td>
-    <td class="tg-u4qn"><?php  echo $subtotalC3?>/4</td>
-    <td class="tg-u4qn"><?php  echo $subtotalD3?>/12</td>
+    <td class="tg-7zrl text-center"></td>
+    <td class="tg-7zrl text-center font-weight-bold">Subtotal</td>
+    <td class="tg-7zrl text-center font-weight-bold"><?php  echo $subtotalA3?>/4</td>
+    <td class="tg-7zrl text-center font-weight-bold"><?php  echo $subtotalB3?>/12</td>
+    <td class="tg-7zrl text-center font-weight-bold"><?php  echo $subtotalC3?>/4</td>
+    <td class="tg-7zrl text-center font-weight-bold"><?php  echo $subtotalD3?>/12</td>
     <td ><?php  //echo $subtotalE3?></td>
   </tr>
   <tr>
-    <td class="tg-0lax" rowspan="7">Saúde</td>
-    <td class="tg-2b7s">14.Alimentos</td>
-    <td class="tg-7zrl"><?php  echo $etapaA14?></td>
-    <td class="tg-7zrl"><?php  echo $etapaB14?></td>
-    <td class="tg-7zrl"><?php  echo $etapaC14?></td>
-    <td class="tg-7zrl"><?php  echo $etapaD14?></td>
-    <td class="tg-7zrl"><?php  echo $etapaE14?></td>
+    <td class="tg-0lax rotate" rowspan="7">Saúde</td>
+    <td class="tg-2b7s">14. Alimentos</td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaA14?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaB14?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaC14?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaD14?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaE14?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">15.Higiene pessoal</td>
-    <td class="tg-7zrl"><?php  echo $etapaA15?></td>
-    <td class="tg-7zrl"><?php  echo $etapaB15?></td>
-    <td class="tg-7zrl"><?php  echo $etapaC15?></td>
-    <td class="tg-7zrl"><?php  echo $etapaD15?></td>
-    <td class="tg-7zrl"><?php  echo $etapaE15?></td>
+    <td class="tg-2b7s">15. Higiene pessoal</td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaA15?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaB15?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaC15?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaD15?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaE15?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">16.Saúde Física</td>
-    <td class="tg-7zrl"><?php  echo $etapaA16?></td>
-    <td class="tg-7zrl"><?php  echo $etapaB16?></td>
-    <td class="tg-7zrl"><?php  echo $etapaC16?></td>
-    <td class="tg-7zrl"><?php  echo $etapaD16?></td>
-    <td class="tg-7zrl"><?php  echo $etapaE16?></td>
+    <td class="tg-2b7s">16. Saúde Física</td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaA16?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaB16?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaC16?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaD16?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaE16?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">17.Saúde mental</td>
-    <td class="tg-7zrl"><?php  echo $etapaA17?></td>
-    <td class="tg-7zrl"><?php  echo $etapaB17?></td>
-    <td class="tg-7zrl"><?php  echo $etapaC17?></td>
-    <td class="tg-7zrl"><?php  echo $etapaD17?></td>
-    <td class="tg-7zrl"><?php  echo $etapaE17?></td>
+    <td class="tg-2b7s">17. Saúde mental</td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaA17?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaB17?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaC17?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaD17?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaE17?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">18.Vício</td>
-    <td class="tg-7zrl"><?php  echo $etapaA18?></td>
-    <td class="tg-7zrl"><?php  echo $etapaB18?></td>
-    <td class="tg-7zrl"><?php  echo $etapaC18?></td>
-    <td class="tg-7zrl"><?php  echo $etapaD18?></td>
-    <td class="tg-7zrl"><?php  echo $etapaE18?></td>
+    <td class="tg-2b7s">18. Vício</td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaA18?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaB18?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaC18?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaD18?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaE18?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">19.Tratamento</td>
-    <td class="tg-7zrl"><?php  echo $etapaA19?></td>
-    <td class="tg-7zrl"><?php  echo $etapaB19?></td>
-    <td class="tg-7zrl"><?php  echo $etapaC19?></td>
-    <td class="tg-7zrl"><?php  echo $etapaD19?></td>
-    <td class="tg-7zrl"><?php  echo $etapaE19?></td>
+    <td class="tg-2b7s">19. Tratamento</td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaA19?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaB19?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaC19?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaD19?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaE19?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">20.Espiritualidade e crenças</td>
-    <td class="tg-7zrl"><?php  echo $etapaA20?></td>
-    <td class="tg-7zrl"><?php  echo $etapaB20?></td>
-    <td class="tg-7zrl"><?php  echo $etapaC20?></td>
-    <td class="tg-7zrl"><?php  echo $etapaD20?></td>
-    <td class="tg-7zrl"><?php  echo $etapaE20?></td>
+    <td class="tg-2b7s">20. Espiritualidade e crenças</td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaA20?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaB20?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaC20?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaD20?></td>
+    <td class="tg-7zrl text-center"><?php  echo $etapaE20?></td>
   </tr>
   <tr>
-    <td class="tg-7zrl"></td>
-    <td class="tg-7zrl">Subtotal</td>
-    <td class="tg-u4qn"><?php  echo $subtotalA4?>/7</td>
-    <td class="tg-u4qn"><?php  echo $subtotalB4?>/21</td>
-    <td class="tg-u4qn"><?php  echo $subtotalC4?>/7</td>
-    <td class="tg-u4qn"><?php  echo $subtotalD4?>/21</td>
+    <td class="tg-7zrl text-center"></td>
+    <td class="tg-7zrl text-center font-weight-bold">Subtotal</td>
+    <td class="tg-7zrl text-center font-weight-bold"><?php  echo $subtotalA4?>/7</td>
+    <td class="tg-7zrl text-center font-weight-bold"><?php  echo $subtotalB4?>/21</td>
+    <td class="tg-7zrl text-center font-weight-bold"><?php  echo $subtotalC4?>/7</td>
+    <td class="tg-7zrl text-center font-weight-bold"><?php  echo $subtotalD4?>/21</td>
     <td ><?php  //echo $subtotalE4?></td>
   </tr>
   <tr>
-    <td class="tg-7zrl"></td>
-    <td class="tg-7zrl">Total</td>
-    <td class="tg-u4qn"><?php  echo $totalA1?>/20</td>
-    <td class="tg-u4qn"><?php  echo $totalB1?>/60</td>
-    <td class="tg-u4qn"><?php  echo $totalC1?>/20</td>
-    <td class="tg-u4qn"><?php  echo $totalD1?>/60</td>
+    <td class="tg-7zrl text-center"></td>
+    <td class="tg-7zrl text-center font-weight-bold">Total</td>
+    <td class="tg-7zrl text-center font-weight-bold"><?php  echo $totalA1?>/20</td>
+    <td class="tg-7zrl text-center font-weight-bold"><?php  echo $totalB1?>/60</td>
+    <td class="tg-7zrl text-center font-weight-bold"><?php  echo $totalC1?>/20</td>
+    <td class="tg-7zrl text-center font-weight-bold"><?php  echo $totalD1?>/60</td>
     <td ><?php  //echo $totalE1?></td>
   </tr>
 </tbody>
