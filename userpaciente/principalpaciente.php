@@ -1,14 +1,23 @@
 <?php
 //Metodo para iniciar a sessao
 session_start();
+
 //Avalia se a sessao tem valores, foi definida, caso nao retorna o user para o login
-if(!isset($_SESSION["email"]) AND !isset($_SESSION["id"])){
+if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"])){
     header("Location: ../index.html");
     die();
 }else{
-    $email = $_SESSION["email"];
-    $id = $_SESSION["id"];
+    $emailUsuario = $_SESSION["emailUsuario"];
+    $idUsuarioLogin = $_SESSION["idUsuarioLogin"];
 }
+
+//Função para selecionar os dados do Paciente
+function selecionaDadosPaciente($email){
+  include('controller/conexaoDataBaseV2.php');
+  $sqlC = "SELECT `pacienteid`, `NomePaciente`, `NomeResponsavel`, `Telefone`, `EmailPaciente`, `dt_cadastro` FROM `paciente` WHERE `EmailPaciente` = '$emailUsuario' ";
+  $queryB = mysqli_query($conn, $sqlB);
+}
+
 
 ?>
  <!--Template-->
@@ -49,14 +58,14 @@ if(!isset($_SESSION["email"]) AND !isset($_SESSION["id"])){
             <a class="nav-link disabled" href="#">Disabled</a>
           </li>
 
-          <li class="nav-item dropdown">
+          <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
-          </li>
+          </li> -->
         </ul>
          <form class="form-inline my-2 my-lg-0" action="../logout.php">
           <button class="btn btn-danger my-2 my-sm-0" type="submit">Sair do Sistema</button>
@@ -66,8 +75,10 @@ if(!isset($_SESSION["email"]) AND !isset($_SESSION["id"])){
 
 <main role="main" class="container">
       <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+        <h1>Avaliação</h1>
+        <form class="form-inline my-2 my-lg-0" action="../avaliacao_b/principalavaliacao.php">
+          <button class="btn btn-danger my-2 my-sm-0" type="submit">PARTICIPAR</button>
+        </form>
       </div>
 </main>
 

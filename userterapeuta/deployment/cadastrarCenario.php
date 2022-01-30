@@ -1,5 +1,10 @@
 <?php
 
+//Novo insert base nova
+//INSERT INTO `cenario` (`idcenario`, `idpergunta`, `nomecenario`, `dtcadastro`, `idterapeuta`) VALUES (NULL, '1', 'Cenário- ELADEB', CURRENT_TIMESTAMP, '1')
+//INSERT INTO `cenarioPerguntas` (`id`, `idcenario`, `idpergunta`, `dataHora`) VALUES ('', '1', '1', CURRENT_TIMESTAMP);
+
+
 include('conexaoBancoDados.php');
 
 //Sql para selecionar o paciente e construir o listbox

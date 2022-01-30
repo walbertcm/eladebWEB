@@ -3,17 +3,17 @@
 session_start();
 
 //Avalia se a sessao tem valores, foi definida, caso nao retorna o user para o login
-if(!isset($_SESSION["email"]) AND !isset($_SESSION["id"])){
+if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"])){
     header("Location: ../index.html");
     die();
 }else{
-    $email = $_SESSION["email"];
-    $id = $_SESSION["id"];
+    $emailUsuario = $_SESSION["emailUsuario"];
+    $idUsuarioLogin = $_SESSION["idUsuarioLogin"];
 }
 
 $idterapeuta = $_GET["idt"];
 $idpaciente = $_GET["idpc"];
-$idavaliacao = $_GET["id"];
+$idavaliacao = $_GET["idav"];
 
 include('../controller/conexaoDataBaseV2.php');
 
@@ -429,6 +429,7 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
 ?>
 
 <!DOCTYPE html>
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -456,38 +457,7 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     .rotate{transform-origin: 80% 10%; transform: rotate(-90deg);}
     </style>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="http://localhost/eladeb/userterapeuta/principalterapeuta.php">Início</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Paciente</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Informações Gerais </a>
-              <a class="dropdown-item" href="#">Acompanhar Avaliação</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-        </ul>
-         <form class="form-inline my-2 my-lg-0" action="../logout.php">
-          <button class="btn btn-danger my-2 my-sm-0" type="submit">Sair do Sistema</button>
-        </form>
-      </div>
-</nav>
+<?php include "../userterapeuta/include/navbarTerapeuta.html"?>
 
 <main role="main" class="container">
 <div class="col-md-12">
@@ -572,7 +542,7 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaE6?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">7. Tarefas Domesticas</td>
+    <td class="tg-2b7s">7. Tarefas Domésticas</td>
     <td class="tg-7zrl text-center"><?php  echo $etapaA7?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaB7?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC7?></td>

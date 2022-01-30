@@ -3,13 +3,14 @@
 session_start();
 
 //Avalia se a sessao tem valores, foi definida, caso nao retorna o user para o login
-if(!isset($_SESSION["email"]) AND !isset($_SESSION["id"])){
-    header("Location: ../index.html");
-    die();
+if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"])){
+  header("Location: ../index.html");
+  die();
 }else{
-    $email = $_SESSION["email"];
-    $id = $_SESSION["id"];
+  $emailUsuario = $_SESSION["emailUsuario"];
+  $idUsuarioLogin = $_SESSION["idUsuarioLogin"];
 }
+
 $idpaciente = $_GET["id"];
 
 include('../controller/conexaoDataBaseV2.php');
@@ -30,7 +31,7 @@ function statusAvaliacao($statusAvaliacao){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,38 +45,7 @@ function statusAvaliacao($statusAvaliacao){
     <link href="https://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="http://localhost/eladeb/userterapeuta/principalterapeuta.php">Início</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Paciente</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Informações Gerais </a>
-              <a class="dropdown-item" href="#">Acompanhar Avaliação</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-        </ul>
-         <form class="form-inline my-2 my-lg-0" action="../logout.php">
-          <button class="btn btn-danger my-2 my-sm-0" type="submit">Sair do Sistema</button>
-        </form>
-      </div>
-</nav>
+<?php include "../userterapeuta/include/navbarTerapeuta.html"?>
 
 <main role="main" class="container">
      <div class="row">
@@ -85,11 +55,11 @@ function statusAvaliacao($statusAvaliacao){
                   <h2>Resultados do Paciente</h2>  
                   <thead>
                     <tr>
-                      <th scope="col">Terapeuta</th>
-                      <th scope="col">Paciente</th>
-                      <th scope="col">Status da Avaliação</th>
-                      <th scope="col">Data/Hora</th>
-                      <th scope="col">Tabela de Pontuação</th>
+                      <th scope="col" class="text-center">Terapeuta</th>
+                      <th scope="col" class="text-center">Paciente</th>
+                      <th scope="col" class="text-center">Status da avaliação</th>
+                      <th scope="col" class="text-center">Data/Hora</th>
+                      <th scope="col" class="text-center">Tabela de pontuação</th>
                     </tr>
                     </thead>
                     <!-- Corpo da Tabela-->
@@ -99,11 +69,11 @@ function statusAvaliacao($statusAvaliacao){
                         while($dado = mysqli_fetch_assoc($query)) {
                             $aaa = $dado['resultado'];
                             echo "<tr>";
-                            echo "<td>".$dado['nome']."</td>";
-                            echo "<td>".$dado['NomePaciente']."</td>";
-                            echo "<td>".statusAvaliacao($aaa)."</td>";
-                            echo "<td>".$dado['dataa']."</td>";    
-                            echo "<td>".'<a href="resultadoTabelaPontos.php?id='.$dado['idavaliacao'].'&idpc='.$dado['idpaciente'].'&idt='.$dado['idterapeuta'].' " class="btn btn-primary btn-md" role="button" aria-pressed="true">Verificar</a>'."</td>";                            
+                            echo "<td class="."text-left".">".$dado['nome']."</td>";
+                            echo "<td class="."text-left".">".$dado['NomePaciente']."</td>";
+                            echo "<td class="."text-center".">".statusAvaliacao($aaa)."</td>";
+                            echo "<td class="."text-center".">".$dado['dataa']."</td>";    
+                            echo "<td class="."text-center".">".'<a href="resultadoTabelaPontos.php?idav='.$dado['idavaliacao'].'&idpc='.$dado['idpaciente'].'&idt='.$dado['idterapeuta'].' " class="btn btn-primary btn-md" role="button" aria-pressed="true">Verificar</a>'."</td>";                            
                             echo"</tr>";
                             
                         } 

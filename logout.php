@@ -2,14 +2,15 @@
 
 //Metodo para iniciar a sessao
 session_start();
-$email = $_SESSION["email"];
-$id = $_SESSION["id"];
+
+$emailUsuario = $_SESSION["emailUsuario"];
+$idUsuarioLogin = $_SESSION["idUsuarioLogin"];
 
  
 //Função para cadastrar o Login
-function efetuaLogOff($idA, $emailA){
+function efetuaLogOff($idLoggerA, $emailLoggerA){
     include('controller/conexaoDataBaseV2.php');
-    $sqlB = "UPDATE `loginLogger` SET `horalogoff`= NOW() WHERE `id`='$idA' AND  `email`= '$emailA' ; ";
+    $sqlB = "UPDATE `loginLogger` SET `horalogoff`= NOW() WHERE `id`='$idLoggerA' AND  `email`= '$emailLoggerA' ; ";
     $queryB = mysqli_query($conn, $sqlB);
     //Remove todas as sessões dasa variaveis
     session_unset();
@@ -23,12 +24,12 @@ function efetuaLogOff($idA, $emailA){
 include('controller/conexaoDataBaseV2.php');
 
  //Seleção do ultimo registro do usuario, provavel login do usuario atual
-$sqlA = "SELECT MAX(`id`) as id, `email`  FROM `loginLogger` where `email`= '$email' ";
+$sqlA = "SELECT MAX(`id`) as idLogger, `email`  FROM `loginLogger` where `email`= '$emailUsuario' ";
 $queryA = mysqli_query($conn, $sqlA);
     while($dados = mysqli_fetch_assoc($queryA)){
-        $id = $dados["id"];
-        $emailC = $dados["email"];
-        efetuaLogOff($id, $emailC);
+        $loginLogger = $dados["idLogger"];
+        $emailLogger = $dados["email"];
+        efetuaLogOff($loginLogger, $emailLogger);
     }
 
  
