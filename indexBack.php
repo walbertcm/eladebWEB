@@ -9,18 +9,51 @@
  $emailA = $_POST['email'];
  $pass = $_POST['pass'];
 
-//Seleção no banco de dados
+//Seleção no banco de dados tabela loginSistema
 $sqlA = "SELECT * FROM `loginSistema` WHERE `usuario` = '$emailA' AND `senha` = '$pass' ";
 $queryA = mysqli_query($conn, $sqlA);
 
-//Função para cadastrar o Login
- function cadastraLogAcesso($email){
+//Função para cadastrar o log de acesso
+ function cadastraLogAcesso($emailB){
     include('controller/conexaoDataBaseV2.php');
-    $sqlB = "INSERT INTO `loginLogger` (`id`, `datahora`, `email`, `horalogin`) VALUES (NULL, CURRENT_TIMESTAMP, '$email', CURRENT_TIMESTAMP); ";
+    $sqlB = "INSERT INTO `loginLogger` (`id`, `datahora`, `email`, `horalogin`) VALUES (NULL, CURRENT_TIMESTAMP, '$emailB', CURRENT_TIMESTAMP); ";
     $queryB = mysqli_query($conn, $sqlB);
 }
 
- //Tratamento da resposta
+//Selecao no banco de dados tabela terapeuta
+function selecionaIdTerapeuta($emailC){
+    include('controller/conexaoDataBaseV2.php');
+    $sqlC = "SELECT * FROM `terapeuta` WHERE `email` = '$emailC'";
+    $queryC = mysqli_query($conn, $sqlC);
+    while($dadosC=mysqli_fetch_array($queryC)){
+       $terapeutaId = $dadosC["idterapeuta"];
+       return $terapeutaId;
+    }
+}
+
+//Selecao no banco de dados tabela paciente
+function selecionaIdPaciente($emailD){
+    include('controller/conexaoDataBaseV2.php');
+    $sqlD = "SELECT * FROM `paciente` WHERE `email` = '$emailD'";
+    $queryD = mysqli_query($conn, $sqlC);
+    while($dadosD=mysqli_fetch_array($queryD)){
+       $pacienteId = $dadosD["pacienteid"];
+       return $pacienteId;
+    }
+}
+
+//Selecao no banco de dados tabela administrador
+function selecionaIdAdministrador($emailE){
+    include('controller/conexaoDataBaseV2.php');
+    $sqlE = "SELECT * FROM `administrador` WHERE `email` = '$emailE'";
+    $queryE = mysqli_query($conn, $sqlE);
+    while($dadosE=mysqli_fetch_array($queryE)){
+       $administradorId = $dadosE["administradorid"];
+       return $administradorId;
+    }
+}
+
+ //Processamento das respostas
  while($dados = mysqli_fetch_assoc($queryA)){
     $idUsuarioLogin=$dados["id"];
     $emailB=$dados["usuario"]; //usuario tem somente email nao é o nome --> Tab. loginSistemas
@@ -30,25 +63,28 @@ $queryA = mysqli_query($conn, $sqlA);
     if($permissaoAcesso == 1){
     switch($tipoUsuario){
         case 1:
-            //Configura a sessao
+            //Configura a sessao Administrador
             $_SESSION["emailUsuario"] = $emailB;
             $_SESSION["idUsuarioLogin"] = $idUsuarioLogin;
-            header("Location: useradministrador/principaladministrador.php?email=$emailB");
+            //$_SESSION["idTerapeuta"] = selecionaIdAdministrador($emailA);
             cadastraLogAcesso($emailB);
+            header("Location: useradministrador/principaladministrador.php?email=$emailB");
             break;
         case 2:
-            //Configura a sessao
+            //Configura a sessao Terapeuta
             $_SESSION["emailUsuario"] = $emailB;
             $_SESSION["idUsuarioLogin"] = $idUsuarioLogin;
-            header("Location: userterapeuta/principalterapeuta.php?email=$emailB");
+            $_SESSION["idTerapeuta"] = selecionaIdTerapeuta($emailA);
             cadastraLogAcesso($emailB);
+            header("Location: userterapeuta/principalterapeuta.php?email=$emailB");
             break;
         case 3:
-            //Configura a sessao
+            //Configura a sessao Paciente
             $_SESSION["emailUsuario"] = $emailB;
-            $_SESSION["idUsuarioLogin"] = $idUsuarioLogin;
-            header("Location: userpaciente/principalpaciente.php?email=$emailB");
+            $_SESSION["idUsuarioLogin"] = $idUsuarioLogin;            
+            $_SESSION["idPaciente"] = selecionaIdPaciente($emailA);
             cadastraLogAcesso($emailB);
+            header("Location: userpaciente/principalpaciente.php?email=$emailB");
             break;
         default:
             header("Location: index.html");

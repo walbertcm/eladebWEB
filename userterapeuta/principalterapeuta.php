@@ -2,12 +2,13 @@
 //Metodo para iniciar a sessao
 session_start();
 //Avalia se a sessao tem valores, foi definida, caso nao retorna o user para o login
-if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"])){
+if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"]) AND !isset($_SESSION["idTerapeuta"])){
     header("Location: ../index.html");
     die();
 }else{
     $emailUsuario = $_SESSION["emailUsuario"];
     $idUsuarioLogin = $_SESSION["idUsuarioLogin"];
+    $idTerapeuta = $_SESSION["idTerapeuta"];
 }
 
 //Seleção dos pacientes para exibição
@@ -26,8 +27,7 @@ function calcularNumeroAvaliacoes($idPacienteA){
     while($avaliacaoes = mysqli_fetch_array($queryA)) { 
         $resultado = $avaliacaoes["numero"];
         return $resultado; 
-    }
-        
+    }        
 }
 ?>
 <!--Template-->
@@ -54,7 +54,7 @@ function calcularNumeroAvaliacoes($idPacienteA){
      <div class="row">
         <div class="col-md-12">
             <div class="table-responsive">
-            <h2>Lista geral de pacientes</h2>  
+            <h2>Lista geral de pacientes?></h2>  
                 <table id="mytable" class="table table-bordred table-striped">
                     <thead>
                     <th scope="col" class="text-center">Nome</th>

@@ -1,14 +1,14 @@
 <?php
 //Metodo para iniciar a sessao
 session_start();
-
 //Avalia se a sessao tem valores, foi definida, caso nao retorna o user para o login
-if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"])){
+if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"]) AND !isset($_SESSION["idTerapeuta"])){
     header("Location: ../index.html");
     die();
 }else{
     $emailUsuario = $_SESSION["emailUsuario"];
     $idUsuarioLogin = $_SESSION["idUsuarioLogin"];
+    $idTerapeuta = $_SESSION["idTerapeuta"];
 }
 
 include('../controller/conexaoDataBaseV2.php');
@@ -16,7 +16,7 @@ include('../controller/conexaoDataBaseV2.php');
 $cenarioNome = $_POST['nomeCenario'];
 $idPergunta = $_POST['perguntasArray'];
 
-$idTerapeuta = "1";
+$idTerapeutaA =  $idTerapeuta;//"1";
 
 function cadastrarCenario($cenarioNomeA, $terapeutaId){
     include('../controller/conexaoDataBaseV2.php');
@@ -40,7 +40,7 @@ function cadastrarPerguntasCenario($idCenarioA, $idQuestaoA, $nomeCenarioB){
     $queryC=mysqli_query($conn,$sqlC);
 }
 //Execucao das funções
-cadastrarCenario($cenarioNome, $idTerapeuta);
+cadastrarCenario($cenarioNome, $idTerapeutaA);
 
 $cenarioId = selecionarCenario($cenarioNome);
 
