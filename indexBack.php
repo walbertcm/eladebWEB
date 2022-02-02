@@ -66,7 +66,7 @@ function selecionaIdAdministrador($emailE){
             //Configura a sessao Administrador
             $_SESSION["emailUsuario"] = $emailB;
             $_SESSION["idUsuarioLogin"] = $idUsuarioLogin;
-            //$_SESSION["idTerapeuta"] = selecionaIdAdministrador($emailA);
+            //$_SESSION["administrador"] = selecionaIdAdministrador($emailA);
             cadastraLogAcesso($emailB);
             header("Location: useradministrador/principaladministrador.php?email=$emailB");
             break;

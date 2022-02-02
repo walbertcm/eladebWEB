@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 //Avalia se a sessao tem valores, foi definida, caso nao retorna o user para o login
 if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"]) AND !isset($_SESSION["idTerapeuta"])){
     header("Location: ../index.html");
