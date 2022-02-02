@@ -36,12 +36,12 @@ $query = mysqli_query($conn,$sql);
     <link href="https://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css" rel="stylesheet">
 </head>
 <body>
-    <?php include "../userterapeuta/include/navbarTerapeuta.html"?>
+    <?php include("../userterapeuta/include/navbarTerapeuta.html");?>
 
 <main role="main" class="container">
     <form class="was-validated" action="cenarioCadastrarBack.php" method="POST" >
-    <h2>Cadastrar Cenário</h2>
-    <label>Digite um nome para o cenário e selecione as perguntas.</label>   
+    <h2>Cadastrar um novo cenário</h2>
+    <label>Digite um nome para o novo cenário.</label>   
             <div class="mb-3 pb-1">
                 <div class="form-outline">
                 <input class="form-control is-valid" id="validationTextarea" placeholder="Campo obrigatorio" name="nomeCenario" required></input>
@@ -53,12 +53,13 @@ $query = mysqli_query($conn,$sql);
         <div class="col-md-12">
             <div class="table-responsive">
                 <table id="mytable" class="table table-bordred table-striped">
-                  <h2>Perguntas Cadastradas</h2>  
+                  <h2>Selecione as perguntas para anexar ao novo cenário</h2>  
                   <thead>
                     <tr>
+                      <th scope="col" class="text-left">Selecione a(s) pergunta(s)</th>
                       <th scope="col" class="text-left">Pergunta</th>
                       <th scope="col" class="text-left">Imagem</th>
-                      <th scope="col" class="text-left">Selecione as perguntas</th>
+                      
                     </tr>
                     </thead>
                     <!-- Corpo da Tabela-->
@@ -67,9 +68,9 @@ $query = mysqli_query($conn,$sql);
                     <?php 
                         while($dado = mysqli_fetch_assoc($query)) {
                             echo "<tr>";
-                            echo "<td class="."text-left"." name="."pergunta".">".$dado['pergunta']."</td>";
-                            echo "<td>".'<img width="100" height="100" src="data:image/jpeg;charset=utf8;base64,'.base64_encode( $dado['imagem'] ).'"/>'."</td>";    
                             echo "<td class="."text-center".">".'<input class="form-check-input" type="checkbox" name="perguntasArray[]" id="perguntasArray" value=" '.$dado['idperguntas'].' "/>'."</td>";
+                            echo "<td class="."text-left"." name="."pergunta".">".$dado['pergunta']."</td>";
+                            echo "<td>".'<img width="100" height="100" src="data:image/jpeg;charset=utf8;base64,'.base64_encode( $dado['imagem'] ).'"/>'."</td>";                                
                             echo"</tr>";  
                         } 
                     ?> 
@@ -84,5 +85,9 @@ $query = mysqli_query($conn,$sql);
             </div>
      </form>
     </main>
+    <!--Bootstrap e JS-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>

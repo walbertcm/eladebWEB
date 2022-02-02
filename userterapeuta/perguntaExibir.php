@@ -36,14 +36,14 @@ $query = mysqli_query($conn,$sql);
 </head>
 <body>
     <!--Carrega a barrade navegação-->
-    <?php include "../userterapeuta/include/navbarTerapeuta.html"?>
+    <?php include("../userterapeuta/include/navbarTerapeuta.html");?>
     <!--Inicia a tabela-->
     <main role="main" class="container">
      <div class="row">
         <div class="col-md-12">
             <div class="table-responsive">
                 <table id="mytable" class="table table-bordred table-striped">
-                  <h2>Perguntas Cadastradas</h2>  
+                  <h2>Perguntas cadastradas</h2>  
                   <thead>
                     <tr>
                       <th scope="col" class="text-left">Pergunta</th>

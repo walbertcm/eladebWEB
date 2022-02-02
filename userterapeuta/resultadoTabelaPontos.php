@@ -462,13 +462,13 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
 <div class="col-md-12">
 <div class="table-responsive">
 <table id="mytable" class="table table-bordred table-striped">
-    <h2 class="text-center">Tabela de Pontuação</h2>
+    <h2 class="text-center">Tabela de pontuação da avaliação<br> de número, XX para o paciente: XXXX</h2>
 <thead>
   <tr>
     <th class="tg-7zrl text-center"></th>
     <th class="tg-7zrl text-center"></th>
     <th class="tg-8d8j text-center" colspan="2">Dificuldades</th>
-    <th class="tg-8d8j text-center" colspan="3">Necessidade de Ajuda</th>
+    <th class="tg-8d8j text-center" colspan="3">Necessidade de ajuda</th>
   </tr>
 </thead>
 <tbody>
@@ -478,11 +478,11 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-8d8j font-weight-bold text-center">Presença</td>
     <td class="tg-8d8j font-weight-bold text-center">Intensidade</td>
     <td class="tg-8d8j font-weight-bold text-center">Presença</td>
-    <td class="tg-8d8j font-weight-bold text-center">Grau de Urgência</td>
+    <td class="tg-8d8j font-weight-bold text-center">Grau de urgência</td>
     <td class="tg-8d8j font-weight-bold text-center">Origem</td>
   </tr>
   <tr>
-    <td class="tg-0lax rotate" rowspan="4">Condições de Vida</td>
+    <td class="tg-0lax rotate" rowspan="4">Condições de vida</td>
     <td class="tg-2b7s">1. Lugar de Vida</td>
     <td class="tg-7zrl text-center text-center"><?php  echo $etapaA1?></td>
     <td class="tg-7zrl text-center text-center"><?php  echo $etapaB1?></td>
@@ -507,7 +507,7 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaE3?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">4. Lei e Justiça</td>
+    <td class="tg-2b7s">4. Lei e justiça</td>
     <td class="tg-7zrl text-center"><?php  echo $etapaA4?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaB4?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC4?></td>
@@ -525,7 +525,7 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
   </tr>
   <tr>
     <td class="tg-0lax rotate" rowspan="5">Prática diária</td>
-    <td class="tg-2b7s">5. Tempo Livre</td>
+    <td class="tg-2b7s">5. Tempo livre</td>
     <td class="tg-7zrl text-center"><?php  echo $etapaA5?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaB5?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC5?></td>
@@ -533,7 +533,7 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaE5?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">6. Tarefas Administrativas</td>
+    <td class="tg-2b7s">6. Tarefas administrativas</td>
     <td class="tg-7zrl text-center"><?php  echo $etapaA6?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaB6?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC6?></td>
@@ -541,7 +541,7 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaE6?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">7. Tarefas Domésticas</td>
+    <td class="tg-2b7s">7. Tarefas domésticas</td>
     <td class="tg-7zrl text-center"><?php  echo $etapaA7?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaB7?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC7?></td>
@@ -633,7 +633,7 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaE15?></td>
   </tr>
   <tr>
-    <td class="tg-2b7s">16. Saúde Física</td>
+    <td class="tg-2b7s">16. Saúde física</td>
     <td class="tg-7zrl text-center"><?php  echo $etapaA16?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaB16?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC16?></td>

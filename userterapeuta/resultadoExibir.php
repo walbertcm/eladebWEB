@@ -51,11 +51,11 @@ function statusAvaliacao($statusAvaliacao){
         <div class="col-md-12">
             <div class="table-responsive">
                 <table id="mytable" class="table table-bordred table-striped">
-                  <h2>Resultados do Paciente</h2>  
+                  <h2>Resultados do paciente</h2>  
                   <thead>
                     <tr>
-                      <th scope="col" class="text-center">Terapeuta</th>
-                      <th scope="col" class="text-center">Paciente</th>
+                      <th scope="col" class="text-center">Terapeuta responsável</th>
+                      <th scope="col" class="text-center">Nome do paciente</th>
                       <th scope="col" class="text-center">Status da avaliação</th>
                       <th scope="col" class="text-center">Data/Hora</th>
                       <th scope="col" class="text-center">Tabela de pontuação</th>

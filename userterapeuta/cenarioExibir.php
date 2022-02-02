@@ -51,13 +51,13 @@ function calcularNumeroQuestoes($idCenario){
         <div class="col-md-12">
             <div class="table-responsive">
                 <table id="mytable" class="table table-bordred table-striped">
-                  <h2>Cenários Existentes</h2>  
+                  <h2>Cenários existentes</h2>  
                   <thead>
                     <tr>
-                      <th scope="col" class="text-center">Desenvolvedor</th>
+                      <th scope="col" class="text-center">Desenvolvedor<br>do cenário</th>
                       <th scope="col" class="text-center">Nome <br>do cenário</th>                      
-                      <th scope="col" class="text-center">Num. questões</th>
-                      <th scope="col" class="text-center">Data/Hora</th>
+                      <th scope="col" class="text-center">Num. questões <br>do cenário</th>
+                      <th scope="col" class="text-center">Data/Hora<<br>do cadastro</th>
                       <th scope="col" class="text-center">Perguntas <br>do cenário</th>
                       <th scope="col" class="text-center">Associar<br> com paciente</th>
                     </tr>

@@ -32,11 +32,11 @@ if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"]) AND
 <body>
     <!--Carrega a barrade navegação-->
     <?php include "../userterapeuta/include/navbarTerapeuta.html"?>
+   
     <!--Inicio do form-->
     <main role="main" class="container">
-
     <form class="was-validated" action="perguntaCadastrarBack.php" method="POST" enctype="multipart/form-data">
-    <h2>Cadastrar Pergunta</h2>
+    <h2>Cadastrar pergunta</h2>
     <label>Digite uma pergunta para cadastro.</label>   
             <div class="mb-3 pb-1">
                 <div class="form-outline">
@@ -46,6 +46,7 @@ if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"]) AND
                 </div>
             </div>
             <div class="mb-3">
+            <label>Selecione uma imagem para associar a pergunta.</label>   
                 <input type="file" class="form-control" aria-label="file example" name="imagem" required />
                 <div class="invalid-feedback">Arquivo não selecionado</div>
             </div>

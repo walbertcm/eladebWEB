@@ -48,21 +48,21 @@ function calcularNumeroAvaliacoes($idPacienteA){
     <link href="https://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css" rel="stylesheet">
 </head>
 <body>
-<?php include "../userterapeuta/include/navbarTerapeuta.html"?>
+<?php include("../userterapeuta/include/navbarTerapeuta.html");?>
 
 <main role="main" class="container">
      <div class="row">
         <div class="col-md-12">
             <div class="table-responsive">
-            <h2>Lista geral de pacientes?></h2>  
+            <h2>Lista de pacientes</h2>  
                 <table id="mytable" class="table table-bordred table-striped">
                     <thead>
-                    <th scope="col" class="text-center">Nome</th>
-                    <th scope="col" class="text-center">Responsável</th>
-                    <th scope="col" class="text-center">Email</th>
-                    <th scope="col" class="text-center">Telefone</th>
-                    <th scope="col" class="text-center">Quant. de<br> avaliações</th>
-                    <th scope="col" class="text-center">Resultados</th>
+                    <th scope="col" class="text-center">Nome do paciente</th>
+                    <th scope="col" class="text-center">Responsável do paciente</th>
+                    <th scope="col" class="text-center">Email do paciente</th>
+                    <th scope="col" class="text-center">Telefone do paciente</th>
+                    <th scope="col" class="text-center">Quant. de<br> avaliações do paciente</th>
+                    <th scope="col" class="text-center">Resultados das avaliaçoes</th>
                     </thead>
                     <!-- Corpo da Tabela-->
                     <!--https://bootsnipp.com/snippets/2P90-- Exemplo parcial>-->
