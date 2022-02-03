@@ -11,12 +11,35 @@ if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"])){
     $idUsuarioLogin = $_SESSION["idUsuarioLogin"];
 }
 
-//Função para selecionar os dados do Paciente
-function selecionaDadosPaciente($email){
-  include('controller/conexaoDataBaseV2.php');
-  $sqlC = "SELECT `pacienteid`, `NomePaciente`, `NomeResponsavel`, `Telefone`, `EmailPaciente`, `dt_cadastro` FROM `paciente` WHERE `EmailPaciente` = '$emailUsuario' ";
-  $queryB = mysqli_query($conn, $sqlB);
+function selecionaAvaliacoespaciente($idPaciente){
+  include('../controller/conexaoDataBaseV2.php');
+  $sqlA = "SELECT `idavaliacao` FROM `avaliacao` where `idpaciente` = '$idPaciente' GROUP BY `idavaliacao`";
+  $queryA = mysqli_query($conn, $sqlA);
+  while($dadosA=mysqli_fetch_array($queryA)){
+    return $avaliacaoId = $dadosA['idavaliacao'];
+  } 
 }
+
+function calculaNumeroQuestoesCenario($idPacienteA, $idAvaliacaoA){
+  include('../controller/conexaoDataBaseV2.php');
+  $sqlE = "SELECT SUM(`avaliacaoRealizada`) as soma, COUNT(`avaliacaoRealizada`) as contagem FROM `avaliacao` WHERE `idpaciente` = '$idPacienteA' AND  `idavaliacao`='$idAvaliacaoA'";
+  $queryE = mysqli_query($conn, $sqlE);
+  while($dadosE=mysqli_fetch_array($queryE)){
+     $somaE = $dadosE['soma'];
+     $contagemE = $dadosE['contagem'];
+
+    if($somaE == $contagemE){
+      return $statusAvaliação =  "Completa";        
+    }else{
+      return $statusAvaliação =  "Incompleta";
+    }
+  }
+}
+
+include('../controller/conexaoDataBaseV2.php');
+
+$sql = "SELECT * FROM `avaliacao` a RIGHT JOIN paciente p ON a.idpaciente = p.pacienteid RIGHT JOIN terapeuta t on a.idterapeuta = t.idterapeuta WHERE p.EmailPaciente = '$emailUsuario' GROUP BY a.`idavaliacao`";
+$query = mysqli_query($conn, $sql);
 
 
 ?>
@@ -39,47 +62,43 @@ function selecionaDadosPaciente($email){
     <link href="https://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="#">Início</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <?php include("../userpaciente/include/navbarPaciente.html");?>
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+    <main role="main" class="container">
+     <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table id="mytable" class="table table-bordred table-striped">
+                  <h2>Minhas avaliações</h2>  
+                  <thead>
+                    <tr>
+                      <th scope="col" class="text-center">Terapeuta responsável</th>
+                      <th scope="col" class="text-center">Nome do paciente</th>
+                      <th scope="col" class="text-center">Identificador da avaliação</th>
+                      <th scope="col" class="text-center">Status da avaliação</th>
+                      <th scope="col" class="text-center"></th>
+                    </tr>
+                    </thead>
+                    <!-- Corpo da Tabela-->
+                    <!--https://bootsnipp.com/snippets/2P90-- Exemplo parcial>-->
+                    <tbody>
+                    <?php 
+                    while($dados=mysqli_fetch_array($query)){
+                          echo "<tr>";
+                            echo "<td class="."text-left".">".$dados['nome']."</td>";
+                            echo "<td class="."text-left".">".$dados['NomePaciente']."</td>";
+                            echo "<td class="."text-right".">".$dados['idavaliacao']."</td>";
+                            echo "<td class="."text-center".">".calculaNumeroQuestoesCenario($dados['idpaciente'], $dados['idavaliacao'])."</td>";
+                            echo "<td class="."text-center".">".'<a href="realizarAvaliacao.php?idav='.$dados['idavaliacao'].'&idpc='.$dados['idpaciente'].' " class="btn btn-primary btn-md" role="button" aria-pressed="true">Realizar</a>'."</td>";
+                          echo"</tr>";
+                        
+                        }
+                    ?> 
+                    </tbody>
+                </table>
             </div>
-          </li> -->
-        </ul>
-         <form class="form-inline my-2 my-lg-0" action="../logout.php">
-          <button class="btn btn-danger my-2 my-sm-0" type="submit">Sair do Sistema</button>
-        </form>
-      </div>
-</nav>
-
-<main role="main" class="container">
-      <div class="starter-template">
-        <h1>Avaliação</h1>
-        <form class="form-inline my-2 my-lg-0" action="../avaliacao_b/principalavaliacao.php">
-          <button class="btn btn-danger my-2 my-sm-0" type="submit">PARTICIPAR</button>
-        </form>
-      </div>
+        </div>
+     </div>
 </main>
 
     <!--Bootstrap e JS-->

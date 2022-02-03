@@ -34,8 +34,8 @@ function selecionaIdTerapeuta($emailC){
 //Selecao no banco de dados tabela paciente
 function selecionaIdPaciente($emailD){
     include('controller/conexaoDataBaseV2.php');
-    $sqlD = "SELECT * FROM `paciente` WHERE `email` = '$emailD'";
-    $queryD = mysqli_query($conn, $sqlC);
+    $sqlD = "SELECT * FROM `paciente` WHERE `EmailPaciente` = '$emailD'";
+    $queryD = mysqli_query($conn, $sqlD);
     while($dadosD=mysqli_fetch_array($queryD)){
        $pacienteId = $dadosD["pacienteid"];
        return $pacienteId;
@@ -56,7 +56,7 @@ function selecionaIdAdministrador($emailE){
  //Processamento das respostas
  while($dados = mysqli_fetch_assoc($queryA)){
     $idUsuarioLogin=$dados["id"];
-    $emailB=$dados["usuario"]; //usuario tem somente email nao é o nome --> Tab. loginSistemas
+    $emailBx=$dados["usuario"]; //usuario tem somente email nao é o nome --> Tab. loginSistemas
     $tipoUsuario=$dados['tipo'];
     $permissaoAcesso = $dados['permissao'];
 
@@ -64,32 +64,35 @@ function selecionaIdAdministrador($emailE){
     switch($tipoUsuario){
         case 1:
             //Configura a sessao Administrador
-            $_SESSION["emailUsuario"] = $emailB;
+            $_SESSION["emailUsuario"] = $emailBx;
             $_SESSION["idUsuarioLogin"] = $idUsuarioLogin;
             //$_SESSION["administrador"] = selecionaIdAdministrador($emailA);
-            cadastraLogAcesso($emailB);
-            header("Location: useradministrador/principaladministrador.php?email=$emailB");
+            cadastraLogAcesso($emailBx);
+            header("Location: useradministrador/principaladministrador.php?email=$emailBx");
             break;
         case 2:
             //Configura a sessao Terapeuta
-            $_SESSION["emailUsuario"] = $emailB;
+            $_SESSION["emailUsuario"] = $emailBx;
             $_SESSION["idUsuarioLogin"] = $idUsuarioLogin;
             $_SESSION["idTerapeuta"] = selecionaIdTerapeuta($emailA);
-            cadastraLogAcesso($emailB);
-            header("Location: userterapeuta/principalterapeuta.php?email=$emailB");
+            cadastraLogAcesso($emailBx);
+            header("Location: userterapeuta/principalterapeuta.php?email=$emailBx");
             break;
         case 3:
             //Configura a sessao Paciente
-            $_SESSION["emailUsuario"] = $emailB;
+            $_SESSION["emailUsuario"] = $emailBx;
             $_SESSION["idUsuarioLogin"] = $idUsuarioLogin;            
             $_SESSION["idPaciente"] = selecionaIdPaciente($emailA);
-            cadastraLogAcesso($emailB);
-            header("Location: userpaciente/principalpaciente.php?email=$emailB");
+            cadastraLogAcesso($emailBx);
+            header("Location: userpaciente/principalpaciente.php?email=$emailBx");
             break;
         default:
-            header("Location: ..index.html");
+            header("Location: ../index.html");
+            exit;
     }
- }else {header("Location: ..index.html");}
+ }else {
+     header("Location: ../index.html");
+     exit;   }
 }
  ?>
 
