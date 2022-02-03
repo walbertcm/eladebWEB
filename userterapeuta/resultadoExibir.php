@@ -14,19 +14,28 @@ $idpaciente = $_GET["id"];
 
 include('../controller/conexaoDataBaseV2.php');
 
-$sql = "SELECT t.nome, p.NomePaciente,a.`idpaciente`, a.idterapeuta,a.`resultado`, DATE_FORMAT(a.`datahora`,'%d/%m/%Y %T') as dataa,a.`idavaliacao` FROM `avaliacao` as a RIGHT JOIN paciente as p ON a.`idpaciente` = p.pacienteid RIGHT JOIN terapeuta as t ON a.`idterapeuta`=t.idterapeuta WHERE a.`idpaciente`='$idpaciente' group by a.`idpaciente`, a.`idavaliacao`;";
+$sql = "SELECT t.nome, p.NomePaciente,a.`idpaciente`, a.idterapeuta,a.`resultado`, DATE_FORMAT(a.`datahora`,'%d/%m/%Y %T') as dataa,a.`idavaliacao`, a.`avaliacaoRealizada` FROM `avaliacao` as a RIGHT JOIN paciente as p ON a.`idpaciente` = p.pacienteid RIGHT JOIN terapeuta as t ON a.`idterapeuta`=t.idterapeuta WHERE a.`idpaciente`='$idpaciente' group by a.`idpaciente`, a.`idavaliacao`;";
     
 $query = mysqli_query($conn, $sql);
 
-function statusAvaliacao($statusAvaliacao){
-  if($statusAvaliacao == 0){
-    $statusAvaliacaoTexto = "Incompleta";
-    return $statusAvaliacaoTexto;
-  }else {
-    $statusAvaliacaoTexto = "Completa";
-    return $statusAvaliacaoTexto;
-  }
-  }
+
+function calculaNumeroQuestoesCenario($idPacienteA, $idAvaliacaoA){
+    include('../controller/conexaoDataBaseV2.php');
+    $sqlE = "SELECT SUM(`avaliacaoRealizada`) as soma, COUNT(`avaliacaoRealizada`) as contagem FROM `avaliacao` WHERE `idpaciente` = '$idPacienteA' AND  `idavaliacao`='$idAvaliacaoA'";
+    $queryE = mysqli_query($conn, $sqlE);
+    while($dadosE=mysqli_fetch_array($queryE)){
+       $somaE = $dadosE['soma'];
+       $contagemE = $dadosE['contagem'];
+
+      if($somaE == $contagemE){
+        return $statusAvaliação =  "Completa";        
+      }else{
+        return $statusAvaliação =  "Incompleta";
+      }
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -56,6 +65,7 @@ function statusAvaliacao($statusAvaliacao){
                     <tr>
                       <th scope="col" class="text-center">Terapeuta responsável</th>
                       <th scope="col" class="text-center">Nome do paciente</th>
+                      <th scope="col" class="text-center">Id da avaliação</th>
                       <th scope="col" class="text-center">Status da avaliação</th>
                       <th scope="col" class="text-center">Data/Hora</th>
                       <th scope="col" class="text-center">Tabela de pontuação</th>
@@ -66,11 +76,12 @@ function statusAvaliacao($statusAvaliacao){
                     <tbody>
                     <?php 
                         while($dado = mysqli_fetch_assoc($query)) {
-                            $aaa = $dado['resultado'];
+                            //$aaa = $dado['avaliacaoRealizada'];
                             echo "<tr>";
                             echo "<td class="."text-left".">".$dado['nome']."</td>";
                             echo "<td class="."text-left".">".$dado['NomePaciente']."</td>";
-                            echo "<td class="."text-center".">".statusAvaliacao($aaa)."</td>";
+                            echo "<td class="."text-left".">".$dado['idavaliacao']."</td>";
+                            echo "<td class="."text-center".">".calculaNumeroQuestoesCenario($idpaciente, $dado['idavaliacao'])."</td>";
                             echo "<td class="."text-center".">".$dado['dataa']."</td>";    
                             echo "<td class="."text-center".">".'<a href="resultadoTabelaPontos.php?idav='.$dado['idavaliacao'].'&idpc='.$dado['idpaciente'].'&idt='.$dado['idterapeuta'].' " class="btn btn-primary btn-md" role="button" aria-pressed="true">Verificar</a>'."</td>";                            
                             echo"</tr>";

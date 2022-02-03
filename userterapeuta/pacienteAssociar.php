@@ -1,6 +1,7 @@
 <?php
 //Metodo para iniciar a sessao
 session_start();
+
 //Avalia se a sessao tem valores, foi definida, caso nao retorna o user para o login
 if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"]) AND !isset($_SESSION["idTerapeuta"])){
     header("Location: ../index.html");
@@ -11,24 +12,20 @@ if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"]) AND
     $idTerapeuta = $_SESSION["idTerapeuta"];
 }
 
+$idCenario = $_GET['idce'];
+
 //Seleção dos cenarios existentes
 //Conexão com o banco de dados
 include('../controller/conexaoDataBaseV2.php');
 
 //Seleciona os  cenarios numero de pacientes
-$sql = "SELECT c.`idcenario` as idcenario, c.`nomecenario`, c.`dtcadastro`, c.`idterapeuta`, c.idterapeuta as idterapeuta, t.nome as nometerapeuta FROM `cenario` as c RIGHT JOIN terapeuta as t ON c.idterapeuta = t.idterapeuta";
+$sql = "SELECT * FROM `paciente`;";
 $query = mysqli_query($conn,$sql);
 
-function calcularNumeroQuestoes($idCenario){
-    include('../controller/conexaoDataBaseV2.php');
-    $sqlA = "SELECT `idcenario` FROM `cenarioPerguntas` WHERE `idcenario` =  '$idCenario'";
-    $queryA = mysqli_query($conn,$sqlA);
-    return $quantQuestoes = mysqli_num_rows($queryA);        
-}
 ?>
 
-<!DOCTYPE html> 
-<html lan="pt-br"> 
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,22 +38,18 @@ function calcularNumeroQuestoes($idCenario){
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css" rel="stylesheet">
 </head>
-    <body>
-    <?php include "../userterapeuta/include/navbarTerapeuta.html"?>
+<body>
+    <?php include("../userterapeuta/include/navbarTerapeuta.html");?>
     
 <main role="main" class="container">
      <div class="row">
         <div class="col-md-12">
             <div class="table-responsive">
                 <table id="mytable" class="table table-bordred table-striped">
-                  <h2>Cenários existentes</h2>  
+                  <h2>Associar paciente</h2>  
                   <thead>
                     <tr>
-                      <th scope="col" class="text-center">Desenvolvedor<br>do cenário</th>
-                      <th scope="col" class="text-center">Nome <br>do cenário</th>                      
-                      <th scope="col" class="text-center">Num. questões <br>do cenário</th>
-                      <th scope="col" class="text-center">Data/Hora<br>do cadastro</th>
-                      <th scope="col" class="text-center">Perguntas <br>do cenário</th>
+                      <th scope="col" class="text-center">Nome <br>dos pacientes</th>
                       <th scope="col" class="text-center">Associar<br> com paciente</th>
                     </tr>
                     </thead>
@@ -64,17 +57,11 @@ function calcularNumeroQuestoes($idCenario){
                     <!--https://bootsnipp.com/snippets/2P90-- Exemplo parcial>-->
                     <tbody>
                     <?php 
-                        while($dado = mysqli_fetch_assoc($query)) {
-                            $aaa = $dado['idcenario'];
+                        while($dado = mysqli_fetch_array($query)){
                             echo "<tr>";
-                            echo "<td class="."text-left".">".$dado['nometerapeuta']."</td>"; 
-                            echo "<td class="."text-center".">".$dado['nomecenario']."</td>";
-                            echo "<td class="."text-center".">". calcularNumeroQuestoes($aaa)."</td>";
-                            echo "<td class="."text-center".">".$dado['dtcadastro']."</td>";    
-                            echo "<td class="."text-center".">".'<a href="cenarioDetalhes.php?idce='.$dado['idcenario'].' " class="btn btn-primary btn-md" role="button" aria-pressed="true">Verificar</a>'."</td>";                            
-                            echo "<td class="."text-center".">".'<a href="pacienteAssociar.php?idce='.$dado['idcenario'].' " class="btn btn-primary btn-md" role="button" aria-pressed="true">Associar</a>'."</td>";                            
-                            echo"</tr>";
-                            
+                            echo "<td class="."text-left".">".$dado['NomePaciente']."</td>";                         
+                            echo "<td class="."text-center".">".'<a href="pacienteAssociarBack.php?idcen='.$idCenario.'&idpc='.$dado['pacienteid'].'&idt='.$idTerapeuta.' " class="btn btn-primary btn-md" role="button" aria-pressed="true">Associar</a>'."</td>";
+                            echo"</tr>";                        
                         } 
                     ?> 
                     </tbody>
@@ -83,9 +70,8 @@ function calcularNumeroQuestoes($idCenario){
         </div>
      </div>
 </main>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    </body>
- 
+</body>
 </html>

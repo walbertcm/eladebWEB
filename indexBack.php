@@ -87,9 +87,9 @@ function selecionaIdAdministrador($emailE){
             header("Location: userpaciente/principalpaciente.php?email=$emailB");
             break;
         default:
-            header("Location: index.html");
+            header("Location: ..index.html");
     }
- }else {header("Location: index.html");}
+ }else {header("Location: ..index.html");}
 }
  ?>
 
