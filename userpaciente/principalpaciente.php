@@ -87,9 +87,9 @@ $query = mysqli_query($conn, $sql);
                           echo "<tr>";
                             echo "<td class="."text-left".">".$dados['nome']."</td>";
                             echo "<td class="."text-left".">".$dados['NomePaciente']."</td>";
-                            echo "<td class="."text-right".">".$dados['idavaliacao']."</td>";
+                            echo "<td class="."text-center".">".$dados['idavaliacao']."</td>";
                             echo "<td class="."text-center".">".calculaNumeroQuestoesCenario($dados['idpaciente'], $dados['idavaliacao'])."</td>";
-                            echo "<td class="."text-center".">".'<a href="realizarAvaliacao.php?idav='.$dados['idavaliacao'].'&idpc='.$dados['idpaciente'].' " class="btn btn-primary btn-md" role="button" aria-pressed="true">Realizar</a>'."</td>";
+                            echo "<td class="."text-center".">".'<a href="../userpaciente/avaliacaor.php?idav='.$dados['idavaliacao'].'&idpc='.$dados['idpaciente'].' " class="btn btn-primary btn-md" role="button" aria-pressed="true">Realizar</a>'."</td>";
                           echo"</tr>";
                         
                         }

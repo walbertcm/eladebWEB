@@ -49,8 +49,8 @@ $query = mysqli_query($conn,$sql);
                   <h2>Associar paciente</h2>  
                   <thead>
                     <tr>
-                      <th scope="col" class="text-center">Nome <br>dos pacientes</th>
-                      <th scope="col" class="text-center">Associar<br> com paciente</th>
+                      <th scope="col" class="text-center">Nome dos pacientes</th>
+                      <th scope="col" class="text-center">Associar com paciente</th>
                     </tr>
                     </thead>
                     <!-- Corpo da Tabela-->

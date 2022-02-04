@@ -87,11 +87,11 @@ function selecionaIdAdministrador($emailE){
             header("Location: userpaciente/principalpaciente.php?email=$emailBx");
             break;
         default:
-            header("Location: ../index.html");
+            header("Location: www.labvis.eti.br");
             exit;
     }
  }else {
-     header("Location: ../index.html");
+     header("Location: www.labvis.eti.br");
      exit;   }
 }
  ?>
