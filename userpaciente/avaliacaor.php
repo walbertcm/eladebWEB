@@ -13,7 +13,7 @@ if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"])){
 }
 
     include('../controller/conexaoDataBaseV2.php');
-    include('Avaliacao.php');
+    include('classAvaliacao.php');
 
     $avaliacaoId = $_GET['idav'];
     $pacienteId = $_GET['idpc'];

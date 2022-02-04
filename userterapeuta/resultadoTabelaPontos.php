@@ -442,6 +442,17 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
 
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css" rel="stylesheet">
+
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/epehnnmlf5zbvcsafsiwpoc8u5vucadw7a8ckon7q72eh46v/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+    tinymce.init({
+        selector: 'textarea#editor',
+        menubar: false,
+        width : "800px"
+    });
+    </script>
+
 </head>
 <body>
     <style type="text/css">
@@ -697,6 +708,20 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     </div>
     </div>
 </main>
+<div class="container mt-4 mb-4">
+  <div class="row justify-content-md-center">
+    <div class="col-md-12 col-lg-8">
+        <h1 class="h2 mb-4">Relatório Avaliativo</h1>
+        <label></label>
+        <div class="form-group">
+            <textarea id="editor"></textarea>
+        </div>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+  </div>
+</div>
+
+
  <!--Bootstrap e JS-->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
