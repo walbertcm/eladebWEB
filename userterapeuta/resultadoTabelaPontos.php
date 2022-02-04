@@ -452,7 +452,7 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
         width : "800px"
     });
     </script>
-
+  <script src="https://cdn.tiny.cloud/1/epehnnmlf5zbvcsafsiwpoc8u5vucadw7a8ckon7q72eh46v/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
     <style type="text/css">
