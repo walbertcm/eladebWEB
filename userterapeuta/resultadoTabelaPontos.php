@@ -444,6 +444,7 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <link href="https://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css" rel="stylesheet">
 
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <!--<script src="https://cdn.tiny.cloud/1/epehnnmlf5zbvcsafsiwpoc8u5vucadw7a8ckon7q72eh46v/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>-->
     <script src="https://cdn.tiny.cloud/1/epehnnmlf5zbvcsafsiwpoc8u5vucadw7a8ckon7q72eh46v/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
     tinymce.init({
@@ -452,7 +453,9 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
         width : "800px"
     });
     </script>
-  <script src="https://cdn.tiny.cloud/1/epehnnmlf5zbvcsafsiwpoc8u5vucadw7a8ckon7q72eh46v/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    
+  
 </head>
 <body>
     <style type="text/css">

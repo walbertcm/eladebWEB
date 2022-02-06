@@ -9,9 +9,7 @@
  $emailA = $_POST['email'];
  $pass = $_POST['pass'];
 
-//Seleção no banco de dados tabela loginSistema
-$sqlA = "SELECT * FROM `loginSistema` WHERE `usuario` = '$emailA' AND `senha` = '$pass' ";
-$queryA = mysqli_query($conn, $sqlA);
+
 
 //Função para cadastrar o log de acesso
  function cadastraLogAcesso($emailB){
@@ -53,47 +51,52 @@ function selecionaIdAdministrador($emailE){
     }
 }
 
+
+//Seleção no banco de dados tabela loginSistema
+$sqlA = "SELECT * FROM `loginSistema` WHERE `usuario` = '$emailA' AND `senha` = '$pass' ";
+$queryA = mysqli_query($conn, $sqlA);
+
+$permissaoAcesso = 0;
+$tipoUsuario = 0;
+
  //Processamento das respostas
  while($dados = mysqli_fetch_assoc($queryA)){
     $idUsuarioLogin=$dados["id"];
     $emailBx=$dados["usuario"]; //usuario tem somente email nao é o nome --> Tab. loginSistemas
     $tipoUsuario=$dados['tipo'];
     $permissaoAcesso = $dados['permissao'];
-
-    if($permissaoAcesso == 1){
-    switch($tipoUsuario){
-        case 1:
-            //Configura a sessao Administrador
-            $_SESSION["emailUsuario"] = $emailBx;
-            $_SESSION["idUsuarioLogin"] = $idUsuarioLogin;
-            //$_SESSION["administrador"] = selecionaIdAdministrador($emailA);
-            cadastraLogAcesso($emailBx);
-            header("Location: useradministrador/principaladministrador.php?email=$emailBx");
-            break;
-        case 2:
-            //Configura a sessao Terapeuta
-            $_SESSION["emailUsuario"] = $emailBx;
-            $_SESSION["idUsuarioLogin"] = $idUsuarioLogin;
-            $_SESSION["idTerapeuta"] = selecionaIdTerapeuta($emailA);
-            cadastraLogAcesso($emailBx);
-            header("Location: userterapeuta/principalterapeuta.php?email=$emailBx");
-            break;
-        case 3:
-            //Configura a sessao Paciente
-            $_SESSION["emailUsuario"] = $emailBx;
-            $_SESSION["idUsuarioLogin"] = $idUsuarioLogin;            
-            $_SESSION["idPaciente"] = selecionaIdPaciente($emailA);
-            cadastraLogAcesso($emailBx);
-            header("Location: userpaciente/principalpaciente.php?email=$emailBx");
-            break;
-        default:
-            header("Location: www.labvis.eti.br");
-            exit;
-    }
- }else {
-     header("Location: www.labvis.eti.br");
-     exit;   }
-}
+ }
+          
+            switch(true){
+                case ($tipoUsuario == 1): //Configura a sessao Administrador                    
+                    $_SESSION["emailUsuario"] = $emailBx;
+                    $_SESSION["idUsuarioLogin"] = $idUsuarioLogin;
+                    //$_SESSION["administrador"] = selecionaIdAdministrador($emailA);
+                    cadastraLogAcesso($emailBx); //Cadastro da hora do login
+                    header("Location: useradministrador/principaladministrador.php?email=$emailBx");
+                    break;
+                case ($tipoUsuario == 2): //Configura a sessao Terapeuta                    
+                    $_SESSION["emailUsuario"] = $emailBx;
+                    $_SESSION["idUsuarioLogin"] = $idUsuarioLogin;
+                    $_SESSION["idTerapeuta"] = selecionaIdTerapeuta($emailA);
+                    cadastraLogAcesso($emailBx); //Cadastro da hora do login
+                    header("Location: userterapeuta/principalterapeuta.php?email=$emailBx");
+                    break;
+                case ($tipoUsuario == 3): //Configura a sessao Paciente                    
+                    $_SESSION["emailUsuario"] = $emailBx;
+                    $_SESSION["idUsuarioLogin"] = $idUsuarioLogin;            
+                    $_SESSION["idPaciente"] = selecionaIdPaciente($emailA);
+                    cadastraLogAcesso($emailBx); //Cadastro da hora do login
+                    header("Location: userpaciente/principalpaciente.php?email=$emailBx");
+                    break;
+                default:
+                   // $script="<script>alert('Login/Senha Errados !');</script>";
+                    //echo $script;
+                    header("Location: index.html");
+                    break;
+            }
+        
+ 
  ?>
 
 
