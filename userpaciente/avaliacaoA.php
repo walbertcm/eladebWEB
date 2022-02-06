@@ -44,9 +44,9 @@ $_SESSION["idavaliacao"] = $idAvaliacao;
     <script type="text/javascript">
         var gameEladeb;
         function participar(){
-            gameEladeb = window.open("../userpaciente/avaliacaoB.php","avaliacao");
+            //gameEladeb = window.open("../userpaciente/avaliacaoB.php","avaliacao");
+            gameEladeb = window.open("../userpaciente/avaliacaoB/avaliacaoNivelA.php","avaliacao");
         }
-
         function sair(){
             window.close();
             gameEladeb.close();

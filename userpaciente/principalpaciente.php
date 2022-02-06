@@ -20,7 +20,7 @@ function selecionaAvaliacoespaciente($idPaciente){
   } 
 }
 
-function calculaNumeroQuestoesCenario($idPacienteA, $idAvaliacaoA){
+function verificaStatusAvaliacao($idPacienteA, $idAvaliacaoA){
   include('../controller/conexaoDataBaseV2.php');
   $sqlE = "SELECT SUM(`avaliacaoRealizada`) as soma, COUNT(`avaliacaoRealizada`) as contagem FROM `avaliacao` WHERE `idpaciente` = '$idPacienteA' AND  `idavaliacao`='$idAvaliacaoA'";
   $queryE = mysqli_query($conn, $sqlE);
@@ -38,9 +38,12 @@ function calculaNumeroQuestoesCenario($idPacienteA, $idAvaliacaoA){
 
 include('../controller/conexaoDataBaseV2.php');
 
+//1 - Selecionar as avaliacoes do paciente
+//2 - Verificar se as avaliações estao completas ou incompletas (verificaStatusAvaliacao)
+
+
 $sql = "SELECT * FROM `avaliacao` a RIGHT JOIN paciente p ON a.idpaciente = p.pacienteid RIGHT JOIN terapeuta t on a.idterapeuta = t.idterapeuta WHERE p.EmailPaciente = '$emailUsuario' GROUP BY a.`idavaliacao`";
 $query = mysqli_query($conn, $sql);
-
 
 ?>
  <!--Template-->
@@ -49,7 +52,6 @@ $query = mysqli_query($conn, $sql);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,7 +63,6 @@ $query = mysqli_query($conn, $sql);
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css" rel="stylesheet">
 
-    
 </head>
 <body>
     <?php include("../userpaciente/include/navbarPaciente.html");?>
@@ -93,14 +94,13 @@ $query = mysqli_query($conn, $sql);
                             echo "<td class="."text-left".">".$dados['nome']."</td>";
                             echo "<td class="."text-left".">".$dados['NomePaciente']."</td>";
                             echo "<td class="."text-center".">".$dados['idavaliacao']."</td>";
-                            echo "<td class="."text-center".">".calculaNumeroQuestoesCenario($dados['idpaciente'], $dados['idavaliacao'])."</td>";
-                            //echo "<td class="."text-center".">".'<a href="../userpaciente/avaliacaoA.php?idav='.$dados['idavaliacao'].'&idpc='.$dados['idpaciente'].' " class="btn btn-primary btn-md" role="button" aria-pressed="true" onclick="">Realizar</a>'."</td>";
+                            echo "<td class="."text-center".">".verificaStatusAvaliacao($dados['idpaciente'], $dados['idavaliacao'])."</td>";                            
                             echo "<td class="."text-center".">".'<a href="" class="btn btn-primary btn-md" role="button" aria-pressed="true" onclick="abreBotao(\''.$idAvaliacaoA.'\',\''.$idPacienteA.'\')" >Realizar</a>'."</td>";
                           echo"</tr>";                        
                         }
                     ?> 
                     </tbody>
-                </table>
+                </table>               
             </div>
         </div>
      </div>
@@ -111,7 +111,7 @@ $query = mysqli_query($conn, $sql);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script>
-      //Função apara abrir uma nova janela com tamanho e largura definidos.. função em JS captada pelo metodo onclick (botao)
+      //Função apara abrir uma nova janela com tamanho e largura definidos ... inicia avaliacao... função em JS captada pelo metodo onclick (botao)
             function abreBotao(idavaliacao, idpaciente){
               novaJanela = window.open ("../userpaciente/avaliacaoA.php?idav="+idavaliacao+"&idpc="+1,"avaliacao","menubar=1,resizable=1,width=1072,height=685");
             }
