@@ -31,6 +31,22 @@ function calculaNumQuestoesRespondidas($idPacienteA, $idAvaliacaoA){
     $numQuestoesResolvidas = mysqli_num_rows($queryC);
     return $numQuestoesResolvidas;
 }
+
+function botaoNaoProblema($idPacienteD, $idAvaliacaoD,$numQuestaoD){
+    include('../../controller/conexaoDataBaseV2.php');
+    $sqlD = "UPDATE `avaliacao` SET resultado=8, `grupopontuacao`= '88',`avaliacaoRealizada`=1 WHERE `idavaliacao` = '$idAvaliacaoD' AND `idpaciente` = '$idPacienteD' AND `id` = '$numQuestaoD' ";
+    $queryD = mysqli_query($conn, $sqlD);
+
+}
+
+//Função para trata a avaliação do problema
+function botaoProblema($idPacienteE, $idAvaliacaoE,$numQuestaoE){
+    include('../../controller/conexaoDataBaseV2.php');
+    $sqlE = "UPDATE `avaliacao` SET resultado=9, `grupopontuacao`= '124',`avaliacaoRealizada`=1 WHERE `idavaliacao` = '$idAvaliacaoE' AND `idpaciente` = '$idPacienteE' AND `id` = '$numQuestaoE' ";
+    $queryE = mysqli_query($conn, $sqlE);
+
+}
+
 //Obter o valor da paginação por GET
 if(isset($_GET['pag'])){
     $numeroQuestaoExibir = $_GET['pag'];
@@ -42,13 +58,13 @@ if(isset($_GET['pag'])){
 $numeroQuestoesPagina = 1; //Numero de questões por pagina
 
 //Formula da paginação //// LIMIT 0,1 /// LIMIT $selecionarNumeroQuestao , $numeroQuestoesPagina
-$selecionarNumeroQuestao = ($numeroQuestaoExibir-1) * $numeroQuestoesPagina;
+$numeroQuestaoExibir = ($numeroQuestaoExibir-1) * $numeroQuestoesPagina;
 
 
 //Seleciona as perguntas do paciente para um determinado cenario
 include('../../controller/conexaoDataBaseV2.php');
 
-$sqlA = "SELECT * FROM `avaliacao` a RIGHT JOIN perguntas p ON a.`numquestao` = p.idperguntas where `idpaciente` = '$idPaciente' AND `idavaliacao` = '$idAvaliacao' AND `avaliacaoRealizada` = 0 ORDER BY a.`numquestao` LIMIT $selecionarNumeroQuestao,$numeroQuestoesPagina ";
+$sqlA = "SELECT * FROM `avaliacao` a RIGHT JOIN perguntas p ON a.`numquestao` = p.idperguntas where `idpaciente` = '$idPaciente' AND `idavaliacao` = '$idAvaliacao' AND `avaliacaoRealizada` = 0 ORDER BY a.`numquestao` LIMIT $numeroQuestaoExibir,$numeroQuestoesPagina ";
 $queryA = mysqli_query($conn, $sqlA);
 
 ?>
@@ -63,8 +79,9 @@ $queryA = mysqli_query($conn, $sqlA);
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
        <!--<script src="../js/eladeb.js"></script>  -->                     
+    
     </head>
-    <body >   
+    <body >  
     <div class="container-fluid container-md mt-3 border">
     <main role="main" class="container">
      <div class="row">
@@ -73,20 +90,29 @@ $queryA = mysqli_query($conn, $sqlA);
                 <table id="mytable" class="table table-bordred"> 
                     <tbody>
                     <?php 
-                        while($dadosA=mysqli_fetch_array($queryA)){
-                    //paginacao   
+                        while($dadosA=mysqli_fetch_array($queryA)){ 
+                            $tituloQuestao =  $dadosA['numquestao'];
+                            //$idPacienteD = $idPacienteE = $dadosA['idpaciente'];
+                            //$idAvaliacaoD = $idAvaliacaoE = $dadosA['idavaliacao'];
+                    ?>
+                             <script>
+                                var idQuestao =   "<?php echo $dadosA['id'];?>";
+                                var idPaciente =  "<?php echo $dadosA['idpaciente'];?>";
+                                var idAvaliacao = "<?php echo $dadosA['idavaliacao'];?>";
+                                var numQuestao =  "<?php echo $dadosA['numquestao'];?>";
+                            </script> 
 
-                        //$numQuestaoAvaliacao = ;
+                    <?php
                         $imagemQuestao = $dadosA['imagem'];                                                                  
                           echo "<tr>";
-                            echo "<td class="."text-center".">".$dadosA['numquestao']."</td>";
+                            echo "<td class="."text-center".">".$tituloQuestao."</td>";
                           echo"</tr>"; 
                           echo "<tr>";
                             echo "<td class="."text-center".">".'<img width="400" height="400" src="data:image/jpeg;charset=utf8;base64,'.base64_encode( $imagemQuestao).'"/>'."</td>";
                           echo"</tr>"; 
                           echo "<tr>";                          
-                            echo "<th>".'<button type="button" onclick="questoesProblemaA()" id="botaoA" value="0" name="problema" class="btn btn-success btn-lg ">NÃO PROBLEMA</button>'."</th>";
-                            echo "<th>".'<button type="button" onclick="questoesProblemaB()" id="botaoB" value="1" name="problema" class="btn btn-warning btn-lg ">PROBLEMA</button> '."</th>";
+                            echo "<th>".'<button type="button"  onclick="qnp(); paginacaoAvaliacao()" id="botaoA" value="0" name="problema" class="btn btn-success btn-lg ">NÃO PROBLEMA</button>'."</th>";
+                            echo "<th>".'<button type="button"  onclick=""    id="botaoB" value="1" name="problema" class="btn btn-warning btn-lg ">PROBLEMA</button> '."</th>";
                           echo"</tr>";                      
                         }
                     ?> 
@@ -97,29 +123,22 @@ $queryA = mysqli_query($conn, $sqlA);
      </div>
 </main>
 
-
-
-
-
-     <!--    <img id="images" width="400" height="400" class="mx-auto d-block"></img><br>
-        <div class="text-center">
-            <button type="button" onclick="questoesProblemaA()" id="botaoA" value="0" name="problema" class="btn btn-success btn-lg ">NÃO PROBLEMA</button>
-            <button type="button" onclick="questoesProblemaB()" id="botaoB" value="1" name="problema" class="btn btn-warning btn-lg ">PROBLEMA</button>            
-            <br><br>
-        </div>
-    </div>--> 
-    <script src="../js/eladeb.js"></script>  
-    <script type="text/javascript">
+  
+    <script type="text/javascript" src="../../js/gameEladeb.js">
         //recebePaciente(idfisioterapeuta_javascript, idpaciente_javascript,idavaliacao_javascript);
         //nextImage();
+    </script>
+    <script>
+        function qnp(){
+        questoesNaoProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao);
+        }
+        function paginacaoAvaliacao(){        
+            window.open('<?php echo "?pag=".($numeroQuestaoExibir + 1);?>','_self');
+        }
     </script>  
+    
     </body>
 </html>
 
 
 
-<ul class="pagination">
-        <li class="<?php if($numeroQuestaoExibir >= $numeroQuestoesPagina ){ echo 'disabled'; } ?>">
-            <a href="<?php echo "?pag=".($numeroQuestaoExibir + 1);  ?>">Next</a>
-        </li>
-    </ul>

@@ -42,7 +42,8 @@ include('../controller/conexaoDataBaseV2.php');
 //2 - Verificar se as avaliações estao completas ou incompletas (verificaStatusAvaliacao)
 
 
-$sql = "SELECT * FROM `avaliacao` a RIGHT JOIN paciente p ON a.idpaciente = p.pacienteid RIGHT JOIN terapeuta t on a.idterapeuta = t.idterapeuta WHERE p.EmailPaciente = '$emailUsuario' GROUP BY a.`idavaliacao`";
+//$sql = "SELECT * FROM `avaliacao` a RIGHT JOIN paciente p ON a.idpaciente = p.pacienteid RIGHT JOIN terapeuta t on a.idterapeuta = t.idterapeuta WHERE p.EmailPaciente = '$emailUsuario' GROUP BY a.`idavaliacao`";
+$sql = "SELECT * FROM `avaliacao` a RIGHT JOIN paciente p ON a.idpaciente = p.pacienteid RIGHT JOIN terapeuta t on a.idterapeuta = t.idterapeuta RIGHT JOIN cenario c ON a.idcenario = c.idcenario WHERE p.EmailPaciente = '$emailUsuario' GROUP BY a.`idavaliacao`";
 $query = mysqli_query($conn, $sql);
 
 ?>
@@ -78,7 +79,8 @@ $query = mysqli_query($conn, $sql);
                       <th scope="col" class="text-center">Terapeuta responsável</th>
                       <th scope="col" class="text-center">Nome do paciente</th>
                       <th scope="col" class="text-center">Identificador da avaliação</th>
-                      <th scope="col" class="text-center">Status da avaliação</th>
+                      <th scope="col" class="text-center">Nome do Cenário</th>
+                      <th scope="col" class="text-center">Status da avaliação</th>                      
                       <th scope="col" class="text-center"></th>
                     </tr>
                     </thead>
@@ -88,14 +90,21 @@ $query = mysqli_query($conn, $sql);
                     <?php 
                     while($dados=mysqli_fetch_array($query)){
                           $idAvaliacaoA = $dados['idavaliacao'];
-                          $idPacienteA = $dados['idpaciente'];                                                   
+                          $idPacienteA = $dados['idpaciente'];
+
+                          $statusAvaliacao = verificaStatusAvaliacao($dados['idpaciente'], $dados['idavaliacao']); 
+                          //Funcão para habilitar o botao
+                          if($statusAvaliacao == "Completa"){ 
+                            $classButton = "btn btn-primary btn-md disabled"; 
+                          }else{$classButton = "btn btn-primary btn-md ";}                                               
 
                           echo "<tr>";
                             echo "<td class="."text-left".">".$dados['nome']."</td>";
                             echo "<td class="."text-left".">".$dados['NomePaciente']."</td>";
                             echo "<td class="."text-center".">".$dados['idavaliacao']."</td>";
-                            echo "<td class="."text-center".">".verificaStatusAvaliacao($dados['idpaciente'], $dados['idavaliacao'])."</td>";                            
-                            echo "<td class="."text-center".">".'<a href="" class="btn btn-primary btn-md" role="button" aria-pressed="true" onclick="abreBotao(\''.$idAvaliacaoA.'\',\''.$idPacienteA.'\')" >Realizar</a>'."</td>";
+                            echo "<td class="."text-center".">".$dados['nomecenario']."</td>";                            
+                            echo "<td class="."text-center".">".$statusAvaliacao."</td>";                            
+                            echo "<td class="."text-center".">".'<a href="" class="'.$classButton.'" role="button" aria-pressed="true" onclick="abreBotao(\''.$idAvaliacaoA.'\',\''.$idPacienteA.'\')" >Realizar</a>'."</td>";
                           echo"</tr>";                        
                         }
                     ?> 
