@@ -32,21 +32,6 @@ function calculaNumQuestoesRespondidas($idPacienteA, $idAvaliacaoA){
     return $numQuestoesResolvidas;
 }
 
-function botaoNaoProblema($idPacienteD, $idAvaliacaoD,$numQuestaoD){
-    include('../../controller/conexaoDataBaseV2.php');
-    $sqlD = "UPDATE `avaliacao` SET resultado=8, `grupopontuacao`= '88',`avaliacaoRealizada`=1 WHERE `idavaliacao` = '$idAvaliacaoD' AND `idpaciente` = '$idPacienteD' AND `id` = '$numQuestaoD' ";
-    $queryD = mysqli_query($conn, $sqlD);
-
-}
-
-//Função para trata a avaliação do problema
-function botaoProblema($idPacienteE, $idAvaliacaoE,$numQuestaoE){
-    include('../../controller/conexaoDataBaseV2.php');
-    $sqlE = "UPDATE `avaliacao` SET resultado=9, `grupopontuacao`= '124',`avaliacaoRealizada`=1 WHERE `idavaliacao` = '$idAvaliacaoE' AND `idpaciente` = '$idPacienteE' AND `id` = '$numQuestaoE' ";
-    $queryE = mysqli_query($conn, $sqlE);
-
-}
-
 //Obter o valor da paginação por GET
 if(isset($_GET['pag'])){
     $numeroQuestaoExibir = $_GET['pag'];
@@ -59,7 +44,6 @@ $numeroQuestoesPagina = 1; //Numero de questões por pagina
 
 //Formula da paginação //// LIMIT 0,1 /// LIMIT $selecionarNumeroQuestao , $numeroQuestoesPagina
 $numeroQuestaoExibir = ($numeroQuestaoExibir-1) * $numeroQuestoesPagina;
-
 
 //Seleciona as perguntas do paciente para um determinado cenario
 include('../../controller/conexaoDataBaseV2.php');

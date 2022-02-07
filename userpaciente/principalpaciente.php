@@ -122,7 +122,7 @@ $query = mysqli_query($conn, $sql);
     <script>
       //Função apara abrir uma nova janela com tamanho e largura definidos ... inicia avaliacao... função em JS captada pelo metodo onclick (botao)
             function abreBotao(idavaliacao, idpaciente){
-              novaJanela = window.open ("../userpaciente/avaliacaoA.php?idav="+idavaliacao+"&idpc="+1,"avaliacao","menubar=1,resizable=1,width=1072,height=685");
+              novaJanela = window.open ("../userpaciente/avaliacaoA.php?idav="+idavaliacao+"&idpc="+idpaciente,"avaliacao","menubar=1,resizable=1,width=1072,height=685");
             }
       </script>
   </body>
