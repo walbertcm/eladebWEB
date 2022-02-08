@@ -87,3 +87,26 @@ function questoesNaoProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao) {
     //nextImage();
     return true;
 }
+
+function questoesProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao) {    
+    //Recebe as questões que tem problema
+    resultado = document.getElementById("botaoB").value;
+    grupoPontuacao = selecionaGrupoPontucao(Number(numQuestao));
+
+    //Objeto
+    questoesProblemaObj.idQuestao = idQuestao;
+    questoesProblemaObj.paciente = idPaciente;
+    questoesProblemaObj.avaliacao = idAvaliacao;
+    questoesProblemaObj.resultado = resultado;
+    questoesProblemaObj.grupoPontuacao = grupoPontuacao;
+    //questoesProblemaObj.avaliacaoRealizada = 1;
+
+    //Converte para JSON
+    jsonA = JSON.stringify(questoesProblemaObj);
+
+    //
+    enviaServidorPhp(jsonA);
+    console.log(jsonA);
+    //nextImage();
+    return true;
+}

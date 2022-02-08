@@ -14,8 +14,9 @@ $idpaciente = $_GET["id"];
 
 include('../controller/conexaoDataBaseV2.php');
 
-$sql = "SELECT t.nome, p.NomePaciente,a.`idpaciente`, a.idterapeuta,a.`resultado`, DATE_FORMAT(a.`datahora`,'%d/%m/%Y %T') as dataa,a.`idavaliacao`, a.`avaliacaoRealizada` FROM `avaliacao` as a RIGHT JOIN paciente as p ON a.`idpaciente` = p.pacienteid RIGHT JOIN terapeuta as t ON a.`idterapeuta`=t.idterapeuta WHERE a.`idpaciente`='$idpaciente' group by a.`idpaciente`, a.`idavaliacao`;";
-    
+//$sql = "SELECT t.nome, p.NomePaciente,a.`idpaciente`, a.idterapeuta,a.`resultado`, DATE_FORMAT(a.`datahora`,'%d/%m/%Y %T') as dataa,a.`idavaliacao`, a.`avaliacaoRealizada` FROM `avaliacao` as a RIGHT JOIN paciente as p ON a.`idpaciente` = p.pacienteid RIGHT JOIN terapeuta as t ON a.`idterapeuta`=t.idterapeuta WHERE a.`idpaciente`='$idpaciente' group by a.`idpaciente`, a.`idavaliacao`;";
+$sql = "SELECT t.nome, p.NomePaciente,a.`idpaciente`, a.idterapeuta,a.`resultado`, DATE_FORMAT(a.`datahora`,'%d/%m/%Y %T') as dataa,a.`idavaliacao`, a.`avaliacaoRealizada`, c.nomecenario FROM `avaliacao` as a  RIGHT JOIN paciente as p ON a.`idpaciente` = p.pacienteid  RIGHT JOIN terapeuta as t ON a.`idterapeuta`=t.idterapeuta  RIGHT JOIN cenario as c ON a.`idcenario` = c.idcenario WHERE a.`idpaciente`='$idpaciente' group by a.`idpaciente`, a.`idavaliacao`";
+
 $query = mysqli_query($conn, $sql);
 
 
@@ -66,6 +67,7 @@ function calculaNumeroQuestoesCenario($idPacienteA, $idAvaliacaoA){
                       <th scope="col" class="text-center">Terapeuta responsável</th>
                       <th scope="col" class="text-center">Nome do paciente</th>
                       <th scope="col" class="text-center">Id da avaliação</th>
+                      <th scope="col" class="text-center">Cenário da avaliação</th>
                       <th scope="col" class="text-center">Status da avaliação</th>
                       <th scope="col" class="text-center">Data/Hora</th>
                       <th scope="col" class="text-center">Tabela de pontuação</th>
@@ -80,7 +82,8 @@ function calculaNumeroQuestoesCenario($idPacienteA, $idAvaliacaoA){
                             echo "<tr>";
                             echo "<td class="."text-left".">".$dado['nome']."</td>";
                             echo "<td class="."text-left".">".$dado['NomePaciente']."</td>";
-                            echo "<td class="."text-left".">".$dado['idavaliacao']."</td>";
+                            echo "<td class="."text-center".">".$dado['idavaliacao']."</td>";
+                            echo "<td class="."text-left".">".$dado['nomecenario']."</td>";
                             echo "<td class="."text-center".">".calculaNumeroQuestoesCenario($idpaciente, $dado['idavaliacao'])."</td>";
                             echo "<td class="."text-center".">".$dado['dataa']."</td>";    
                             echo "<td class="."text-center".">".'<a href="resultadoTabelaPontos.php?idav='.$dado['idavaliacao'].'&idpc='.$dado['idpaciente'].'&idt='.$dado['idterapeuta'].' " class="btn btn-primary btn-md" role="button" aria-pressed="true">Verificar</a>'."</td>";                            

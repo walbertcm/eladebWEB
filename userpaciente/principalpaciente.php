@@ -11,6 +11,17 @@ if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"])){
     $idUsuarioLogin = $_SESSION["idUsuarioLogin"];
 }
 
+function recebeNomePaciente($emailUsuarioA){
+  include('../controller/conexaoDataBaseV2.php');
+  $sqlN = "SELECT * FROM `paciente` where `EmailPaciente` = '$emailUsuarioA'"; 
+  $queryB = mysqli_query($conn,$sqlN);
+  while($avaliacaoes = mysqli_fetch_array($queryB)) { 
+      $nomePaciente = $avaliacaoes["NomePaciente"];
+      return $nomePaciente; 
+  }           
+}
+
+
 function selecionaAvaliacoespaciente($idPaciente){
   include('../controller/conexaoDataBaseV2.php');
   $sqlA = "SELECT `idavaliacao` FROM `avaliacao` where `idpaciente` = '$idPaciente' GROUP BY `idavaliacao`";

@@ -16,6 +16,18 @@ $idterapeuta = $_GET["idt"];
 $idpaciente = $_GET["idpc"];
 $idavaliacao = $_GET["idav"];
 
+
+function recebeNomePaciente($idpacienteA){
+    include('../controller/conexaoDataBaseV2.php');
+    $sqlN = "SELECT * FROM `paciente` where `pacienteid` = '$idpacienteA'"; 
+    $queryA = mysqli_query($conn,$sqlN);
+    while($avaliacaoes = mysqli_fetch_array($queryA)) { 
+        $resultado = $avaliacaoes["NomePaciente"];
+        return $resultado; 
+    }           
+}
+
+
 include('../controller/conexaoDataBaseV2.php');
 
 $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao` WHERE `idterapeuta` = '$idterapeuta' AND `idpaciente`='$idpaciente' AND `idavaliacao`=$idavaliacao ORDER BY etapa, numquestao;";
@@ -450,7 +462,7 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     tinymce.init({
         selector: 'textarea#editor',
         menubar: false,
-        width : "800px"
+        width : "1040px"
     });
     </script>
 
@@ -478,7 +490,7 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
 <div class="col-md-12">
 <div class="table-responsive">
 <table id="mytable" class="table table-bordred table-striped">
-    <h2 class="text-center">Tabela de pontuação da avaliação<br> de número, XX para o paciente: XXXX</h2>
+    <h2 class="text-center">Tabela da avaliação <?php echo $idavaliacao?> <br>para o paciente: <?php echo recebeNomePaciente($idpaciente)?></h2>
 <thead>
   <tr>
     <th class="tg-7zrl text-center"></th>
@@ -504,7 +516,16 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center text-center"><?php  echo $etapaB1?></td>
     <td class="tg-7zrl text-center text-center"><?php  echo $etapaC1?></td>
     <td class="tg-7zrl text-center text-center"><?php  echo $etapaD1?></td>
-    <td class="tg-7zrl text-center text-center"><?php  echo $etapaE1?></td>
+    <td class="tg-7zrl text-center text-center"><?php  //echo etapaE1?>
+                                                                    <select id="ajuda" name="ajuda">
+                                                                    <option value="0"></option>
+                                                                    <option value="1">Terapeuta</option>
+                                                                    <option value="2">Familia</option>
+                                                                    <option value="3">Ajuda Espec.</option>
+                                                                    </select>
+                                                                    </td>
+
+
   </tr>
   <tr>
     <td class="tg-2b7s">2. Finanças</td>
@@ -512,7 +533,14 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaB2?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC2?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaD2?></td>
-    <td class="tg-7zrl text-center"><?php  echo $etapaE2?></td>
+    <td class="tg-7zrl text-center"><?php  //echo $etapaE2?>
+                                                                    <select id="ajuda" name="ajuda">
+                                                                    <option value="0"></option>
+                                                                    <option value="1">Terapeuta</option>
+                                                                    <option value="2">Familia</option>
+                                                                    <option value="3">Ajuda Espec.</option>
+                                                                    </select>
+                                                                    </td>
   </tr>
   <tr>
     <td class="tg-2b7s">3. Trabalho</td>
@@ -520,7 +548,14 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaB3?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC3?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaD3?></td>
-    <td class="tg-7zrl text-center"><?php  echo $etapaE3?></td>
+    <td class="tg-7zrl text-center"><?php  //echo $etapaE3?>
+                                                                    <select id="ajuda" name="ajuda">
+                                                                    <option value="0"></option>
+                                                                    <option value="1">Terapeuta</option>
+                                                                    <option value="2">Familia</option>
+                                                                    <option value="3">Ajuda Espec.</option>
+                                                                    </select>
+                                                                    </td>
   </tr>
   <tr>
     <td class="tg-2b7s">4. Lei e justiça</td>
@@ -528,7 +563,14 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaB4?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC4?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaD4?></td>
-    <td class="tg-7zrl text-center"><?php  echo $etapaE4?></td>
+    <td class="tg-7zrl text-center"><?php  //echo $etapaE4?>
+                                                                    <select id="ajuda" name="ajuda">
+                                                                    <option value="0"></option>
+                                                                    <option value="1">Terapeuta</option>
+                                                                    <option value="2">Familia</option>
+                                                                    <option value="3">Ajuda Espec.</option>
+                                                                    </select>
+                                                                    </td>
   </tr>
   <tr>
     <td class="tg-7zrl text-center font-weight-bold"></td>
@@ -546,7 +588,14 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaB5?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC5?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaD5?></td>
-    <td class="tg-7zrl text-center"><?php  echo $etapaE5?></td>
+    <td class="tg-7zrl text-center"><?php  //echo $etapaE5?>
+                                                                    <select id="ajuda" name="ajuda">
+                                                                    <option value="0"></option>
+                                                                    <option value="1">Terapeuta</option>
+                                                                    <option value="2">Familia</option>
+                                                                    <option value="3">Ajuda Espec.</option>
+                                                                    </select>
+                                                                    </td>
   </tr>
   <tr>
     <td class="tg-2b7s">6. Tarefas administrativas</td>
@@ -554,7 +603,14 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaB6?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC6?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaD6?></td>
-    <td class="tg-7zrl text-center"><?php  echo $etapaE6?></td>
+    <td class="tg-7zrl text-center"><?php  //echo $etapaE6?>
+                                                                    <select id="ajuda" name="ajuda">
+                                                                    <option value="0"></option>
+                                                                    <option value="1">Terapeuta</option>
+                                                                    <option value="2">Familia</option>
+                                                                    <option value="3">Ajuda Espec.</option>
+                                                                    </select>
+                                                                    </td>
   </tr>
   <tr>
     <td class="tg-2b7s">7. Tarefas domésticas</td>
@@ -562,7 +618,14 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaB7?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC7?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaD7?></td>
-    <td class="tg-7zrl text-center"><?php  echo $etapaE7?></td>
+    <td class="tg-7zrl text-center"><?php  //echo $etapaE7?>
+                                                                    <select id="ajuda" name="ajuda">
+                                                                    <option value="0"></option>
+                                                                    <option value="1">Terapeuta</option>
+                                                                    <option value="2">Familia</option>
+                                                                    <option value="3">Ajuda Espec.</option>
+                                                                    </select>
+                                                                    </td>
   </tr>
   <tr>
     <td class="tg-2b7s">8. Viagem</td>
@@ -570,7 +633,14 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaB8?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC8?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaD8?></td>
-    <td class="tg-7zrl text-center"><?php  echo $etapaE8?></td>
+    <td class="tg-7zrl text-center"><?php  //echo $etapaE8?>
+                                                                    <select id="ajuda" name="ajuda">
+                                                                    <option value="0"></option>
+                                                                    <option value="1">Terapeuta</option>
+                                                                    <option value="2">Familia</option>
+                                                                    <option value="3">Ajuda Espec.</option>
+                                                                    </select>
+                                                                    </td>
   </tr>
   <tr>
     <td class="tg-2b7s">9. Presença de locais públicos</td>
@@ -578,7 +648,14 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaB9?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC9?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaD9?></td>
-    <td class="tg-7zrl text-center"><?php  echo $etapaE9?></td>
+    <td class="tg-7zrl text-center"><?php  //echo $etapaE9?>
+                                                                    <select id="ajuda" name="ajuda">
+                                                                    <option value="0"></option>
+                                                                    <option value="1">Terapeuta</option>
+                                                                    <option value="2">Familia</option>
+                                                                    <option value="3">Ajuda Espec.</option>
+                                                                    </select>
+                                                                    </td>
   </tr>
   <tr>
     <td class="tg-7zrl text-center"></td>
@@ -596,7 +673,14 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaB10?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC10?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaD10?></td>
-    <td class="tg-7zrl text-center"><?php  echo $etapaE10?></td>
+    <td class="tg-7zrl text-center"><?php  //echo $etapaE10?>
+                                                                    <select id="ajuda" name="ajuda">
+                                                                    <option value="0"></option>
+                                                                    <option value="1">Terapeuta</option>
+                                                                    <option value="2">Familia</option>
+                                                                    <option value="3">Ajuda Espec.</option>
+                                                                    </select>
+                                                                    </td>
   </tr>
   <tr>
     <td class="tg-2b7s">11. Família</td>
@@ -604,7 +688,14 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaB11?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC11?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaD11?></td>
-    <td class="tg-7zrl text-center"><?php  echo $etapaE11?></td>
+    <td class="tg-7zrl text-center"><?php  //echo $etapaE11?>
+                                                                    <select id="ajuda" name="ajuda">
+                                                                    <option value="0"></option>
+                                                                    <option value="1">Terapeuta</option>
+                                                                    <option value="2">Familia</option>
+                                                                    <option value="3">Ajuda Espec.</option>
+                                                                    </select>
+                                                                    </td>
   </tr>
   <tr>
     <td class="tg-2b7s">12. Filhos</td>
@@ -612,7 +703,14 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaB12?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC12?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaD12?></td>
-    <td class="tg-7zrl text-center"><?php  echo $etapaE12?></td>
+    <td class="tg-7zrl text-center"><?php  //echo $etapaE12?>
+                                                                    <select id="ajuda" name="ajuda">
+                                                                    <option value="0"></option>
+                                                                    <option value="1">Terapeuta</option>
+                                                                    <option value="2">Familia</option>
+                                                                    <option value="3">Ajuda Espec.</option>
+                                                                    </select>
+                                                                    </td>
   </tr>
   <tr>
     <td class="tg-2b7s">13. Relacionamentos românticos</td>
@@ -620,7 +718,14 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaB13?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC13?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaD13?></td>
-    <td class="tg-7zrl text-center"><?php  echo $etapaE13?></td>
+    <td class="tg-7zrl text-center"><?php  //echo $etapaE13?>
+                                                                    <select id="ajuda" name="ajuda">
+                                                                    <option value="0"></option>
+                                                                    <option value="1">Terapeuta</option>
+                                                                    <option value="2">Familia</option>
+                                                                    <option value="3">Ajuda Espec.</option>
+                                                                    </select>
+                                                                    </td>
   </tr>
   <tr>
     <td class="tg-7zrl text-center"></td>
@@ -638,7 +743,14 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaB14?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC14?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaD14?></td>
-    <td class="tg-7zrl text-center"><?php  echo $etapaE14?></td>
+    <td class="tg-7zrl text-center"><?php  //echo $etapaE14?>
+                                                                    <select id="ajuda" name="ajuda">
+                                                                    <option value="0"></option>
+                                                                    <option value="1">Terapeuta</option>
+                                                                    <option value="2">Familia</option>
+                                                                    <option value="3">Ajuda Espec.</option>
+                                                                    </select>
+                                                                    </td>
   </tr>
   <tr>
     <td class="tg-2b7s">15. Higiene pessoal</td>
@@ -646,7 +758,14 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaB15?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC15?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaD15?></td>
-    <td class="tg-7zrl text-center"><?php  echo $etapaE15?></td>
+    <td class="tg-7zrl text-center"><?php  //echo $etapaE15?>
+                                                                    <select id="ajuda" name="ajuda">
+                                                                    <option value="0"></option>
+                                                                    <option value="1">Terapeuta</option>
+                                                                    <option value="2">Familia</option>
+                                                                    <option value="3">Ajuda Espec.</option>
+                                                                    </select>
+                                                                    </td>
   </tr>
   <tr>
     <td class="tg-2b7s">16. Saúde física</td>
@@ -654,7 +773,14 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaB16?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC16?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaD16?></td>
-    <td class="tg-7zrl text-center"><?php  echo $etapaE16?></td>
+    <td class="tg-7zrl text-center"><?php  //echo $etapaE16?>
+                                                                    <select id="ajuda" name="ajuda">
+                                                                    <option value="0"></option>
+                                                                    <option value="1">Terapeuta</option>
+                                                                    <option value="2">Familia</option>
+                                                                    <option value="3">Ajuda Espec.</option>
+                                                                    </select>
+                                                                    </td>
   </tr>
   <tr>
     <td class="tg-2b7s">17. Saúde mental</td>
@@ -662,7 +788,14 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaB17?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC17?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaD17?></td>
-    <td class="tg-7zrl text-center"><?php  echo $etapaE17?></td>
+    <td class="tg-7zrl text-center"><?php  //echo $etapaE17?>
+                                                                    <select id="ajuda" name="ajuda">
+                                                                    <option value="0"></option>
+                                                                    <option value="1">Terapeuta</option>
+                                                                    <option value="2">Familia</option>
+                                                                    <option value="3">Ajuda Espec.</option>
+                                                                    </select>
+                                                                    </td>
   </tr>
   <tr>
     <td class="tg-2b7s">18. Vício</td>
@@ -670,7 +803,14 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaB18?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC18?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaD18?></td>
-    <td class="tg-7zrl text-center"><?php  echo $etapaE18?></td>
+    <td class="tg-7zrl text-center"><?php  //echo $etapaE18?>
+                                                                    <select id="ajuda" name="ajuda">
+                                                                    <option value="0"></option>
+                                                                    <option value="1">Terapeuta</option>
+                                                                    <option value="2">Familia</option>
+                                                                    <option value="3">Ajuda Espec.</option>
+                                                                    </select>
+                                                                    </td>
   </tr>
   <tr>
     <td class="tg-2b7s">19. Tratamento</td>
@@ -678,7 +818,14 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaB19?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC19?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaD19?></td>
-    <td class="tg-7zrl text-center"><?php  echo $etapaE19?></td>
+    <td class="tg-7zrl text-center"><?php  //echo $etapaE19?>
+                                                                    <select id="ajuda" name="ajuda">
+                                                                    <option value="0"></option>
+                                                                    <option value="1">Terapeuta</option>
+                                                                    <option value="2">Familia</option>
+                                                                    <option value="3">Ajuda Espec.</option>
+                                                                    </select>
+                                                                    </td>
   </tr>
   <tr>
     <td class="tg-2b7s">20. Espiritualidade e crenças</td>
@@ -686,7 +833,14 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <td class="tg-7zrl text-center"><?php  echo $etapaB20?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC20?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaD20?></td>
-    <td class="tg-7zrl text-center"><?php  echo $etapaE20?></td>
+    <td class="tg-7zrl text-center"><?php  //echo $etapaE20?>
+                                                                    <select id="ajuda" name="ajuda">
+                                                                    <option value="0"></option>
+                                                                    <option value="1">Terapeuta</option>
+                                                                    <option value="2">Familia</option>
+                                                                    <option value="3">Ajuda Espec.</option>
+                                                                    </select>
+                                                                    </td>
   </tr>
   <tr>
     <td class="tg-7zrl text-center"></td>
@@ -713,15 +867,13 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
 </main>
 <div class="container mt-4 mb-4">
   <div class="row justify-content-md-center">
-    <div class="col-md-12 col-lg-8">
         <h1 class="h2 mb-4">Relatório Avaliativo</h1>
         <label></label>
         <div class="form-group">
             <textarea id="editor"></textarea>
         </div>
-      <button type="submit" class="btn btn-primary">Salvar</button>
-    </div>
   </div>
+  <button type="submit" class="btn btn-primary">Salvar</button>
 </div>
 
 

@@ -96,7 +96,7 @@ $queryA = mysqli_query($conn, $sqlA);
                           echo"</tr>"; 
                           echo "<tr>";                          
                             echo "<th>".'<button type="button"  onclick="qnp(); paginacaoAvaliacao()" id="botaoA" value="0" name="problema" class="btn btn-success btn-lg ">NÃO PROBLEMA</button>'."</th>";
-                            echo "<th>".'<button type="button"  onclick=""    id="botaoB" value="1" name="problema" class="btn btn-warning btn-lg ">PROBLEMA</button> '."</th>";
+                            echo "<th>".'<button type="button"  onclick="qp(); paginacaoAvaliacao()" id="botaoB" value="1" name="problema" class="btn btn-warning btn-lg ">PROBLEMA</button> '."</th>";
                           echo"</tr>";                      
                         }
                     ?> 
@@ -116,6 +116,11 @@ $queryA = mysqli_query($conn, $sqlA);
         function qnp(){
         questoesNaoProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao);
         }
+
+        function qp(){
+        questoesProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao);
+        }
+        
         function paginacaoAvaliacao(){        
             window.open('<?php echo "?pag=".($numeroQuestaoExibir + 1);?>','_self');
         }
