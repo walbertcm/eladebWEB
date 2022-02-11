@@ -15,40 +15,57 @@ if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"]) ){
 }
 
 
-function calculaNumQuestoesTotal($idPacienteA, $idAvaliacaoA){
+/* function calculaNumQuestoesTotal($idPacienteB, $idAvaliacaoB){
     include('../../controller/conexaoDataBaseV2.php');
-    $sqlB = "SELECT `idavaliacao` FROM `avaliacao` where `idpaciente` = '$idPacienteA' AND `idavaliacao` = '$idAvaliacaoA' ";
+    $sqlB = "SELECT `idavaliacao` FROM `avaliacao` where `idpaciente` = '$idPacienteB' AND `idavaliacao` = '$idAvaliacaoB' ";
     $queryB = mysqli_query($conn, $sqlB);
     $numQuestoes = mysqli_num_rows($queryB);
     return $numQuestoes;
 }
-$numeroQuestoesTotais = calculaNumQuestoesTotal($idPaciente,$idAvaliacao);
+$numeroQuestoesTotais = calculaNumQuestoesTotal($idPaciente,$idAvaliacao); */
 
-function calculaNumQuestoesRespondidas($idPacienteA, $idAvaliacaoA){
+/* function calculaNumQuestoesRespondidas($idPacienteC, $idAvaliacaoC){
     include('../../controller/conexaoDataBaseV2.php');
-    $sqlC = "SELECT `idavaliacao` FROM `avaliacao` where `idpaciente` = '$idPacienteA' AND `idavaliacao` = '$idAvaliacaoA' AND  `avaliacaoRealizada` = '1'";
+    $sqlC = "SELECT `idavaliacao` FROM `avaliacao` where `idpaciente` = '$idPacienteC' AND `idavaliacao` = '$idAvaliacaoC' AND  `avaliacaoRealizada` = '1'";
     $queryC = mysqli_query($conn, $sqlC);
     $numQuestoesResolvidas = mysqli_num_rows($queryC);
     return $numQuestoesResolvidas;
+} */
+
+function calculaNumQuestoesNaoRespondidas($idPacienteD, $idAvaliacaoD){
+    include('../../controller/conexaoDataBaseV2.php');
+    $sqlD = "SELECT `idavaliacao` FROM `avaliacao` where `idpaciente` = '$idPacienteD' AND `idavaliacao` = '$idAvaliacaoD' AND  `avaliacaoRealizada` = 0 ";
+    $queryD = mysqli_query($conn, $sqlD);
+    $numQuestoesNaoResolvidas = mysqli_num_rows($queryD);
+    return $numQuestoesNaoResolvidas;
+}
+
+//Calcula o total de paginas
+$totalPaginasNaoResp = calculaNumQuestoesNaoRespondidas($idPaciente, $idAvaliacao);
+
+if($totalPaginasNaoResp == 0){
+    header("Location: www.google.com");
 }
 
 //Obter o valor da paginação por GET
 if(isset($_GET['pag'])){
     $numeroQuestaoExibir = $_GET['pag'];
 }else{
-    $numeroQuestaoExibir = 1; //Numero da questão para exibir
+    $numeroQuestaoExibir = 1;
+     //Numero da questão para exibir
 }
 
 //Paginacao, é uma forma de exibir 1 elemento por vez, trata direto no SQL LIMIT
 $numeroQuestoesPagina = 1; //Numero de questões por pagina
+//Formula da paginação //// LIMIT 0,1 /// LIMIT $numeroQuestaoExibir , $numeroQuestoesPagina
+$numeroQuestaoExibir  = ($numeroQuestaoExibir-1) * $numeroQuestoesPagina;
 
-//Formula da paginação //// LIMIT 0,1 /// LIMIT $selecionarNumeroQuestao , $numeroQuestoesPagina
-$numeroQuestaoExibir = ($numeroQuestaoExibir-1) * $numeroQuestoesPagina;
+echo $totalPaginasNaoResp;
+echo $numeroQuestaoExibir;
 
 //Seleciona as perguntas do paciente para um determinado cenario
 include('../../controller/conexaoDataBaseV2.php');
-
-$sqlA = "SELECT * FROM `avaliacao` a RIGHT JOIN perguntas p ON a.`numquestao` = p.idperguntas where `idpaciente` = '$idPaciente' AND `idavaliacao` = '$idAvaliacao' AND `avaliacaoRealizada` = 0 ORDER BY a.`numquestao` LIMIT $numeroQuestaoExibir,$numeroQuestoesPagina ";
+$sqlA = "SELECT * FROM `avaliacao` a RIGHT JOIN perguntas p ON a.`numquestao` = p.idperguntas where `idpaciente` = '$idPaciente' AND `idavaliacao` = '$idAvaliacao' AND `avaliacaoRealizada` = 0  ORDER BY id LIMIT 0, 1 ";
 $queryA = mysqli_query($conn, $sqlA);
 
 ?>
@@ -61,11 +78,10 @@ $queryA = mysqli_query($conn, $sqlA);
         <!--<link rel="stylesheet" type="text/css" href="css/avaliacao.css">-->
         <!--Css Bootstrap5 --> 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-       <!--<script src="../js/eladeb.js"></script>  -->                     
-    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>           
+
     </head>
-    <body >  
+    <body>      
     <div class="container-fluid container-md mt-3 border">
     <main role="main" class="container">
      <div class="row">
@@ -95,7 +111,7 @@ $queryA = mysqli_query($conn, $sqlA);
                             echo "<td class="."text-center".">".'<img width="400" height="400" src="data:image/jpeg;charset=utf8;base64,'.base64_encode( $imagemQuestao).'"/>'."</td>";
                           echo"</tr>"; 
                           echo "<tr>";                          
-                            echo "<th>".'<button type="button"  onclick="qnp(); paginacaoAvaliacao()" id="botaoA" value="0" name="problema" class="btn btn-success btn-lg ">NÃO PROBLEMA</button>'."</th>";
+                            echo "<th>".'<button type="button"  onclick="qnp(); paginacaoAvaliacao()" id="botaoA" value="0" name="nproblema" class="btn btn-success btn-lg ">NÃO PROBLEMA</button>'."</th>";
                             echo "<th>".'<button type="button"  onclick="qp(); paginacaoAvaliacao()" id="botaoB" value="1" name="problema" class="btn btn-warning btn-lg ">PROBLEMA</button> '."</th>";
                           echo"</tr>";                      
                         }
@@ -106,12 +122,8 @@ $queryA = mysqli_query($conn, $sqlA);
         </div>
      </div>
 </main>
-
+    <script src="../../js/gameEladeb.js"></script>  
   
-    <script type="text/javascript" src="../../js/gameEladeb.js">
-        //recebePaciente(idfisioterapeuta_javascript, idpaciente_javascript,idavaliacao_javascript);
-        //nextImage();
-    </script>
     <script>
         function qnp(){
         questoesNaoProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao);
@@ -120,10 +132,9 @@ $queryA = mysqli_query($conn, $sqlA);
         function qp(){
         questoesProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao);
         }
-        
-        function paginacaoAvaliacao(){        
-            window.open('<?php echo "?pag=".($numeroQuestaoExibir + 1);?>','_self');
-        }
+
+        function paginacaoAvaliacao(){            
+                      window.open('<?php  echo "?pag=".($numeroQuestaoExibir + 1) ; ?>','_self');} 
     </script>  
     
     </body>

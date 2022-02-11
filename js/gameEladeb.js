@@ -36,28 +36,29 @@ function selecionaGrupoPontucao(numeroQuestaoX){
         case 1:
         case 2:
         case 3:
+        case 4:
             return grupoPontuacao = 1;
             break;
-        case 4:
         case 5:
         case 6:
         case 7:
         case 8:
+        case 9:
             return grupoPontuacao = 2;
             break;
-        case 9:
         case 10:
         case 11:
         case 12:
-            return grupoPontuacao = 3;
-            break;
         case 13:
+            return grupoPontuacao = 3;
+            break;        
         case 14:
         case 15:
         case 16:
         case 17:
         case 18:
         case 19:
+        case 20:
             return grupoPontuacao = 4;
             break;
         default:
@@ -84,7 +85,6 @@ function questoesNaoProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao) {
     //
     enviaServidorPhp(jsonA);
     console.log(jsonA);
-    //nextImage();
     return true;
 }
 
@@ -102,11 +102,10 @@ function questoesProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao) {
     //questoesProblemaObj.avaliacaoRealizada = 1;
 
     //Converte para JSON
-    jsonA = JSON.stringify(questoesProblemaObj);
+    jsonB = JSON.stringify(questoesProblemaObj);
 
     //
-    enviaServidorPhp(jsonA);
-    console.log(jsonA);
-    //nextImage();
+    enviaServidorPhp(jsonB);
+    console.log(jsonB);
     return true;
 }
