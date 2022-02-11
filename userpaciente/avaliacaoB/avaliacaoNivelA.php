@@ -60,8 +60,8 @@ $numeroQuestoesPagina = 1; //Numero de questões por pagina
 //Formula da paginação //// LIMIT 0,1 /// LIMIT $numeroQuestaoExibir , $numeroQuestoesPagina
 $numeroQuestaoExibir  = ($numeroQuestaoExibir-1) * $numeroQuestoesPagina;
 
-echo $totalPaginasNaoResp;
-echo $numeroQuestaoExibir;
+//echo $totalPaginasNaoResp;
+//echo $numeroQuestaoExibir;
 
 //Seleciona as perguntas do paciente para um determinado cenario
 include('../../controller/conexaoDataBaseV2.php');

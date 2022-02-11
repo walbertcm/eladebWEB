@@ -20,13 +20,13 @@ $idavaliacao = $jsonA->avaliacao;
 $resultado = $jsonA->resultado;
 $grupoPontuacao  = $jsonA->grupoPontuacao;
 //$avaliacaoRealizada = $jsonA->avaliacaoRealizada;
-//$etapa      = $jsonA->etapa;
+$etapa      = $jsonA->etapa;
 
 
 //Condição para tratar o SQL e realizar o insert no banco de dados
 if(!empty($idpaciente)){  
    
-   $sqlA= "UPDATE `avaliacao` SET resultado='$resultado', `grupopontuacao`= '$grupoPontuacao',`avaliacaoRealizada`= 1
+   $sqlA= "UPDATE `avaliacao` SET etapa='$etapa', resultado='$resultado', `grupopontuacao`= '$grupoPontuacao',`avaliacaoRealizada`= 1
    WHERE `idavaliacao` = '$idavaliacao' AND `idpaciente` = '$idpaciente' AND `id` = '$idQuestao'  ";
    
    //$sqlA = "INSERT INTO `avaliacao` (`id`, `idavaliacao`, `idcenario`, `idfisioterapeuta`, `idpaciente`, `etapa`, `numquestao`, `resultado`, `grupopontuacao`, `datahora`) 

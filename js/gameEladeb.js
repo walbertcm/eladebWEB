@@ -14,8 +14,9 @@ let questoesProblemaObj =
     avaliacao:null,
     resultado:null,    
     grupoPontuacao: null, 
+    etapa: null,  
     //terapeuta:null,
-    //etapa: null,  
+    
 };
 
 
@@ -77,7 +78,7 @@ function questoesNaoProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao) {
     questoesProblemaObj.avaliacao = idAvaliacao;
     questoesProblemaObj.resultado = resultado;
     questoesProblemaObj.grupoPontuacao = grupoPontuacao;
-    //questoesProblemaObj.avaliacaoRealizada = 1;
+    questoesProblemaObj.etapa = 1;
 
     //Converte para JSON
     jsonA = JSON.stringify(questoesProblemaObj);
@@ -99,13 +100,13 @@ function questoesProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao) {
     questoesProblemaObj.avaliacao = idAvaliacao;
     questoesProblemaObj.resultado = resultado;
     questoesProblemaObj.grupoPontuacao = grupoPontuacao;
-    //questoesProblemaObj.avaliacaoRealizada = 1;
+    questoesProblemaObj.etapa = 1;
 
     //Converte para JSON
     jsonB = JSON.stringify(questoesProblemaObj);
 
     //
     enviaServidorPhp(jsonB);
-    console.log(jsonB);
+    //console.log(jsonB);
     return true;
 }
