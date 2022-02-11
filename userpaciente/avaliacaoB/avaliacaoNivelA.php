@@ -44,7 +44,7 @@ function calculaNumQuestoesNaoRespondidas($idPacienteD, $idAvaliacaoD){
 $totalPaginasNaoResp = calculaNumQuestoesNaoRespondidas($idPaciente, $idAvaliacao);
 
 if($totalPaginasNaoResp == 0){
-    header("Location: www.google.com");
+    header("Location: ../avaliacaoB/avaliacaoNivelB.php");
 }
 
 //Obter o valor da paginação por GET
