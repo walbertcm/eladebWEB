@@ -1,0 +1,13 @@
+"filename", "language", "PHP", "HTML", "comment", "blank", "total"
+"c:\xampp\htdocs\eladeb\useradministrador\deplyment\cadFisioterapeuta.php", "PHP", 23, 0, 0, 7, 30
+"c:\xampp\htdocs\eladeb\useradministrador\deplyment\cadastrarFisioterapeuta.html", "HTML", 0, 32, 0, 3, 35
+"c:\xampp\htdocs\eladeb\useradministrador\deplyment\exibirFisioterapeuta.php", "PHP", 36, 0, 0, 7, 43
+"c:\xampp\htdocs\eladeb\useradministrador\deplyment\exibirFisioterapeutaPaciente.html", "HTML", 0, 28, 2, 0, 30
+"c:\xampp\htdocs\eladeb\useradministrador\include\navbarAdministrador.html", "HTML", 0, 37, 3, 3, 43
+"c:\xampp\htdocs\eladeb\useradministrador\pacienteCadastrar.php", "PHP", 64, 0, 3, 8, 75
+"c:\xampp\htdocs\eladeb\useradministrador\pacienteCadastrarBack.php", "PHP", 22, 0, 2, 7, 31
+"c:\xampp\htdocs\eladeb\useradministrador\pacienteExibir.php", "PHP", 75, 0, 5, 12, 92
+"c:\xampp\htdocs\eladeb\useradministrador\principaladministrador.php", "PHP", 29, 0, 2, 6, 37
+"c:\xampp\htdocs\eladeb\useradministrador\terapeutaCadastrar.php", "PHP", 0, 0, 0, 1, 1
+"c:\xampp\htdocs\eladeb\useradministrador\terapeutaExibir.php", "PHP", 60, 0, 5, 11, 76
+"Total", "-", 309, 97, 22, 65, 493

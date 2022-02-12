@@ -1,0 +1,112 @@
+Date : 2022-02-12 10:56:20
+Directory : c:\xampp\htdocs\eladeb
+Total : 69 files,  4015 codes, 361 comments, 626 blanks, all 5002 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| PHP                |         51 |      3,111 |        212 |        504 |      3,827 |
+| JavaScript         |          4 |        480 |        119 |         90 |        689 |
+| HTML               |          9 |        300 |         29 |         31 |        360 |
+| CSS                |          3 |        108 |          1 |          1 |        110 |
+| JSON with Comments |          2 |         16 |          0 |          0 |         16 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                 | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                    |         69 |      4,015 |        361 |        626 |      5,002 |
+| controller                                                                           |          3 |         57 |          6 |         11 |         74 |
+| css                                                                                  |          3 |        108 |          1 |          1 |        110 |
+| js                                                                                   |          4 |        480 |        119 |         90 |        689 |
+| trash                                                                                |          5 |        209 |          5 |         39 |        253 |
+| useradministrador                                                                    |         11 |        406 |         22 |         65 |        493 |
+| useradministrador\deplyment                                                          |          4 |        119 |          2 |         17 |        138 |
+| useradministrador\include                                                            |          1 |         37 |          3 |          3 |         43 |
+| userpaciente                                                                         |         15 |        708 |         89 |        155 |        952 |
+| userpaciente\avaliacaoB                                                              |          2 |         99 |         28 |         22 |        149 |
+| userpaciente\avaliacao_a                                                             |          6 |        292 |         23 |         60 |        375 |
+| userpaciente\include                                                                 |          2 |         62 |         18 |         12 |         92 |
+| userpaciente\old_files                                                               |          2 |         70 |          6 |         24 |        100 |
+| userterapeuta                                                                        |         23 |      1,862 |         96 |        229 |      2,187 |
+| userterapeuta\deployment                                                             |         10 |        319 |         14 |         65 |        398 |
+| userterapeuta\include                                                                |          1 |         30 |          8 |          3 |         41 |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                             | language           | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| c:\xampp\htdocs\eladeb\controller\conexaoBancoDados.php                              | PHP                |         11 |          3 |          2 |         16 |
+| c:\xampp\htdocs\eladeb\controller\conexaoDataBaseV2.php                              | PHP                |         11 |          3 |          2 |         16 |
+| c:\xampp\htdocs\eladeb\controller\dataBaseController.php                             | PHP                |         35 |          0 |          7 |         42 |
+| c:\xampp\htdocs\eladeb\css\avaliacao.css                                             | CSS                |         11 |          1 |          1 |         13 |
+| c:\xampp\htdocs\eladeb\css\configLogin.css                                           | CSS                |         96 |          0 |          0 |         96 |
+| c:\xampp\htdocs\eladeb\css\util.css                                                  | CSS                |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\eladeb\eladeb.code-workspace                                         | JSON with Comments |          8 |          0 |          0 |          8 |
+| c:\xampp\htdocs\eladeb\index.html                                                    | HTML               |         75 |          4 |         10 |         89 |
+| c:\xampp\htdocs\eladeb\indexBack.php                                                 | PHP                |         73 |         12 |         18 |        103 |
+| c:\xampp\htdocs\eladeb\js\ajax-script.js                                             | JavaScript         |         16 |          0 |          1 |         17 |
+| c:\xampp\htdocs\eladeb\js\eladeb.js                                                  | JavaScript         |        385 |         98 |         74 |        557 |
+| c:\xampp\htdocs\eladeb\js\gameEladeb.js                                              | JavaScript         |         78 |         20 |         14 |        112 |
+| c:\xampp\htdocs\eladeb\js\jquery-3.6.0.min.js                                        | JavaScript         |          1 |          1 |          1 |          3 |
+| c:\xampp\htdocs\eladeb\logout.php                                                    | PHP                |         21 |          7 |          8 |         36 |
+| c:\xampp\htdocs\eladeb\trash\avaliacaoA.php                                          | PHP                |         81 |          1 |          9 |         91 |
+| c:\xampp\htdocs\eladeb\trash\avaliacaoControllerSelPaciente.php                      | PHP                |         19 |          0 |          4 |         23 |
+| c:\xampp\htdocs\eladeb\trash\avaliacaoRelatorio.php                                  | PHP                |         15 |          1 |          8 |         24 |
+| c:\xampp\htdocs\eladeb\trash\avaliacaoRelatorioB.html                                | HTML               |         10 |          0 |          2 |         12 |
+| c:\xampp\htdocs\eladeb\trash\avaliacaoSelecionarPaciente.php                         | PHP                |         84 |          3 |         16 |        103 |
+| c:\xampp\htdocs\eladeb\useradministrador\deplyment\cadFisioterapeuta.php             | PHP                |         23 |          0 |          7 |         30 |
+| c:\xampp\htdocs\eladeb\useradministrador\deplyment\cadastrarFisioterapeuta.html      | HTML               |         32 |          0 |          3 |         35 |
+| c:\xampp\htdocs\eladeb\useradministrador\deplyment\exibirFisioterapeuta.php          | PHP                |         36 |          0 |          7 |         43 |
+| c:\xampp\htdocs\eladeb\useradministrador\deplyment\exibirFisioterapeutaPaciente.html | HTML               |         28 |          2 |          0 |         30 |
+| c:\xampp\htdocs\eladeb\useradministrador\include\navbarAdministrador.html            | HTML               |         37 |          3 |          3 |         43 |
+| c:\xampp\htdocs\eladeb\useradministrador\pacienteCadastrar.php                       | PHP                |         64 |          3 |          8 |         75 |
+| c:\xampp\htdocs\eladeb\useradministrador\pacienteCadastrarBack.php                   | PHP                |         22 |          2 |          7 |         31 |
+| c:\xampp\htdocs\eladeb\useradministrador\pacienteExibir.php                          | PHP                |         75 |          5 |         12 |         92 |
+| c:\xampp\htdocs\eladeb\useradministrador\principaladministrador.php                  | PHP                |         29 |          2 |          6 |         37 |
+| c:\xampp\htdocs\eladeb\useradministrador\terapeutaCadastrar.php                      | PHP                |          0 |          0 |          1 |          1 |
+| c:\xampp\htdocs\eladeb\useradministrador\terapeutaExibir.php                         | PHP                |         60 |          5 |         11 |         76 |
+| c:\xampp\htdocs\eladeb\userpaciente\avaliacaoA.php                                   | PHP                |         53 |          7 |         12 |         72 |
+| c:\xampp\htdocs\eladeb\userpaciente\avaliacaoB\avaliacaoNivelA.php                   | PHP                |         95 |         28 |         22 |        145 |
+| c:\xampp\htdocs\eladeb\userpaciente\avaliacaoB\avaliacaoNivelB.php                   | PHP                |          4 |          0 |          0 |          4 |
+| c:\xampp\htdocs\eladeb\userpaciente\avaliacao_a\avaliacaoA.php                       | PHP                |         73 |          7 |         17 |         97 |
+| c:\xampp\htdocs\eladeb\userpaciente\avaliacao_a\avaliacaoAget.php                    | PHP                |         15 |          8 |          6 |         29 |
+| c:\xampp\htdocs\eladeb\userpaciente\avaliacao_a\avaliacaoC.php                       | PHP                |         53 |          2 |         11 |         66 |
+| c:\xampp\htdocs\eladeb\userpaciente\avaliacao_a\avaliacaoCA.php                      | PHP                |         56 |          3 |         10 |         69 |
+| c:\xampp\htdocs\eladeb\userpaciente\avaliacao_a\avaliacaoCB.php                      | PHP                |         38 |          1 |          5 |         44 |
+| c:\xampp\htdocs\eladeb\userpaciente\avaliacao_a\avaliacaoCC.php                      | PHP                |         57 |          2 |         11 |         70 |
+| c:\xampp\htdocs\eladeb\userpaciente\classAvaliacao.php                               | PHP                |         18 |          0 |          6 |         24 |
+| c:\xampp\htdocs\eladeb\userpaciente\include\avaliacaoControllerCad.php               | PHP                |         36 |          6 |          9 |         51 |
+| c:\xampp\htdocs\eladeb\userpaciente\include\navbarPaciente.html                      | HTML               |         26 |         12 |          3 |         41 |
+| c:\xampp\htdocs\eladeb\userpaciente\old_files\avaliacaor.php                         | PHP                |         35 |          2 |         12 |         49 |
+| c:\xampp\htdocs\eladeb\userpaciente\old_files\principalavaliacao.php                 | PHP                |         35 |          4 |         12 |         51 |
+| c:\xampp\htdocs\eladeb\userpaciente\principalpaciente.php                            | PHP                |        114 |          7 |         19 |        140 |
+| c:\xampp\htdocs\eladeb\userterapeuta\cenarioCadastrar.php                            | PHP                |         80 |          3 |         10 |         93 |
+| c:\xampp\htdocs\eladeb\userterapeuta\cenarioCadastrarBack.php                        | PHP                |         40 |          4 |         10 |         54 |
+| c:\xampp\htdocs\eladeb\userterapeuta\cenarioDetalhes.php                             | PHP                |         68 |          5 |          9 |         82 |
+| c:\xampp\htdocs\eladeb\userterapeuta\cenarioExibir.php                               | PHP                |         77 |          5 |          9 |         91 |
+| c:\xampp\htdocs\eladeb\userterapeuta\deployment\cadCenario.php                       | PHP                |         12 |          1 |          7 |         20 |
+| c:\xampp\htdocs\eladeb\userterapeuta\deployment\cadConsulta.php                      | PHP                |         41 |          0 |          5 |         46 |
+| c:\xampp\htdocs\eladeb\userterapeuta\deployment\cadPaciente.php                      | PHP                |         20 |          0 |          7 |         27 |
+| c:\xampp\htdocs\eladeb\userterapeuta\deployment\cadastrarCenario.php                 | PHP                |         69 |          8 |         16 |         93 |
+| c:\xampp\htdocs\eladeb\userterapeuta\deployment\cadastrarPaciente.html               | HTML               |         35 |          0 |          4 |         39 |
+| c:\xampp\htdocs\eladeb\userterapeuta\deployment\cadastrarPerguntas.html              | HTML               |         27 |          0 |          3 |         30 |
+| c:\xampp\htdocs\eladeb\userterapeuta\deployment\excluirPerguntas.php                 | PHP                |          9 |          1 |          3 |         13 |
+| c:\xampp\htdocs\eladeb\userterapeuta\deployment\exibirCenarioMid.php                 | PHP                |         33 |          3 |          7 |         43 |
+| c:\xampp\htdocs\eladeb\userterapeuta\deployment\exibirPaciente.php                   | PHP                |         39 |          0 |          7 |         46 |
+| c:\xampp\htdocs\eladeb\userterapeuta\deployment\exibirPerguntas.php                  | PHP                |         34 |          1 |          6 |         41 |
+| c:\xampp\htdocs\eladeb\userterapeuta\include\navbarTerapeuta.html                    | HTML               |         30 |          8 |          3 |         41 |
+| c:\xampp\htdocs\eladeb\userterapeuta\pacienteAssociar.php                            | PHP                |         63 |          5 |          9 |         77 |
+| c:\xampp\htdocs\eladeb\userterapeuta\pacienteAssociarBack.php                        | PHP                |         37 |          6 |         11 |         54 |
+| c:\xampp\htdocs\eladeb\userterapeuta\perguntaCadastrar.php                           | PHP                |         72 |          4 |         10 |         86 |
+| c:\xampp\htdocs\eladeb\userterapeuta\perguntaCadastrarBack.php                       | PHP                |         33 |          2 |          9 |         44 |
+| c:\xampp\htdocs\eladeb\userterapeuta\perguntaExibir.php                              | PHP                |         65 |          4 |          8 |         77 |
+| c:\xampp\htdocs\eladeb\userterapeuta\principalterapeuta.php                          | PHP                |         81 |          6 |         11 |         98 |
+| c:\xampp\htdocs\eladeb\userterapeuta\resultadoExibir.php                             | PHP                |         88 |          3 |         15 |        106 |
+| c:\xampp\htdocs\eladeb\userterapeuta\resultadoTabelaPontos.php                       | PHP                |        809 |         27 |         50 |        886 |
+| c:\xampp\htdocs\eladeb\workspace-eladebV1.code-workspace                             | JSON with Comments |          8 |          0 |          0 |          8 |
+| Total                                                                                |                    |      4,015 |        361 |        626 |      5,002 |
++--------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+

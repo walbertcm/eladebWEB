@@ -1,0 +1,38 @@
+Date : 2022-02-12 10:52:57
+Directory : c:\xampp\htdocs\eladeb\useradministrador
+Total : 11 files,  406 codes, 22 comments, 65 blanks, all 493 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| PHP      |          8 |        309 |         17 |         59 |        385 |
+| HTML     |          3 |         97 |          5 |          6 |        108 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                 | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                    |         11 |        406 |         22 |         65 |        493 |
+| deplyment                                                                            |          4 |        119 |          2 |         17 |        138 |
+| include                                                                              |          1 |         37 |          3 |          3 |         43 |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                             | language | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\xampp\htdocs\eladeb\useradministrador\deplyment\cadFisioterapeuta.php             | PHP      |         23 |          0 |          7 |         30 |
+| c:\xampp\htdocs\eladeb\useradministrador\deplyment\cadastrarFisioterapeuta.html      | HTML     |         32 |          0 |          3 |         35 |
+| c:\xampp\htdocs\eladeb\useradministrador\deplyment\exibirFisioterapeuta.php          | PHP      |         36 |          0 |          7 |         43 |
+| c:\xampp\htdocs\eladeb\useradministrador\deplyment\exibirFisioterapeutaPaciente.html | HTML     |         28 |          2 |          0 |         30 |
+| c:\xampp\htdocs\eladeb\useradministrador\include\navbarAdministrador.html            | HTML     |         37 |          3 |          3 |         43 |
+| c:\xampp\htdocs\eladeb\useradministrador\pacienteCadastrar.php                       | PHP      |         64 |          3 |          8 |         75 |
+| c:\xampp\htdocs\eladeb\useradministrador\pacienteCadastrarBack.php                   | PHP      |         22 |          2 |          7 |         31 |
+| c:\xampp\htdocs\eladeb\useradministrador\pacienteExibir.php                          | PHP      |         75 |          5 |         12 |         92 |
+| c:\xampp\htdocs\eladeb\useradministrador\principaladministrador.php                  | PHP      |         29 |          2 |          6 |         37 |
+| c:\xampp\htdocs\eladeb\useradministrador\terapeutaCadastrar.php                      | PHP      |          0 |          0 |          1 |          1 |
+| c:\xampp\htdocs\eladeb\useradministrador\terapeutaExibir.php                         | PHP      |         60 |          5 |         11 |         76 |
+| Total                                                                                |          |        406 |         22 |         65 |        493 |
++--------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
