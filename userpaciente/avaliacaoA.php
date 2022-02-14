@@ -18,6 +18,17 @@ $idAvaliacao = $_GET['idav'];
 $_SESSION["idpaciente"] = $idPaciente;
 $_SESSION["idavaliacao"] = $idAvaliacao;
 
+
+/* function calculaNumQuestoesNaoRespondidasFaseA($idPacienteD, $idAvaliacaoD){
+    include('../../controller/conexaoDataBaseV2.php');
+    $sqlD = "SELECT `idavaliacao` FROM `avaliacao` where `idpaciente` = '$idPacienteD' AND `idavaliacao` = '$idAvaliacaoD' AND  `avaliacaoRealizada` = 0 AND `etapa` = 1";
+    $queryD = mysqli_query($conn, $sqlD);
+    $numQuestoesNaoResolvidasFaseA = mysqli_num_rows($queryD);
+    return $numQuestoesNaoResolvidasFaseA;
+} */
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -32,12 +43,6 @@ $_SESSION["idavaliacao"] = $idAvaliacao;
         <!--Css Bootstrap5 --> 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="js/eladeb.js"></script>  
-       <script>
-            /* var idfisioterapeuta_javascript = "<?php echo $idfisioterapeuta;?>";
-            var idpaciente_javascript = "<?php echo $idpaciente;?>";
-            var idavaliacao_javascript = "<?php echo $idavaliacao;?>"; */
-       </script>
                       
     </head>
     <body>
@@ -53,11 +58,11 @@ $_SESSION["idavaliacao"] = $idAvaliacao;
         }
     </script>
 
-    <div class="container-fluid container-md mt-3 border">
+    <div class="container-fluid container-md mt-3 ">
         <div>
             <h2 class="text-center">Instruções</h2>
         </div>
-        <h2 style="color: white;">Carta Número: <h1 id="counter-label" class="text-left" style="color: white;"> 0 </h1> </h2><br>                   
+
         <img id="images" width="400" height="400" class="mx-auto d-block"></img><br>
         
         <div class="text-center">

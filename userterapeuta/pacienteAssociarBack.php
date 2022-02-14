@@ -22,13 +22,13 @@ function calculaIdAvaliacao($idPacienteA){
     $sqlC = "SELECT MAX(`idavaliacao`) as idAvaliacao FROM `avaliacao` WHERE `idpaciente` = $idPacienteA";
     $queryC=mysqli_query($conn,$sqlC);
     while($dadoC = mysqli_fetch_array($queryC)){
-        $idAvaliacaoX = $dadoC['idAvaliacao'];
-        return  ($idAvaliacaoX + 1);
+        $novoIdAvaliacaoX = $dadoC['idAvaliacao'];
+        return  ($novoIdAvaliacaoX + 1);
     }
 }
 
 //Constroi avaliação
-function insereAvaliação($idAvaliacaoA, $idCenarioA, $idTerapeutaA, $idPacienteA, $numQuestaoA){
+function insereAvaliaçãoNivelA($idAvaliacaoA, $idCenarioA, $idTerapeutaA, $idPacienteA, $numQuestaoA){
     include('../controller/conexaoDataBaseV2.php');
     $sqlD = "INSERT INTO `avaliacao`(`idavaliacao`, `idcenario`, `idterapeuta`, `idpaciente`, `etapa`, `numquestao`, `resultado`, `avaliacaoRealizada`) VALUES 
     ('$idAvaliacaoA','$idCenarioA','$idTerapeutaA','$idPacienteA',1,'$numQuestaoA',0,0)  ";
@@ -40,7 +40,7 @@ function insereAvaliação($idAvaliacaoA, $idCenarioA, $idTerapeutaA, $idPacient
 
 include('../controller/conexaoDataBaseV2.php');
 
-$idAvaliacaoY = calculaIdAvaliacao($idPaciente);
+$novoIdAvaliacaoY = calculaIdAvaliacao($idPaciente);
 
 $sqlB = "SELECT `idcenario`,`idpergunta` FROM `cenarioPerguntas` WHERE `idcenario` = $idCenario;  ";
 
@@ -48,7 +48,7 @@ $queryB=mysqli_query($conn,$sqlB);
 
 while($dadoB = mysqli_fetch_array($queryB)){
     $idperguntaX = $dadoB['idpergunta'];
-    insereAvaliação($idAvaliacaoY, $idCenario, $idTerapeuta, $idPaciente, $idperguntaX);
+    insereAvaliaçãoNivelA($novoIdAvaliacaoY, $idCenario, $idTerapeuta, $idPaciente, $idperguntaX);
 }
 header("Location: ../userterapeuta/principalterapeuta.php?");
 ?>

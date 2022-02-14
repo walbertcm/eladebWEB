@@ -32,20 +32,20 @@ $numeroQuestoesTotais = calculaNumQuestoesTotal($idPaciente,$idAvaliacao); */
     return $numQuestoesResolvidas;
 } */
 
-function calculaNumQuestoesNaoRespondidasNivelA($idPacienteD, $idAvaliacaoD){
+function calculaNumQuestoesNaoRespondidasNivelC($idPacienteD, $idAvaliacaoD){
     include('../../controller/conexaoDataBaseV2.php');
     $numQuestoesNaoResolvidas=0;
-    $sqlD = "SELECT `idavaliacao` FROM `avaliacao` where `idpaciente` = '$idPacienteD' AND `idavaliacao` = '$idAvaliacaoD' AND `etapa` = 1 AND `avaliacaoRealizada` = 0 ";
+    $sqlD = "SELECT `idavaliacao` FROM `avaliacao` where `idpaciente` = '$idPacienteD' AND `idavaliacao` = '$idAvaliacaoD' AND `etapa` = 3 AND `avaliacaoRealizada` = 0 ";
     $queryD = mysqli_query($conn, $sqlD);
-    $numQuestoesNaoResolvidas = 0;//mysqli_num_rows($queryD);
+    $numQuestoesNaoResolvidas = mysqli_num_rows($queryD);
     return $numQuestoesNaoResolvidas;
 }
 
 //Calcula o total de paginas
-$totalPaginasNaoRespNivelA = calculaNumQuestoesNaoRespondidasNivelA($idPaciente, $idAvaliacao);
+$totalPaginasNaoRespNivelC = calculaNumQuestoesNaoRespondidasNivelC($idPaciente, $idAvaliacao);
 
-if($totalPaginasNaoRespNivelA == 0){
-    header("Location: ../avaliacaoB/avaliacaoNivelB.php");
+if($totalPaginasNaoRespNivelC == 0){
+    header("Location: ../avaliacaoB/avaliacaoNivelD.php");
 }
 
 //Obter o valor da paginação por GET
@@ -66,7 +66,7 @@ $numeroQuestaoExibir  = ($numeroQuestaoExibir-1) * $numeroQuestoesPagina;
 
 //Seleciona as perguntas do paciente para um determinado cenario
 include('../../controller/conexaoDataBaseV2.php');
-$sqlA = "SELECT * FROM `avaliacao` a RIGHT JOIN perguntas p ON a.`numquestao` = p.idperguntas where `idpaciente` = '$idPaciente' AND `idavaliacao` = '$idAvaliacao' AND `avaliacaoRealizada` = 0 AND `etapa` = 1 ORDER BY id LIMIT 0, 1 ";
+$sqlA = "SELECT * FROM `avaliacao` a RIGHT JOIN perguntas p ON a.`numquestao` = p.idperguntas where `idpaciente` = '$idPaciente' AND `idavaliacao` = '$idAvaliacao' AND `avaliacaoRealizada` = 0 AND `etapa` = 3 ORDER BY id LIMIT 0, 1 ";
 $queryA = mysqli_query($conn, $sqlA);
 
 ?>
@@ -112,8 +112,8 @@ $queryA = mysqli_query($conn, $sqlA);
                             echo "<td>".'<img width="400" height="400" src="data:image/jpeg;charset=utf8;base64,'.base64_encode( $imagemQuestao).'"/>'."</td>";
                           echo"</tr>"; 
                           echo "<tr class="."text-center".">";                          
-                            echo "<th>".'<button type="button"  onclick="qnp(); paginacaoAvaliacao()" id="botaoA" value="0" name="nproblema" class="btn btn-success btn-lg ">NÃO PROBLEMA</button>'."</th>";
-                            echo "<th>".'<button type="button"  onclick="qp(); paginacaoAvaliacao()" id="botaoB" value="1" name="problema" class="btn btn-warning btn-lg ">PROBLEMA</button> '."</th>";
+                            echo "<th>".'<button type="button"  onclick="qnp(); paginacaoAvaliacao()" id="botaoCA" value="0" name="nproblema" class="btn btn-success btn-lg ">NÃO HÁ NECESSIDADE <br> AJUDA ADICIONAL</button>'."</th>";
+                            echo "<th>".'<button type="button"  onclick="qp(); paginacaoAvaliacao()" id="botaoCB" value="1" name="problema" class="btn btn-warning btn-lg "  >PRECISO DE AJUDA <br> ADICIONAL</button> '."</th>";
                           echo"</tr>";                      
                         }
                     ?> 
@@ -128,11 +128,11 @@ $queryA = mysqli_query($conn, $sqlA);
   
     <script>
         function qnp(){
-        questoesNaoProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao);
+            questoesProblemaCA(idQuestao, idPaciente, idAvaliacao, numQuestao);
         }
 
         function qp(){
-        questoesProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao);
+            questoesProblemaCB(idQuestao, idPaciente, idAvaliacao, numQuestao);
         }
 
         function paginacaoAvaliacao(){            
