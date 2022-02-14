@@ -80,49 +80,35 @@ $queryA = mysqli_query($conn, $sqlA);
         <!--Css Bootstrap5 --> 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>           
-
     </head>
     <body>      
-    <div class="container-fluid container-md mt-3">
-    <main role="main" class="container">
-     <div class="row">
-        <div class="col-md-12">
-            <div class="table-responsive">
-                <table id="mytable" class="table "> 
-                    <tbody class="text-center">
-                    <?php 
+    <div class="container" >
+    <div class="row justify-content-md-center"> 
+        <br><br>
+    <?php 
                         while($dadosA=mysqli_fetch_array($queryA)){ 
                             $tituloQuestao =  $dadosA['numquestao'];
-                            //$idPacienteD = $idPacienteE = $dadosA['idpaciente'];
-                            //$idAvaliacaoD = $idAvaliacaoE = $dadosA['idavaliacao'];
-                    ?>
+                            $imagemQuestao = $dadosA['imagem'];
+                            echo $tituloQuestao;
+        ?>  
                              <script>
                                 var idQuestao =   "<?php echo $dadosA['id'];?>";
                                 var idPaciente =  "<?php echo $dadosA['idpaciente'];?>";
                                 var idAvaliacao = "<?php echo $dadosA['idavaliacao'];?>";
                                 var numQuestao =  "<?php echo $dadosA['numquestao'];?>";
                             </script> 
-
-                    <?php
-                        $imagemQuestao = $dadosA['imagem'];                                                                  
-                        echo "<tr class="."text-center".">"; 
-                            echo "<td class="."text-center".">".$tituloQuestao."</td>";
-                          echo"</tr>"; 
-                          echo "<tr>"; 
-                            echo "<td>".'<img width="400" height="400" src="data:image/jpeg;charset=utf8;base64,'.base64_encode( $imagemQuestao).'"/>'."</td>";
-                          echo"</tr>"; 
-                          echo "<tr class="."text-center".">";                          
-                            echo "<th>".'<button type="button"  onclick="qnp(); paginacaoAvaliacao()" id="botaoCA" value="0" name="nproblema" class="btn btn-success btn-lg ">NÃO HÁ NECESSIDADE <br> AJUDA ADICIONAL</button>'."</th>";
-                            echo "<th>".'<button type="button"  onclick="qp(); paginacaoAvaliacao()" id="botaoCB" value="1" name="problema" class="btn btn-warning btn-lg "  >PRECISO DE AJUDA <br> ADICIONAL</button> '."</th>";
-                          echo"</tr>";                      
-                        }
-                    ?> 
-                    </tbody>
-                </table>               
-            </div>
+    <br><br><br>
     </div>
-     </div>
-    </main>
+    <div class="row justify-content-md-center">
+        <div class="col"><br></div>
+        <div class="col-md-auto"><?php echo '<img width="400" height="400" src="data:image/jpeg;charset=utf8;base64,'.base64_encode( $imagemQuestao).'"/>';  } ?> <br><br><br></div>
+        <div class="col"> <br><br></div>
+    </div>
+    <div class="row justify-content-around" >
+        <div class="col-md-auto"></div>
+        <div class="col-md-auto"><button type="button"  onclick="qnp(); paginacaoAvaliacao()" id="botaoCA" value="0" name="nproblema" class="btn btn-success btn-lg ">NÃO HÁ NECESSIDADE <br> AJUDA ADICIONAL</button></div>
+        <div class="col-md-auto"><button type="button"  onclick="qp(); paginacaoAvaliacao()" id="botaoCB" value="1" name="problema" class="btn btn-warning btn-lg "  >PRECISO DE AJUDA <br> ADICIONAL</button> </div>
+        <div class="col-md-auto"></div>
     </div>
     <script src="../../js/gameEladeb.js"></script>  
   

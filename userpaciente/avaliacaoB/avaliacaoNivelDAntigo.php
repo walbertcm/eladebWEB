@@ -52,6 +52,7 @@ $queryA = mysqli_query($conn, $sqlA);
 
 ?>
 
+
 <!DOCTYPE html>
 <head>
         <meta charset="UTF-8">
@@ -66,35 +67,55 @@ $queryA = mysqli_query($conn, $sqlA);
     </head>
     
     <body>
-    <div class="container" >
-    <div class="row justify-content-md-center"> 
-        <br><br>
-    <?php 
+    <div class="container-fluid">
+        <div class="row"> 
+        <?php 
                         while($dadosA=mysqli_fetch_array($queryA)){ 
                             $tituloQuestao =  $dadosA['numquestao'];
                             $imagemQuestao = $dadosA['imagem'];
-                            echo $tituloQuestao;
         ?>  
+
                              <script>
                                 var idQuestao =   "<?php echo $dadosA['id'];?>";
                                 var idPaciente =  "<?php echo $dadosA['idpaciente'];?>";
                                 var idAvaliacao = "<?php echo $dadosA['idavaliacao'];?>";
                                 var numQuestao =  "<?php echo $dadosA['numquestao'];?>";
                             </script> 
-    <br><br><br>
-    </div>
-    <div class="row justify-content-md-center">
-        <div class="col"><br></div>
-        <div class="col-md-auto"><?php echo '<img width="400" height="400" src="data:image/jpeg;charset=utf8;base64,'.base64_encode( $imagemQuestao).'"/>';  } ?> <br><br><br></div>
-        <div class="col"> <br><br></div>
-    </div>
-    <div class="row justify-content-around" >
         
-        <div class="col-6 col-md-3"><button type="button"  onclick="qpA(); paginacaoAvaliacao()" id="botaoDA" value="1" name="pni" class="btn btn-success btn-danger">PRECISO DE AJUDA <br>NÃO URGENTE <br>( MAIS DE 03 MESES )</button></div>
-        <div class="col-6 col-md-3"><button type="button"  onclick="qpB(); paginacaoAvaliacao()" id="botaoDB" value="2" name="pi"  class="btn btn-warning btn-danger">PRECISO DE AJUDA <br> MODERADAMENTE URGENTE <br>( ENTRE 01 E 03 MESES )</button></div>
-        <div class="col-6 col-md-3"><button type="button"  onclick="qpC(); paginacaoAvaliacao()" id="botaoDC" value="3" name="pmi" class="btn btn-warning btn-danger">PRECISO DE AJUDA <br>URGENTE <br>( DENTRO DE 30 DIAS )</button></div>
-   
-    </div>
+        <?php
+                          echo "<tr class="."text-center".">";
+                            echo "<td >".$tituloQuestao."</td>";
+                          echo"</tr>"; 
+        ?>  
+    
+        </div>
+        <div class="row">
+                    <?php
+                          echo "<tr>";
+                            echo "<td>".'<img width="100" height="100" src="data:image/jpeg;charset=utf8;base64,'.base64_encode( $imagemQuestao).'"/>'."</td>";
+                          echo"</tr>"; 
+                    ?>
+        </div>
+        
+        <div class="row">
+            <div class="col-6 col-md-4">
+                    <?php
+                        echo "<tr class="."text-center".">"; 
+                          echo "<div class="."col-6 col-md-4".">";                        
+                            echo "<tr>".'<button type="button"  onclick="qpA(); paginacaoAvaliacao()" id="botaoDA" value="1" name="pni" class="btn btn-success btn-danger">PRECISO DE AJUDA <br>NÃO URGENTE <br>( MAIS DE 03 MESES )</button>'."</tr>";
+                          echo "</div>" ;
+                          echo "<div class="."col-6 col-md-4".">";
+                            echo "<tr>".'<button type="button"  onclick="qpB(); paginacaoAvaliacao()" id="botaoDB" value="2" name="pi"  class="btn btn-warning btn-danger">PRECISO DE AJUDA <br> MODERADAMENTE URGENTE <br>( ENTRE 01 E 03 MESES )</button> '."</tr>";
+                        echo "<div class="."col-6 col-md-4".">";                        
+                            echo "<tr>".'<button type="button"  onclick="qpC(); paginacaoAvaliacao()" id="botaoDC" value="3" name="pmi" class="btn btn-warning btn-danger">PRECISO DE AJUDA <br>URGENTE <br>( DENTRO DE 30 DIAS )</button> '."</tr>";
+                        echo "</div>" ;
+                        echo"</tr>";                      
+                        }
+                    ?> 
+            </div>
+              
+        </div>
+       
     </div>
     <script src="../../js/gameEladeb.js"></script>  
   
@@ -114,7 +135,6 @@ $queryA = mysqli_query($conn, $sqlA);
         function paginacaoAvaliacao(){            
                         window.open('<?php  echo "?pag=".($numeroQuestaoExibir + 1) ; ?>','_self');} 
     </script>
-   
 
     </body>
 

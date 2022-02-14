@@ -37,7 +37,7 @@ function calculaNumQuestoesNaoRespondidasNivelA($idPacienteD, $idAvaliacaoD){
     $numQuestoesNaoResolvidas=0;
     $sqlD = "SELECT `idavaliacao` FROM `avaliacao` where `idpaciente` = '$idPacienteD' AND `idavaliacao` = '$idAvaliacaoD' AND `etapa` = 1 AND `avaliacaoRealizada` = 0 ";
     $queryD = mysqli_query($conn, $sqlD);
-    $numQuestoesNaoResolvidas = mysqli_num_rows($queryD);
+    $numQuestoesNaoResolvidas = 0;//mysqli_num_rows($queryD);
     return $numQuestoesNaoResolvidas;
 }
 
@@ -83,33 +83,46 @@ $queryA = mysqli_query($conn, $sqlA);
 
     </head>
     <body>      
-    <div class="container" >
-    <div class="row justify-content-md-center"> 
-        <br><br>
-    <?php 
+    <div class="container-fluid container-md mt-3">
+    <main role="main" class="container">
+     <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table id="mytable" class="table "> 
+                    <tbody class="text-center">
+                    <?php 
                         while($dadosA=mysqli_fetch_array($queryA)){ 
                             $tituloQuestao =  $dadosA['numquestao'];
-                            $imagemQuestao = $dadosA['imagem'];
-                            echo $tituloQuestao;
-        ?>  
+                            //$idPacienteD = $idPacienteE = $dadosA['idpaciente'];
+                            //$idAvaliacaoD = $idAvaliacaoE = $dadosA['idavaliacao'];
+                    ?>
                              <script>
                                 var idQuestao =   "<?php echo $dadosA['id'];?>";
                                 var idPaciente =  "<?php echo $dadosA['idpaciente'];?>";
                                 var idAvaliacao = "<?php echo $dadosA['idavaliacao'];?>";
                                 var numQuestao =  "<?php echo $dadosA['numquestao'];?>";
                             </script> 
-    <br><br><br>
+
+                    <?php
+                        $imagemQuestao = $dadosA['imagem'];                                                                  
+                        echo "<tr class="."text-center".">"; 
+                            echo "<td class="."text-center".">".$tituloQuestao."</td>";
+                          echo"</tr>"; 
+                          echo "<tr>"; 
+                            echo "<td>".'<img width="400" height="400" src="data:image/jpeg;charset=utf8;base64,'.base64_encode( $imagemQuestao).'"/>'."</td>";
+                          echo"</tr>"; 
+                          echo "<tr class="."text-center".">";                          
+                            echo "<th>".'<button type="button"  onclick="qnp(); paginacaoAvaliacao()" id="botaoA" value="0" name="nproblema" class="btn btn-success btn-lg ">NÃO PROBLEMA</button>'."</th>";
+                            echo "<th>".'<button type="button"  onclick="qp(); paginacaoAvaliacao()" id="botaoB" value="1" name="problema" class="btn btn-warning btn-lg ">PROBLEMA</button> '."</th>";
+                          echo"</tr>";                      
+                        }
+                    ?> 
+                    </tbody>
+                </table>               
+            </div>
     </div>
-    <div class="row justify-content-md-center">
-        <div class="col"><br></div>
-        <div class="col-md-auto"><?php echo '<img width="400" height="400" src="data:image/jpeg;charset=utf8;base64,'.base64_encode( $imagemQuestao).'"/>';  } ?> <br><br><br></div>
-        <div class="col"> <br><br></div>
-    </div>
-    <div class="row justify-content-around" >
-        <div class="col-md-auto"></div>
-        <div class="col-md-auto"><button type="button"  onclick="qnp(); paginacaoAvaliacao()" id="botaoA" value="0" name="nproblema" class="btn btn-success btn-lg ">NÃO PROBLEMA</button></div>
-        <div class="col-md-auto"><button type="button"  onclick="qp(); paginacaoAvaliacao()"  id="botaoB" value="1" name="problema" class="btn btn-warning btn-lg ">PROBLEMA</button></div>
-        <div class="col-md-auto"></div>
+     </div>
+    </main>
     </div>
     <script src="../../js/gameEladeb.js"></script>  
   
@@ -125,6 +138,7 @@ $queryA = mysqli_query($conn, $sqlA);
         function paginacaoAvaliacao(){            
                       window.open('<?php  echo "?pag=".($numeroQuestaoExibir + 1) ; ?>','_self');} 
     </script>  
+    
     </body>
 </html>
 

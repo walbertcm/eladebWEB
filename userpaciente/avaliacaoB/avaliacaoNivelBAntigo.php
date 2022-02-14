@@ -42,12 +42,15 @@ $numeroQuestoesPagina = 1; //Numero de questões por pagina
 //Formula da paginação //// LIMIT 0,1 /// LIMIT $numeroQuestaoExibir , $numeroQuestoesPagina
 $numeroQuestaoExibir  = ($numeroQuestaoExibir-1) * $numeroQuestoesPagina;
 
+
 //Seleciona as perguntas do paciente para a etapa 02
 include('../../controller/conexaoDataBaseV2.php');
 $sqlA = "SELECT * FROM `avaliacao` a RIGHT JOIN perguntas p ON a.`numquestao` = p.idperguntas where `idpaciente` = '$idPaciente' AND `idavaliacao` = '$idAvaliacao' AND `avaliacaoRealizada` = 0 AND `etapa` = 2   ORDER BY id LIMIT 0, 1 ";
 $queryA = mysqli_query($conn, $sqlA);
 
+
 ?>
+
 
 <!DOCTYPE html>
 <head>
@@ -63,34 +66,45 @@ $queryA = mysqli_query($conn, $sqlA);
     </head>
     
     <body>
-    <div class="container" >
-    <div class="row justify-content-md-center"> 
-        <br><br>
-    <?php 
+    <div class="container-fluid container-md mt-3 border">
+    <main role="main" class="container">
+     <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table id="mytable" class="table table-bordred"> 
+                    <tbody>
+                    <?php 
                         while($dadosA=mysqli_fetch_array($queryA)){ 
                             $tituloQuestao =  $dadosA['numquestao'];
-                            $imagemQuestao = $dadosA['imagem'];
-                            echo $tituloQuestao;
-        ?>  
+                    ?>
                              <script>
                                 var idQuestao =   "<?php echo $dadosA['id'];?>";
                                 var idPaciente =  "<?php echo $dadosA['idpaciente'];?>";
                                 var idAvaliacao = "<?php echo $dadosA['idavaliacao'];?>";
                                 var numQuestao =  "<?php echo $dadosA['numquestao'];?>";
                             </script> 
-    <br><br><br>
-    </div>
-    <div class="row justify-content-md-center">
-        <div class="col"><br></div>
-        <div class="col-md-auto"><?php echo '<img width="400" height="400" src="data:image/jpeg;charset=utf8;base64,'.base64_encode( $imagemQuestao).'"/>';  } ?> <br><br><br></div>
-        <div class="col"> <br><br></div>
-    </div>
-    <div class="row justify-content-around" >
 
-        <div class="col-4 "><button type="button"  onclick="qpA(); paginacaoAvaliacao()" id="botaoBA" value="1" name="pni" class="btn btn-success btn-danger">PROBLEMA<br>NÃO IMPORTANTE</button></div>
-        <div class="col-4 "><button type="button"  onclick="qpB(); paginacaoAvaliacao()" id="botaoBB" value="2" name="pi"  class="btn btn-warning btn-danger">PROBLEMA<br>IMPORTANTE</button></div>
-        <div class="col-4 "><button type="button"  onclick="qpC(); paginacaoAvaliacao()" id="botaoBC" value="3" name="pmi" class="btn btn-warning btn-danger">PROBLEMA<br> MUITO IMPORTANTE</button></div>
-
+                    <?php
+                        $imagemQuestao = $dadosA['imagem'];                                                                  
+                          echo "<tr>";
+                            echo "<td class="."text-center".">".$tituloQuestao."</td>";
+                          echo"</tr>"; 
+                          echo "<tr>";
+                            echo "<td class="."text-center".">".'<img width="400" height="400" src="data:image/jpeg;charset=utf8;base64,'.base64_encode( $imagemQuestao).'"/>'."</td>";
+                          echo"</tr>"; 
+                          echo "<tr class="."text-center".">";                         
+                            echo "<th>".'<button type="button"  onclick="qpA(); paginacaoAvaliacao()" id="botaoBA" value="1" name="pni" class="btn btn-success btn-danger">PROBLEMA<br>NÃO IMPORTANTE</button>'."</th>";
+                            echo "<th>".'<button type="button"  onclick="qpB(); paginacaoAvaliacao()" id="botaoBB" value="2" name="pi"  class="btn btn-warning btn-danger">PROBLEMA<br>IMPORTANTE</button> '."</th>";
+                            echo "<th>".'<button type="button"  onclick="qpC(); paginacaoAvaliacao()" id="botaoBC" value="3" name="pmi" class="btn btn-warning btn-danger">PROBLEMA<br> MUITO IMPORTANTE</button> '."</th>";
+                          echo"</tr>";                      
+                        }
+                    ?> 
+                    </tbody>
+                </table>               
+            </div>
+        </div>
+     </div>
+    </main>
     </div>
     <script src="../../js/gameEladeb.js"></script>  
   
