@@ -20,6 +20,28 @@ let questoesProblemaObj =
 };
 
 
+let objAvaliacao ={
+    idAvaliacao = null,
+    idCenario = null,
+    idTerapeuta = null,
+    idPaciente = null,
+    etapa = null,
+    numquestao = null,
+    resultado = null,
+    grupoPontuacao = null,
+    avaliacaoRealizada = null,
+}
+
+function enviaServidorPhpCadastroAvaliacao(jsonArquivo) {
+    //Envia para o servidor PHP
+    request = new XMLHttpRequest();
+    request.open("POST", '../../userpaciente/include/avaliacaoControllerCadNovaAvaliacao.php');
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send("novaQuestao=" + jsonArquivo);
+}
+
+
+
 function enviaServidorPhp(jsonY) {
     //Envia para o servidor PHP
     request = new XMLHttpRequest();
@@ -66,6 +88,36 @@ function selecionaGrupoPontucao(numeroQuestaoX){
             return grupoPontuacao =99;
     }
 }
+
+/////////////////////////////////////////////////////////
+function cadastraQuestaoNovoNivel(idAvaliacao, idCenario, idTerapeuta, idPaciente, etapa, numQuestao){
+ 
+//Objeto
+    objAvaliacao.idAvaliacao        = Number(idAvaliacao);
+    objAvaliacao.idCenario          = Number(idCenario);
+    objAvaliacao.idTerapeuta        = Number(idTerapeuta);
+    objAvaliacao.idPaciente         = Number(idPaciente);
+    objAvaliacao.etapa              = Number(etapa);
+    objAvaliacao.numquestao         = Number(numQuestao);
+    objAvaliacao.resultado          = Number(0);
+    objAvaliacao.grupoPontuacao     = Number(0);
+    objAvaliacao.avaliacaoRealizada = Number(0);
+
+ //Converte para JSON
+    jsonObjAvaliacao = JSON.stringify(objAvaliacao);
+
+ //Envia para o servidor efetivar o cadastro
+ enviaServidorPhpCadastroAvaliacao(jsonObjAvaliacao);
+ //console.log(jsonA);
+ return true;
+
+}
+
+
+
+/////////////////////////////////////////////////////////
+
+
 
 //NivelA
 function questoesNaoProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao) {    

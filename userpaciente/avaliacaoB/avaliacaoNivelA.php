@@ -86,18 +86,24 @@ $queryA = mysqli_query($conn, $sqlA);
     <div class="container" >
     <div class="row justify-content-md-center"> 
         <br><br>
-    <?php 
-                        while($dadosA=mysqli_fetch_array($queryA)){ 
-                            $tituloQuestao =  $dadosA['numquestao'];
-                            $imagemQuestao = $dadosA['imagem'];
-                            echo $tituloQuestao;
-        ?>  
-                             <script>
-                                var idQuestao =   "<?php echo $dadosA['id'];?>";
-                                var idPaciente =  "<?php echo $dadosA['idpaciente'];?>";
-                                var idAvaliacao = "<?php echo $dadosA['idavaliacao'];?>";
-                                var numQuestao =  "<?php echo $dadosA['numquestao'];?>";
-                            </script> 
+                        <?php 
+                            while($dadosA=mysqli_fetch_array($queryA)){ 
+                                $tituloQuestao = $dadosA['numquestao'];
+                                $imagemQuestao = $dadosA['imagem'];
+                                echo $tituloQuestao;
+                        ?>  
+                        <script>
+                                var idQuestao          = "<?php echo $dadosA['id'];?>";
+                                var idAvaliacao        = "<?php echo $dadosA['idavaliacao'];?>";
+                                var idCenario          = "<?php echo $dadosA['idcenario'];?>";
+                                var idTerapeuta        = "<?php echo $dadosA['idterapeuta'];?>";
+                                var idPaciente         = "<?php echo $dadosA['idpaciente'];?>";
+                                var etapa              = 2;
+                                var numQuestao         = "<?php echo $dadosA['numquestao'];?>";
+                                var resultado          = 0;
+                                var grupoPontuacao     = 0;
+                                var avaliacaoRealizada = 0;
+                       </script> 
     <br><br><br>
     </div>
     <div class="row justify-content-md-center">
@@ -108,18 +114,22 @@ $queryA = mysqli_query($conn, $sqlA);
     <div class="row justify-content-around" >
         <div class="col-md-auto"></div>
         <div class="col-md-auto"><button type="button"  onclick="qnp(); paginacaoAvaliacao()" id="botaoA" value="0" name="nproblema" class="btn btn-success btn-lg ">NÃO PROBLEMA</button></div>
-        <div class="col-md-auto"><button type="button"  onclick="qp(); paginacaoAvaliacao()"  id="botaoB" value="1" name="problema" class="btn btn-warning btn-lg ">PROBLEMA</button></div>
+        <div class="col-md-auto"><button type="button"  onclick="qp(); cadNovaQuestao(); paginacaoAvaliacao()"  id="botaoB" value="1" name="problema" class="btn btn-warning btn-lg ">PROBLEMA</button></div>
         <div class="col-md-auto"></div>
     </div>
     <script src="../../js/gameEladeb.js"></script>  
   
     <script>
         function qnp(){
-        questoesNaoProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao);
+            questoesNaoProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao);
         }
 
         function qp(){
-        questoesProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao);
+            questoesProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao);
+        }
+        
+        function cadNovaQuestao(){
+            cadastraQuestaoNovoNivel(idAvaliacao, idCenario, idTerapeuta, idPaciente, etapa, numQuestao)
         }
 
         function paginacaoAvaliacao(){            
