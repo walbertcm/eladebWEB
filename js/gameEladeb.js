@@ -6,31 +6,27 @@
 //nq -> Numero da questão
 //status -> Valor da questão (0,1)
 //etapa -> Etapa da avaliação (1,2,3,4)
-//gp -> Numero do grupo
-let questoesProblemaObj = 
-{ 
-    idQuestao: null, 
-    paciente:null, 
-    avaliacao:null,
-    resultado:null,    
-    grupoPontuacao: null, 
-    etapa: null,  
-    //terapeuta:null,
-    
-};
 
+    let questoesProblemaObj = { 
+            idQuestao      :null, 
+            paciente       :null, 
+            avaliacao      :null,
+            resultado      :null,    
+            grupoPontuacao :null, 
+            etapa          :null,  
+    };
 
-let objAvaliacao ={
-    idAvaliacao = null,
-    idCenario = null,
-    idTerapeuta = null,
-    idPaciente = null,
-    etapa = null,
-    numquestao = null,
-    resultado = null,
-    grupoPontuacao = null,
-    avaliacaoRealizada = null,
-}
+    let objAvaliacao = {
+            idAvaliacao        : null,
+            idCenario          : null,
+            idTerapeuta        : null,
+            idPaciente         : null,
+            etapa              : null,
+            numquestao         : null,
+            resultado          : null,
+            grupoPontuacao     : null,
+            avaliacaoRealizada : null,
+    }
 
 function enviaServidorPhpCadastroAvaliacao(jsonArquivo) {
     //Envia para o servidor PHP
@@ -39,7 +35,6 @@ function enviaServidorPhpCadastroAvaliacao(jsonArquivo) {
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send("novaQuestao=" + jsonArquivo);
 }
-
 
 
 function enviaServidorPhp(jsonY) {
@@ -110,78 +105,69 @@ function cadastraQuestaoNovoNivel(idAvaliacao, idCenario, idTerapeuta, idPacient
  enviaServidorPhpCadastroAvaliacao(jsonObjAvaliacao);
  //console.log(jsonA);
  return true;
-
 }
 
-
-
 /////////////////////////////////////////////////////////
-
-
-
 //NivelA
-function questoesNaoProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao) {    
+function questoesProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao){    
     //Recebe as questões que tem problema
-    resultado = document.getElementById("botaoA").value;
+    resultado      = document.getElementById("botaoAA").value;
     grupoPontuacao = selecionaGrupoPontucao(Number(numQuestao));
 
     //Objeto
-    questoesProblemaObj.idQuestao = idQuestao;
-    questoesProblemaObj.paciente = idPaciente;
-    questoesProblemaObj.avaliacao = idAvaliacao;
-    questoesProblemaObj.resultado = resultado;
+    questoesProblemaObj.idQuestao      = idQuestao;
+    questoesProblemaObj.paciente       = idPaciente;
+    questoesProblemaObj.avaliacao      = idAvaliacao;
+    questoesProblemaObj.resultado      = resultado;
     questoesProblemaObj.grupoPontuacao = grupoPontuacao;
-    questoesProblemaObj.etapa = 1;
+    questoesProblemaObj.etapa          = 1;
 
     //Converte para JSON
-    jsonA = JSON.stringify(questoesProblemaObj);
+    jsonAA = JSON.stringify(questoesProblemaObj);
 
-    //
-    enviaServidorPhp(jsonA);
-    console.log(jsonA);
+    enviaServidorPhp(jsonAA);
     return true;
 }
 
-function questoesProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao) {    
+function questoesProblemaAB(idQuestao, idPaciente, idAvaliacao, numQuestao){    
     //Recebe as questões que tem problema
-    resultado = document.getElementById("botaoB").value;
+    resultado      = document.getElementById("botaoAB").value;
     grupoPontuacao = selecionaGrupoPontucao(Number(numQuestao));
 
     //Objeto
-    questoesProblemaObj.idQuestao = idQuestao;
-    questoesProblemaObj.paciente = idPaciente;
-    questoesProblemaObj.avaliacao = idAvaliacao;
-    questoesProblemaObj.resultado = resultado;
+    questoesProblemaObj.idQuestao      = idQuestao;
+    questoesProblemaObj.paciente       = idPaciente;
+    questoesProblemaObj.avaliacao      = idAvaliacao;
+    questoesProblemaObj.resultado      = resultado;
     questoesProblemaObj.grupoPontuacao = grupoPontuacao;
-    questoesProblemaObj.etapa = 1;
+    questoesProblemaObj.etapa          = 1;
 
     //Converte para JSON
-    jsonB = JSON.stringify(questoesProblemaObj);
+    jsonAB = JSON.stringify(questoesProblemaObj);
 
-    //
-    enviaServidorPhp(jsonB);
+    enviaServidorPhp(jsonAB);
     //console.log(jsonB);
     return true;
 }
 
+/////////////////////////////////////////////////////////
 //NivelB
-function questoesProblemaBA(idQuestao, idPaciente, idAvaliacao) {    
+function questoesProblemaBA(idQuestao, idPaciente, idAvaliacao){    
     //Recebe as questões que tem problema
-    resultado = document.getElementById("botaoBA").value;
+    resultado      = document.getElementById("botaoBA").value;
     grupoPontuacao = selecionaGrupoPontucao(Number(numQuestao));
 
     //Objeto
-    questoesProblemaObj.idQuestao = idQuestao;
-    questoesProblemaObj.paciente = idPaciente;
-    questoesProblemaObj.avaliacao = idAvaliacao;
-    questoesProblemaObj.resultado = resultado;
+    questoesProblemaObj.idQuestao      = idQuestao;
+    questoesProblemaObj.paciente       = idPaciente;
+    questoesProblemaObj.avaliacao      = idAvaliacao;
+    questoesProblemaObj.resultado      = resultado;
     questoesProblemaObj.grupoPontuacao = grupoPontuacao;
-    questoesProblemaObj.etapa = 2;
+    questoesProblemaObj.etapa          = 2;
 
     //Converte para JSON
     jsonBA = JSON.stringify(questoesProblemaObj);
 
-    //
     enviaServidorPhp(jsonBA);
     //console.log(jsonB);
     return true;
@@ -189,16 +175,16 @@ function questoesProblemaBA(idQuestao, idPaciente, idAvaliacao) {
 
 function questoesProblemaBB(idQuestao, idPaciente, idAvaliacao) {    
     //Recebe as questões que tem problema
-    resultado = document.getElementById("botaoBB").value;
+    resultado      = document.getElementById("botaoBB").value;
     grupoPontuacao = selecionaGrupoPontucao(Number(numQuestao));
 
     //Objeto
-    questoesProblemaObj.idQuestao = idQuestao;
-    questoesProblemaObj.paciente = idPaciente;
-    questoesProblemaObj.avaliacao = idAvaliacao;
-    questoesProblemaObj.resultado = resultado;
+    questoesProblemaObj.idQuestao      = idQuestao;
+    questoesProblemaObj.paciente       = idPaciente;
+    questoesProblemaObj.avaliacao      = idAvaliacao;
+    questoesProblemaObj.resultado      = resultado;
     questoesProblemaObj.grupoPontuacao = grupoPontuacao;
-    questoesProblemaObj.etapa = 2;
+    questoesProblemaObj.etapa          = 2;
 
     //Converte para JSON
     jsonBB = JSON.stringify(questoesProblemaObj);
@@ -209,65 +195,41 @@ function questoesProblemaBB(idQuestao, idPaciente, idAvaliacao) {
     return true;
 }
 
-function questoesProblemaBC(idQuestao, idPaciente, idAvaliacao) {    
+function questoesProblemaBC(idQuestao, idPaciente, idAvaliacao){    
     //Recebe as questões que tem problema
     resultado = document.getElementById("botaoBC").value;
     grupoPontuacao = selecionaGrupoPontucao(Number(numQuestao));
 
     //Objeto
-    questoesProblemaObj.idQuestao = idQuestao;
-    questoesProblemaObj.paciente = idPaciente;
-    questoesProblemaObj.avaliacao = idAvaliacao;
-    questoesProblemaObj.resultado = resultado;
+    questoesProblemaObj.idQuestao      = idQuestao;
+    questoesProblemaObj.paciente       = idPaciente;
+    questoesProblemaObj.avaliacao      = idAvaliacao;
+    questoesProblemaObj.resultado      = resultado;
     questoesProblemaObj.grupoPontuacao = grupoPontuacao;
-    questoesProblemaObj.etapa = 2;
+    questoesProblemaObj.etapa          = 2;
 
     //Converte para JSON
     jsonBC = JSON.stringify(questoesProblemaObj);
 
-    //
     enviaServidorPhp(jsonBC);
-    //console.log(jsonB);
     return true;
 }
 
+/////////////////////////////////////////////////////////
 //Nivel C
 
-function questoesProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao) {    
+function questoesProblemaCA(idQuestao, idPaciente, idAvaliacao, numQuestao){    
     //Recebe as questões que tem problema
-    resultado = document.getElementById("botaoB").value;
+    resultado      = document.getElementById("botaoCA").value;
     grupoPontuacao = selecionaGrupoPontucao(Number(numQuestao));
 
     //Objeto
-    questoesProblemaObj.idQuestao = idQuestao;
-    questoesProblemaObj.paciente = idPaciente;
-    questoesProblemaObj.avaliacao = idAvaliacao;
-    questoesProblemaObj.resultado = resultado;
+    questoesProblemaObj.idQuestao      = idQuestao;
+    questoesProblemaObj.paciente       = idPaciente;
+    questoesProblemaObj.avaliacao      = idAvaliacao;
+    questoesProblemaObj.resultado      = resultado;
     questoesProblemaObj.grupoPontuacao = grupoPontuacao;
-    questoesProblemaObj.etapa = 1;
-
-    //Converte para JSON
-    jsonB = JSON.stringify(questoesProblemaObj);
-
-    //
-    enviaServidorPhp(jsonB);
-    //console.log(jsonB);
-    return true;
-}
-
-//NivelB
-function questoesProblemaCA(idQuestao, idPaciente, idAvaliacao) {    
-    //Recebe as questões que tem problema
-    resultado = document.getElementById("botaoCA").value;
-    grupoPontuacao = selecionaGrupoPontucao(Number(numQuestao));
-
-    //Objeto
-    questoesProblemaObj.idQuestao = idQuestao;
-    questoesProblemaObj.paciente = idPaciente;
-    questoesProblemaObj.avaliacao = idAvaliacao;
-    questoesProblemaObj.resultado = resultado;
-    questoesProblemaObj.grupoPontuacao = grupoPontuacao;
-    questoesProblemaObj.etapa = 3;
+    questoesProblemaObj.etapa          = 3;
 
     //Converte para JSON
     jsonCA = JSON.stringify(questoesProblemaObj);
@@ -278,18 +240,18 @@ function questoesProblemaCA(idQuestao, idPaciente, idAvaliacao) {
     return true;
 }
 
-function questoesProblemaCB(idQuestao, idPaciente, idAvaliacao) {    
+function questoesProblemaCB(idQuestao, idPaciente, idAvaliacao, numQuestao){    
     //Recebe as questões que tem problema
-    resultado = document.getElementById("botaoCB").value;
+    resultado      = document.getElementById("botaoCB").value;
     grupoPontuacao = selecionaGrupoPontucao(Number(numQuestao));
 
     //Objeto
-    questoesProblemaObj.idQuestao = idQuestao;
-    questoesProblemaObj.paciente = idPaciente;
-    questoesProblemaObj.avaliacao = idAvaliacao;
-    questoesProblemaObj.resultado = resultado;
+    questoesProblemaObj.idQuestao      = idQuestao;
+    questoesProblemaObj.paciente       = idPaciente;
+    questoesProblemaObj.avaliacao      = idAvaliacao;
+    questoesProblemaObj.resultado      = resultado;
     questoesProblemaObj.grupoPontuacao = grupoPontuacao;
-    questoesProblemaObj.etapa = 3;
+    questoesProblemaObj.etapa          = 3;
 
     //Converte para JSON
     jsonCB = JSON.stringify(questoesProblemaObj);
@@ -300,70 +262,101 @@ function questoesProblemaCB(idQuestao, idPaciente, idAvaliacao) {
     return true;
 }
 
-//NivelD
-//NivelB
-function questoesProblemaDA(idQuestao, idPaciente, idAvaliacao) {    
-    //Recebe as questões que tem problema
-    resultado = document.getElementById("botaoDA").value;
+//Nivel D
+function questoesProblemaCA(idQuestao, idPaciente, idAvaliacao){    
+    resultado      = document.getElementById("botaoCA").value;
     grupoPontuacao = selecionaGrupoPontucao(Number(numQuestao));
 
     //Objeto
-    questoesProblemaObj.idQuestao = idQuestao;
-    questoesProblemaObj.paciente = idPaciente;
-    questoesProblemaObj.avaliacao = idAvaliacao;
-    questoesProblemaObj.resultado = resultado;
+    questoesProblemaObj.idQuestao      = idQuestao;
+    questoesProblemaObj.paciente       = idPaciente;
+    questoesProblemaObj.avaliacao      = idAvaliacao;
+    questoesProblemaObj.resultado      = resultado;
     questoesProblemaObj.grupoPontuacao = grupoPontuacao;
-    questoesProblemaObj.etapa = 4;
+    questoesProblemaObj.etapa          = 3;
+
+    //Converte para JSON
+    jsonCA = JSON.stringify(questoesProblemaObj);
+
+    enviaServidorPhp(jsonCA);
+    //console.log(jsonB);
+    return true;
+}
+
+function questoesProblemaCB(idQuestao, idPaciente, idAvaliacao){    
+    resultado      = document.getElementById("botaoCB").value;
+    grupoPontuacao = selecionaGrupoPontucao(Number(numQuestao));
+
+    //Objeto
+    questoesProblemaObj.idQuestao      = idQuestao;
+    questoesProblemaObj.paciente       = idPaciente;
+    questoesProblemaObj.avaliacao      = idAvaliacao;
+    questoesProblemaObj.resultado      = resultado;
+    questoesProblemaObj.grupoPontuacao = grupoPontuacao;
+    questoesProblemaObj.etapa          = 3;
+
+    //Converte para JSON
+    jsonCB = JSON.stringify(questoesProblemaObj);
+
+    enviaServidorPhp(jsonCB);
+    //console.log(jsonB);
+    return true;
+}
+
+//NivelD
+function questoesProblemaDA(idQuestao, idPaciente, idAvaliacao) {    
+    resultado      = document.getElementById("botaoDA").value;
+    grupoPontuacao = selecionaGrupoPontucao(Number(numQuestao));
+
+    //Objeto
+    questoesProblemaObj.idQuestao      = idQuestao;
+    questoesProblemaObj.paciente       = idPaciente;
+    questoesProblemaObj.avaliacao      = idAvaliacao;
+    questoesProblemaObj.resultado      = resultado;
+    questoesProblemaObj.grupoPontuacao = grupoPontuacao;
+    questoesProblemaObj.etapa          = 4;
 
     //Converte para JSON
     jsonDA = JSON.stringify(questoesProblemaObj);
 
-    //
     enviaServidorPhp(jsonDA);
-    //console.log(jsonB);
     return true;
 }
 
-function questoesProblemaDB(idQuestao, idPaciente, idAvaliacao) {    
-    //Recebe as questões que tem problema
-    resultado = document.getElementById("botaoBB").value;
+function questoesProblemaDB(idQuestao, idPaciente, idAvaliacao){    
+    resultado      = document.getElementById("botaoDB").value;
     grupoPontuacao = selecionaGrupoPontucao(Number(numQuestao));
 
     //Objeto
-    questoesProblemaObj.idQuestao = idQuestao;
-    questoesProblemaObj.paciente = idPaciente;
-    questoesProblemaObj.avaliacao = idAvaliacao;
-    questoesProblemaObj.resultado = resultado;
+    questoesProblemaObj.idQuestao      = idQuestao;
+    questoesProblemaObj.paciente       = idPaciente;
+    questoesProblemaObj.avaliacao      = idAvaliacao;
+    questoesProblemaObj.resultado      = resultado;
     questoesProblemaObj.grupoPontuacao = grupoPontuacao;
-    questoesProblemaObj.etapa = 4;
+    questoesProblemaObj.etapa          = 4;
 
     //Converte para JSON
     jsonDB = JSON.stringify(questoesProblemaObj);
 
-    //
     enviaServidorPhp(jsonDB);
-    //console.log(jsonB);
     return true;
 }
 
-function questoesProblemaDC(idQuestao, idPaciente, idAvaliacao) {    
-    //Recebe as questões que tem problema
-    resultado = document.getElementById("botaoBC").value;
+function questoesProblemaDC(idQuestao, idPaciente, idAvaliacao){    
+    resultado      = document.getElementById("botaoDC").value;
     grupoPontuacao = selecionaGrupoPontucao(Number(numQuestao));
 
     //Objeto
-    questoesProblemaObj.idQuestao = idQuestao;
-    questoesProblemaObj.paciente = idPaciente;
-    questoesProblemaObj.avaliacao = idAvaliacao;
-    questoesProblemaObj.resultado = resultado;
+    questoesProblemaObj.idQuestao      = idQuestao;
+    questoesProblemaObj.paciente       = idPaciente;
+    questoesProblemaObj.avaliacao      = idAvaliacao;
+    questoesProblemaObj.resultado      = resultado;
     questoesProblemaObj.grupoPontuacao = grupoPontuacao;
-    questoesProblemaObj.etapa = 4;
+    questoesProblemaObj.etapa          = 4;
 
     //Converte para JSON
     jsonDC = JSON.stringify(questoesProblemaObj);
 
-    //
     enviaServidorPhp(jsonDC);
-    //console.log(jsonB);
     return true;
 }

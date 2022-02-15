@@ -7,43 +7,41 @@
       header("Location: ../index.html");
       die();
     }else{
-      $emailUsuario = $_SESSION["emailUsuario"];
+      $emailUsuario   = $_SESSION["emailUsuario"];
       $idUsuarioLogin = $_SESSION["idUsuarioLogin"];
-         }
+    }
 
-function recebeNomePaciente($emailUsuarioA){
-  include('../controller/conexaoDataBaseV2.php');
-  $sqlN = "SELECT * FROM `paciente` where `EmailPaciente` = '$emailUsuarioA'"; 
-  $queryB = mysqli_query($conn,$sqlN);
-  while($avaliacaoes = mysqli_fetch_array($queryB)) { 
-      $nomePaciente = $avaliacaoes["NomePaciente"];
-      return $nomePaciente; 
-  }           
-}
+  function recebeNomePaciente($emailUsuarioA){
+    include('../controller/conexaoDataBaseV2.php');
+    $sqlN   = "SELECT * FROM `paciente` where `EmailPaciente` = '$emailUsuarioA'"; 
+    $queryB = mysqli_query($conn,$sqlN);
+    while($avaliacaoes = mysqli_fetch_array($queryB)) { 
+        $nomePaciente  = $avaliacaoes["NomePaciente"];
+        return $nomePaciente; 
+    }           
+  }
 
 
 function selecionaAvaliacoespaciente($idPaciente){
   include('../controller/conexaoDataBaseV2.php');
-  $sqlA = "SELECT `idavaliacao` FROM `avaliacao` where `idpaciente` = '$idPaciente' GROUP BY `idavaliacao`";
+  $sqlA   = "SELECT `idavaliacao` FROM `avaliacao` where `idpaciente` = '$idPaciente' GROUP BY `idavaliacao`";
   $queryA = mysqli_query($conn, $sqlA);
-  while($dadosA=mysqli_fetch_array($queryA)){
+  while($dadosA = mysqli_fetch_array($queryA)){
     return $avaliacaoId = $dadosA['idavaliacao'];
   } 
 }
 
 function verificaStatusAvaliacao($idPacienteA, $idAvaliacaoA){
   include('../controller/conexaoDataBaseV2.php');
-  $sqlE = "SELECT SUM(`avaliacaoRealizada`) as soma, COUNT(`avaliacaoRealizada`) as contagem FROM `avaliacao` WHERE `idpaciente` = '$idPacienteA' AND  `idavaliacao`='$idAvaliacaoA'";
+  $sqlE   = "SELECT SUM(`avaliacaoRealizada`) as soma, COUNT(`avaliacaoRealizada`) as contagem FROM `avaliacao` WHERE `idpaciente` = '$idPacienteA' AND  `idavaliacao`='$idAvaliacaoA'";
   $queryE = mysqli_query($conn, $sqlE);
   while($dadosE=mysqli_fetch_array($queryE)){
-     $somaE = $dadosE['soma'];
+     $somaE     = $dadosE['soma'];
      $contagemE = $dadosE['contagem'];
 
     if($somaE == $contagemE){
-      return $statusAvaliação =  "Completa";        
-    }else{
-      return $statusAvaliação =  "Incompleta";
-    }
+      return $statusAvaliação   = "Completa"; }else{
+        return $statusAvaliação = "Incompleta";}
   }
 }
 
@@ -51,7 +49,6 @@ include('../controller/conexaoDataBaseV2.php');
 
 //1 - Selecionar as avaliacoes do paciente
 //2 - Verificar se as avaliações estao completas ou incompletas (verificaStatusAvaliacao)
-
 
 //$sql = "SELECT * FROM `avaliacao` a RIGHT JOIN paciente p ON a.idpaciente = p.pacienteid RIGHT JOIN terapeuta t on a.idterapeuta = t.idterapeuta WHERE p.EmailPaciente = '$emailUsuario' GROUP BY a.`idavaliacao`";
 $sql = "SELECT * FROM `avaliacao` a RIGHT JOIN paciente p ON a.idpaciente = p.pacienteid RIGHT JOIN terapeuta t on a.idterapeuta = t.idterapeuta RIGHT JOIN cenario c ON a.idcenario = c.idcenario WHERE p.EmailPaciente = '$emailUsuario' GROUP BY a.`idavaliacao`";
