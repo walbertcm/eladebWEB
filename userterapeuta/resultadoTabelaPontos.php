@@ -176,171 +176,171 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
         $grupopontuacao = $dados['grupopontuacao'];
 
 //Decisao        
-        if ($numquestao ==0  and  $etapa==1) {
+        if ($numquestao ==1  and  $etapa==1) {
             $etapaA1 = $resultado;
-        }elseif  ($numquestao ==1  and  $etapa==1){
-            $etapaA2 = $resultado;
         }elseif  ($numquestao ==2  and  $etapa==1){
-            $etapaA3 = $resultado;
+            $etapaA2 = $resultado;
         }elseif  ($numquestao ==3  and  $etapa==1){
-            $etapaA4 = $resultado;
+            $etapaA3 = $resultado;
         }elseif  ($numquestao ==4  and  $etapa==1){
-            $etapaA5 = $resultado;
+            $etapaA4 = $resultado;
         }elseif  ($numquestao ==5  and  $etapa==1){
-            $etapaA6 = $resultado;
+            $etapaA5 = $resultado;
         }elseif  ($numquestao ==6  and  $etapa==1){
-            $etapaA7 = $resultado;
+            $etapaA6 = $resultado;
         }elseif  ($numquestao ==7  and  $etapa==1){
-            $etapaA8 = $resultado;
+            $etapaA7 = $resultado;
         }elseif  ($numquestao ==8  and  $etapa==1){
-            $etapaA9 = $resultado;
+            $etapaA8 = $resultado;
         }elseif  ($numquestao ==9  and  $etapa==1){
-            $etapaA10 = $resultado;
+            $etapaA9 = $resultado;
         }elseif  ($numquestao ==10  and  $etapa==1){
-            $etapaA11 = $resultado;
+            $etapaA10 = $resultado;
         }elseif  ($numquestao ==11  and  $etapa==1){
-            $etapaA12 = $resultado;
+            $etapaA11 = $resultado;
         }elseif  ($numquestao ==12  and  $etapa==1){
-            $etapaA13 = $resultado;
+            $etapaA12 = $resultado;
         }elseif  ($numquestao ==13  and  $etapa==1){
-            $etapaA14 = $resultado;
+            $etapaA13 = $resultado;
         }elseif  ($numquestao ==14  and  $etapa==1){
-            $etapaA15 = $resultado;
+            $etapaA14 = $resultado;
         }elseif  ($numquestao ==15  and  $etapa==1){
-            $etapaA16 = $resultado;
+            $etapaA15 = $resultado;
         }elseif  ($numquestao ==16  and  $etapa==1){
-            $etapaA17 = $resultado;
+            $etapaA16 = $resultado;
         }elseif  ($numquestao ==17  and  $etapa==1){
-            $etapaA18 = $resultado;
+            $etapaA17 = $resultado;
         }elseif  ($numquestao ==18  and  $etapa==1){
-            $etapaA19 = $resultado;
+            $etapaA18 = $resultado;
         }elseif  ($numquestao ==19  and  $etapa==1){
+            $etapaA19 = $resultado;
+        }elseif  ($numquestao ==20  and  $etapa==1){
             $etapaA20= $resultado;
         }
 
-        if ($numquestao ==0  and  $etapa==2) {
+        if ($numquestao ==1  and  $etapa==2) {
             $etapaB1 = $resultado;
-        }elseif  ($numquestao ==1  and  $etapa==2){
-            $etapaB2 = $resultado;
         }elseif  ($numquestao ==2  and  $etapa==2){
-            $etapaB3 = $resultado;
+            $etapaB2 = $resultado;
         }elseif  ($numquestao ==3  and  $etapa==2){
-            $etapaB4 = $resultado;
+            $etapaB3 = $resultado;
         }elseif  ($numquestao ==4  and  $etapa==2){
-            $etapaB5 = $resultado;
+            $etapaB4 = $resultado;
         }elseif  ($numquestao ==5  and  $etapa==2){
-            $etapaB6 = $resultado;
+            $etapaB5 = $resultado;
         }elseif  ($numquestao ==6  and  $etapa==2){
-            $etapaB7 = $resultado;
+            $etapaB6 = $resultado;
         }elseif  ($numquestao ==7  and  $etapa==2){
-            $etapaB8 = $resultado;
+            $etapaB7 = $resultado;
         }elseif  ($numquestao ==8  and  $etapa==2){
-            $etapaB9 = $resultado;
+            $etapaB8 = $resultado;
         }elseif  ($numquestao ==9  and  $etapa==2){
-            $etapaB10 = $resultado;
+            $etapaB9 = $resultado;
         }elseif  ($numquestao ==10  and  $etapa==2){
-            $etapaB11 = $resultado;
+            $etapaB10 = $resultado;
         }elseif  ($numquestao ==11  and  $etapa==2){
-            $etapaB12 = $resultado;
+            $etapaB11 = $resultado;
         }elseif  ($numquestao ==12  and  $etapa==2){
-            $etapaB13 = $resultado;
+            $etapaB12 = $resultado;
         }elseif  ($numquestao ==13  and  $etapa==2){
-            $etapaB14 = $resultado;
+            $etapaB13 = $resultado;
         }elseif  ($numquestao ==14  and  $etapa==2){
-            $etapaB15 = $resultado;
+            $etapaB14 = $resultado;
         }elseif  ($numquestao ==15  and  $etapa==2){
-            $etapaB16 = $resultado;
+            $etapaB15 = $resultado;
         }elseif  ($numquestao ==16  and  $etapa==2){
-            $etapaB17 = $resultado;
+            $etapaB16 = $resultado;
         }elseif  ($numquestao ==17  and  $etapa==2){
-            $etapaB18 = $resultado;
+            $etapaB17 = $resultado;
         }elseif  ($numquestao ==18  and  $etapa==2){
-            $etapaB19 = $resultado;
+            $etapaB18 = $resultado;
         }elseif  ($numquestao ==19  and  $etapa==2){
+            $etapaB19 = $resultado;
+        }elseif  ($numquestao ==20  and  $etapa==2){
             $etapaB20= $resultado;
         }
 
-        if ($numquestao ==0  and  $etapa==3) {
+        if ($numquestao ==1  and  $etapa==3) {
             $etapaC1 = $resultado;
-        }elseif  ($numquestao ==1  and  $etapa==3){
-            $etapaC2 = $resultado;
         }elseif  ($numquestao ==2  and  $etapa==3){
-            $etapaC3 = $resultado;
+            $etapaC2 = $resultado;
         }elseif  ($numquestao ==3  and  $etapa==3){
-            $etapaC4 = $resultado;
+            $etapaC3 = $resultado;
         }elseif  ($numquestao ==4  and  $etapa==3){
-            $etapaC5 = $resultado;
+            $etapaC4 = $resultado;
         }elseif  ($numquestao ==5  and  $etapa==3){
-            $etapaC6 = $resultado;
+            $etapaC5 = $resultado;
         }elseif  ($numquestao ==6  and  $etapa==3){
-            $etapaC7 = $resultado;
+            $etapaC6 = $resultado;
         }elseif  ($numquestao ==7  and  $etapa==3){
-            $etapaC8 = $resultado;
+            $etapaC7 = $resultado;
         }elseif  ($numquestao ==8  and  $etapa==3){
-            $etapaC9 = $resultado;
+            $etapaC8 = $resultado;
         }elseif  ($numquestao ==9  and  $etapa==3){
-            $etapaC10 = $resultado;
+            $etapaC9 = $resultado;
         }elseif  ($numquestao ==10  and  $etapa==3){
-            $etapaC11 = $resultado;
+            $etapaC10 = $resultado;
         }elseif  ($numquestao ==11  and  $etapa==3){
-            $etapaC12 = $resultado;
+            $etapaC11 = $resultado;
         }elseif  ($numquestao ==12  and  $etapa==3){
-            $etapaC13 = $resultado;
+            $etapaC12 = $resultado;
         }elseif  ($numquestao ==13  and  $etapa==3){
-            $etapaC14 = $resultado;
+            $etapaC13 = $resultado;
         }elseif  ($numquestao ==14  and  $etapa==3){
-            $etapaC15 = $resultado;
+            $etapaC14 = $resultado;
         }elseif  ($numquestao ==15  and  $etapa==3){
-            $etapaC16 = $resultado;
+            $etapaC15 = $resultado;
         }elseif  ($numquestao ==16  and  $etapa==3){
-            $etapaC17 = $resultado;
+            $etapaC16 = $resultado;
         }elseif  ($numquestao ==17  and  $etapa==3){
-            $etapaC18 = $resultado;
+            $etapaC17 = $resultado;
         }elseif  ($numquestao ==18  and  $etapa==3){
-            $etapaC19 = $resultado;
+            $etapaC18 = $resultado;
         }elseif  ($numquestao ==19  and  $etapa==3){
+            $etapaC19 = $resultado;
+        }elseif  ($numquestao ==20  and  $etapa==3){
             $etapaC20= $resultado;
         }
 
-        if ($numquestao ==0  and  $etapa==4) {
-            $etapaC1 = $resultado;
-        }elseif  ($numquestao ==1  and  $etapa==4){
-            $etapaD2 = $resultado;
+        if ($numquestao ==1  and  $etapa==4) {
+            $etapaD1 = $resultado;
         }elseif  ($numquestao ==2  and  $etapa==4){
-            $etapaD3 = $resultado;
+            $etapaD2 = $resultado;
         }elseif  ($numquestao ==3  and  $etapa==4){
-            $etapaD4 = $resultado;
+            $etapaD3 = $resultado;
         }elseif  ($numquestao ==4  and  $etapa==4){
-            $etapaD5 = $resultado;
+            $etapaD4 = $resultado;
         }elseif  ($numquestao ==5  and  $etapa==4){
-            $etapaD6 = $resultado;
+            $etapaD5 = $resultado;
         }elseif  ($numquestao ==6  and  $etapa==4){
-            $etapaD7 = $resultado;
+            $etapaD6 = $resultado;
         }elseif  ($numquestao ==7  and  $etapa==4){
-            $etapaD8 = $resultado;
+            $etapaD7 = $resultado;
         }elseif  ($numquestao ==8  and  $etapa==4){
-            $etapaD9 = $resultado;
+            $etapaD8 = $resultado;
         }elseif  ($numquestao ==9  and  $etapa==4){
-            $etapaD10 = $resultado;
+            $etapaD9 = $resultado;
         }elseif  ($numquestao ==10  and  $etapa==4){
-            $etapaD11 = $resultado;
+            $etapaD10 = $resultado;
         }elseif  ($numquestao ==11  and  $etapa==4){
-            $etapaD12 = $resultado;
+            $etapaD11 = $resultado;
         }elseif  ($numquestao ==12  and  $etapa==4){
-            $etapaD13 = $resultado;
+            $etapaD12 = $resultado;
         }elseif  ($numquestao ==13  and  $etapa==4){
-            $etapaD14 = $resultado;
+            $etapaD13 = $resultado;
         }elseif  ($numquestao ==14  and  $etapa==4){
-            $etapaD15 = $resultado;
+            $etapaD14 = $resultado;
         }elseif  ($numquestao ==15  and  $etapa==4){
-            $etapaD16 = $resultado;
+            $etapaD15 = $resultado;
         }elseif  ($numquestao ==16  and  $etapa==4){
-            $etapaD17 = $resultado;
+            $etapaD16 = $resultado;
         }elseif  ($numquestao ==17  and  $etapa==4){
-            $etapaD18 = $resultado;
+            $etapaD17 = $resultado;
         }elseif  ($numquestao ==18  and  $etapa==4){
+            $etapaD18 = $resultado;
+        }elseif  ($numquestao ==19  and  $etapa==4){
             $etapaD19 = $resultado;
-        }elseif ($numquestao ==19  and  $etapa==4){
+        }elseif ($numquestao  ==20  and  $etapa==4){
             $etapaD20= $resultado;
         }
         //Subtotais - A
@@ -448,27 +448,20 @@ $sqlA="SELECT `etapa`,`grupopontuacao`,`numquestao`, `resultado` FROM `avaliacao
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>...::: Terapeuta :::... </title>
-
-    <!--Bootstrap CSS-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <!-- Custom styles for this template -->
-    <link href="https://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css" rel="stylesheet">
-
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <!--<script src="https://cdn.tiny.cloud/1/epehnnmlf5zbvcsafsiwpoc8u5vucadw7a8ckon7q72eh46v/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>-->
-    <script src="https://cdn.tiny.cloud/1/epehnnmlf5zbvcsafsiwpoc8u5vucadw7a8ckon7q72eh46v/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-    tinymce.init({
-        selector: 'textarea#editor',
-        menubar: false,
-        width : "1040px"
-    });
-    </script>
-
-    
-  
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css" rel="stylesheet">
+        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script src="https://cdn.tiny.cloud/1/epehnnmlf5zbvcsafsiwpoc8u5vucadw7a8ckon7q72eh46v/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+       
+       <script>
+        tinymce.init({
+            selector: 'textarea#editor',
+            menubar: false,
+            width : "1040px"
+        });
+        </script>
 </head>
+
 <body>
     <style type="text/css">
     .tg  {border-collapse:collapse;border-spacing:0;}

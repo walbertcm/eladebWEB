@@ -18,16 +18,6 @@
 //Box
     $_SESSION["idpaciente"]  = $idPaciente;
     $_SESSION["idavaliacao"] = $idAvaliacao;
-
-
-/* function calculaNumQuestoesNaoRespondidasFaseA($idPacienteD, $idAvaliacaoD){
-    include('../../controller/conexaoDataBaseV2.php');
-    $sqlD = "SELECT `idavaliacao` FROM `avaliacao` where `idpaciente` = '$idPacienteD' AND `idavaliacao` = '$idAvaliacaoD' AND  `avaliacaoRealizada` = 0 AND `etapa` = 1";
-    $queryD = mysqli_query($conn, $sqlD);
-    $numQuestoesNaoResolvidasFaseA = mysqli_num_rows($queryD);
-    return $numQuestoesNaoResolvidasFaseA;
-} */
-
 ?>
 
 <!DOCTYPE html>

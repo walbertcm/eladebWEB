@@ -1,34 +1,33 @@
 <?php
 //Metodo para iniciar a sessao
-session_start();
-//Avalia se a sessao tem valores, foi definida, caso nao retorna o user para o login
-if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"]) AND !isset($_SESSION["idTerapeuta"])){
-    header("Location: ../index.html");
-    die();
-}else{
-    $emailUsuario = $_SESSION["emailUsuario"];
-    $idUsuarioLogin = $_SESSION["idUsuarioLogin"];
-    $idTerapeuta = $_SESSION["idTerapeuta"];
-}
+    session_start();
 
-//Seleção dos pacientes para exibição
-//Conexão com o banco de dados
-include('../controller/conexaoDataBaseV2.php');
+//Avalia se a sessao tem valores, foi definida, caso nao retorna o user para o login
+    if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"]) AND !isset($_SESSION["idTerapeuta"])){
+        header("Location: ../index.html");
+        die();
+    }else{
+        $emailUsuario   = $_SESSION["emailUsuario"];
+        $idUsuarioLogin = $_SESSION["idUsuarioLogin"];
+        $idTerapeuta    = $_SESSION["idTerapeuta"];
+    }
+
+    include('../controller/conexaoDataBaseV2.php');
 
 //Seleciona o numero de pacientes
-$sql = "SELECT `pacienteid`, `NomePaciente`, `NomeResponsavel`, `Telefone`, `EmailPaciente`, `dt_cadastro` FROM `paciente` ORDER BY `NomePaciente` ";
-$query = mysqli_query($conn,$sql);
+    $sql   = "SELECT `pacienteid`, `NomePaciente`, `NomeResponsavel`, `Telefone`, `EmailPaciente`, `dt_cadastro` FROM `paciente` ORDER BY `NomePaciente` ";
+    $query = mysqli_query($conn,$sql);
 
 //Função para calcular o numero de avaliações, retorna o maximo ID da avaliação
-function calcularNumeroAvaliacoes($idPacienteA){
-    include('../controller/conexaoDataBaseV2.php');
-    $sqlN = "SELECT MAX(`idavaliacao`) as numero FROM `avaliacao` WHERE `idpaciente` = '$idPacienteA'"; 
-    $queryA = mysqli_query($conn,$sqlN);
-    while($avaliacaoes = mysqli_fetch_array($queryA)) { 
-        $resultado = $avaliacaoes["numero"];
-        return $resultado; 
-    }        
-}
+    function calcularNumeroAvaliacoes($idPacienteA){
+        include('../controller/conexaoDataBaseV2.php');
+        $sqlN   = "SELECT MAX(`idavaliacao`) as numero FROM `avaliacao` WHERE `idpaciente` = '$idPacienteA'"; 
+        $queryA = mysqli_query($conn,$sqlN);
+        while($avaliacaoes = mysqli_fetch_array($queryA)) { 
+            $resultado = $avaliacaoes["numero"];
+            return $resultado; 
+        }        
+    }
 ?>
 <!--Template-->
 <!--view-source:https://getbootstrap.com/docs/4.0/examples/starter-template/-->
@@ -70,16 +69,18 @@ function calcularNumeroAvaliacoes($idPacienteA){
 
                     <?php 
                         while($dado = mysqli_fetch_array($query)) {
-                            $aaa = $dado['pacienteid'];
+                            $idPaciente       = $dado['pacienteid'];
+                            $numeroAvaliacoes = calcularNumeroAvaliacoes($idPaciente);
+                                if($numeroAvaliacoes ==0 ){$numeroAvaliacoes = 0;}
+
                             echo "<tr>";
-                            echo "<td class="."text-left".">".$dado['NomePaciente']."</td>";
-                            echo "<td class="."text-left".">".$dado['NomeResponsavel']."</td>";
+                            echo "<td class="."text-left"  .">".$dado['NomePaciente']."</td>";
+                            echo "<td class="."text-left"  .">".$dado['NomeResponsavel']."</td>";
                             echo "<td class="."text-center".">".$dado['EmailPaciente']."</td>";
                             echo "<td class="."text-center".">".$dado['Telefone']."</td>";
-                            echo "<td class="."text-center".">".calcularNumeroAvaliacoes($aaa)."</td>";
+                            echo "<td class="."text-center".">".$numeroAvaliacoes."</td>";
                             echo "<td class="."text-center".">".'<a href="resultadoExibir.php?id='.$dado['pacienteid'].'&email='.$dado['EmailPaciente'].' " class="btn btn-primary btn-md" role="button" aria-pressed="true">Acessar</a>'."</td>";                            
-                            echo"</tr>";
-                            
+                            echo"</tr>";                            
                         } 
                     ?> 
                     </tbody>

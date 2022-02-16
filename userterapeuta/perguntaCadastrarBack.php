@@ -26,8 +26,7 @@ include('../controller/conexaoDataBaseV2.php');
        $conteudo = addslashes($conteudo);
        fclose($fp);
 
-      $sql = "INSERT INTO `perguntas` ( `pergunta`, `imagem`, `status`, `dtcadastro`) 
-               VALUES ( '$pergunta', '$conteudo', '$extensao', current_timestamp())";
+      $sql = "INSERT INTO `perguntas` ( `pergunta`, `imagem`, `status`, `dtcadastro`) VALUES ( '$pergunta', '$conteudo', '$extensao', current_timestamp())";
 
         if (mysqli_query($conn, $sql)) {
             header("Location: perguntaExibir.php");

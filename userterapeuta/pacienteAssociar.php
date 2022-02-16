@@ -1,27 +1,24 @@
 <?php
 //Metodo para iniciar a sessao
-session_start();
+    session_start();
 
 //Avalia se a sessao tem valores, foi definida, caso nao retorna o user para o login
-if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"]) AND !isset($_SESSION["idTerapeuta"])){
-    header("Location: ../index.html");
-    die();
-}else{
-    $emailUsuario = $_SESSION["emailUsuario"];
-    $idUsuarioLogin = $_SESSION["idUsuarioLogin"];
-    $idTerapeuta = $_SESSION["idTerapeuta"];
-}
+    if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"]) AND !isset($_SESSION["idTerapeuta"])){
+        header("Location: ../index.html");
+        die();
+    }else{
+        $emailUsuario   = $_SESSION["emailUsuario"];
+        $idUsuarioLogin = $_SESSION["idUsuarioLogin"];
+        $idTerapeuta    = $_SESSION["idTerapeuta"];
+    }
 
-$idCenario = $_GET['idce'];
+//Recebe o id do cenário para associar ao paciente
+    $idCenario = $_GET['idce'];
 
-//Seleção dos cenarios existentes
-//Conexão com o banco de dados
-include('../controller/conexaoDataBaseV2.php');
-
-//Seleciona os  cenarios numero de pacientes
-$sql = "SELECT * FROM `paciente`;";
-$query = mysqli_query($conn,$sql);
-
+//SQl -> Exibe todos os pacientes. Permitindo ao terapeuta selecionar o paciente em questão
+    include('../controller/conexaoDataBaseV2.php');
+    $sql = "SELECT * FROM `paciente`;";
+    $query = mysqli_query($conn,$sql);
 ?>
 
 <!DOCTYPE html>
@@ -31,11 +28,7 @@ $query = mysqli_query($conn,$sql);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>...::: Terapeuta :::... </title>
-
-    <!--Bootstrap CSS-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css" rel="stylesheet">
 </head>
 <body>

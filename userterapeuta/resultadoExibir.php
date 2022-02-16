@@ -1,40 +1,36 @@
 <?php
-session_start();
+    session_start();
 //Avalia se a sessao tem valores, foi definida, caso nao retorna o user para o login
-if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"]) AND !isset($_SESSION["idTerapeuta"])){
-    header("Location: ../index.html");
-    die();
-}else{
-    $emailUsuario = $_SESSION["emailUsuario"];
-    $idUsuarioLogin = $_SESSION["idUsuarioLogin"];
-    $idTerapeuta = $_SESSION["idTerapeuta"];
-}
-
-$idpaciente = $_GET["id"];
-
-include('../controller/conexaoDataBaseV2.php');
-
-//$sql = "SELECT t.nome, p.NomePaciente,a.`idpaciente`, a.idterapeuta,a.`resultado`, DATE_FORMAT(a.`datahora`,'%d/%m/%Y %T') as dataa,a.`idavaliacao`, a.`avaliacaoRealizada` FROM `avaliacao` as a RIGHT JOIN paciente as p ON a.`idpaciente` = p.pacienteid RIGHT JOIN terapeuta as t ON a.`idterapeuta`=t.idterapeuta WHERE a.`idpaciente`='$idpaciente' group by a.`idpaciente`, a.`idavaliacao`;";
-$sql = "SELECT t.nome, p.NomePaciente,a.`idpaciente`, a.idterapeuta,a.`resultado`, DATE_FORMAT(a.`datahora`,'%d/%m/%Y %T') as dataa,a.`idavaliacao`, a.`avaliacaoRealizada`, c.nomecenario FROM `avaliacao` as a  RIGHT JOIN paciente as p ON a.`idpaciente` = p.pacienteid  RIGHT JOIN terapeuta as t ON a.`idterapeuta`=t.idterapeuta  RIGHT JOIN cenario as c ON a.`idcenario` = c.idcenario WHERE a.`idpaciente`='$idpaciente' group by a.`idpaciente`, a.`idavaliacao`";
-
-$query = mysqli_query($conn, $sql);
-
-
-function calculaNumeroQuestoesCenario($idPacienteA, $idAvaliacaoA){
-    include('../controller/conexaoDataBaseV2.php');
-    $sqlE = "SELECT SUM(`avaliacaoRealizada`) as soma, COUNT(`avaliacaoRealizada`) as contagem FROM `avaliacao` WHERE `idpaciente` = '$idPacienteA' AND  `idavaliacao`='$idAvaliacaoA'";
-    $queryE = mysqli_query($conn, $sqlE);
-    while($dadosE=mysqli_fetch_array($queryE)){
-       $somaE = $dadosE['soma'];
-       $contagemE = $dadosE['contagem'];
-
-      if($somaE == $contagemE){
-        return $statusAvaliação =  "Completa";        
-      }else{
-        return $statusAvaliação =  "Incompleta";
-      }
+    if(!isset($_SESSION["emailUsuario"]) AND !isset($_SESSION["idUsuarioLogin"]) AND !isset($_SESSION["idTerapeuta"])){
+        header("Location: ../index.html");
+        die();
+    }else{
+        $emailUsuario = $_SESSION["emailUsuario"];
+        $idUsuarioLogin = $_SESSION["idUsuarioLogin"];
+        $idTerapeuta = $_SESSION["idTerapeuta"];
     }
-}
+
+    $idpaciente = $_GET["id"];
+
+    include('../controller/conexaoDataBaseV2.php');
+    $sql = "SELECT t.nome, p.NomePaciente,a.`idpaciente`, a.idterapeuta,a.`resultado`, DATE_FORMAT(a.`datahora`,'%d/%m/%Y %T') as dataa,a.`idavaliacao`, a.`avaliacaoRealizada`, c.nomecenario FROM `avaliacao` as a  RIGHT JOIN paciente as p ON a.`idpaciente` = p.pacienteid  RIGHT JOIN terapeuta as t ON a.`idterapeuta`=t.idterapeuta  RIGHT JOIN cenario as c ON a.`idcenario` = c.idcenario WHERE a.`idpaciente`='$idpaciente' group by a.`idpaciente`, a.`idavaliacao`";
+    $query = mysqli_query($conn, $sql);
+
+    function calculaNumeroQuestoesCenario($idPacienteA, $idAvaliacaoA){
+        include('../controller/conexaoDataBaseV2.php');
+        $sqlE = "SELECT SUM(`avaliacaoRealizada`) as soma, COUNT(`avaliacaoRealizada`) as contagem FROM `avaliacao` WHERE `idpaciente` = '$idPacienteA' AND  `idavaliacao`='$idAvaliacaoA'";
+        $queryE = mysqli_query($conn, $sqlE);
+        while($dadosE=mysqli_fetch_array($queryE)){
+        $somaE = $dadosE['soma'];
+        $contagemE = $dadosE['contagem'];
+
+        if($somaE == $contagemE){
+            return $statusAvaliação =  "Completa";        
+        }else{
+            return $statusAvaliação =  "Incompleta";
+        }
+        }
+    }
 
 
 ?>

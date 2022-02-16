@@ -94,22 +94,22 @@ function cadastraQuestaoNovoNivel(idAvaliacao, idCenario, idTerapeuta, idPacient
     objAvaliacao.idPaciente         = Number(idPaciente);
     objAvaliacao.etapa              = Number(etapa);
     objAvaliacao.numquestao         = Number(numQuestao);
-    objAvaliacao.resultado          = Number(0);
-    objAvaliacao.grupoPontuacao     = Number(0);
-    objAvaliacao.avaliacaoRealizada = Number(0);
+    objAvaliacao.resultado          = 0;
+    objAvaliacao.grupoPontuacao     = 0;
+    objAvaliacao.avaliacaoRealizada = 0;
 
  //Converte para JSON
     jsonObjAvaliacao = JSON.stringify(objAvaliacao);
 
  //Envia para o servidor efetivar o cadastro
  enviaServidorPhpCadastroAvaliacao(jsonObjAvaliacao);
- //console.log(jsonA);
+ //console.log(jsonObjAvaliacao);
  return true;
 }
 
 /////////////////////////////////////////////////////////
 //NivelA
-function questoesProblemaA(idQuestao, idPaciente, idAvaliacao, numQuestao){    
+function questoesProblemaAA(idQuestao, idPaciente, idAvaliacao, numQuestao){    
     //Recebe as questões que tem problema
     resultado      = document.getElementById("botaoAA").value;
     grupoPontuacao = selecionaGrupoPontucao(Number(numQuestao));

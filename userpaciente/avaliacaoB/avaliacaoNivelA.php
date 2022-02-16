@@ -82,21 +82,23 @@ $numeroQuestoesTotais = calculaNumQuestoesTotal($idPaciente,$idAvaliacao); */
         <br><br>
                         <?php 
                             while($dadosA=mysqli_fetch_array($queryA)){ 
+                                $idQuestao     = $dadosA['id'];
+                                $idAvaliacao   = $dadosA['idavaliacao'];
+                                $idCenario     = $dadosA['idcenario'];
+                                $idTerapeuta   = $dadosA['idterapeuta'];
+                                $idPaciente    = $dadosA['idpaciente'];
                                 $tituloQuestao = $dadosA['numquestao'];
                                 $imagemQuestao = $dadosA['imagem'];
                                 echo $tituloQuestao;
                         ?>  
                         <script>
-                                var idQuestao          = "<?php echo $dadosA['id'];?>";
-                                var idAvaliacao        = "<?php echo $dadosA['idavaliacao'];?>";
-                                var idCenario          = "<?php echo $dadosA['idcenario'];?>";
-                                var idTerapeuta        = "<?php echo $dadosA['idterapeuta'];?>";
-                                var idPaciente         = "<?php echo $dadosA['idpaciente'];?>";
+                                var idQuestao          = "<?php echo $idQuestao; ?>";
+                                var idAvaliacao        = "<?php echo $idAvaliacao; ?>";
+                                var idCenario          = "<?php echo $idCenario;?>";
+                                var idTerapeuta        = "<?php echo $idTerapeuta;?>";
+                                var idPaciente         = "<?php echo $idPaciente;?>";
                                 var etapa              = 2;
-                                var numQuestao         = "<?php echo $dadosA['numquestao'];?>";
-                                var resultado          = 0;
-                                var grupoPontuacao     = 0;
-                                var avaliacaoRealizada = 0;
+                                var numQuestao         = "<?php echo $tituloQuestao;?>";
                        </script> 
     <br><br><br>
     </div>
@@ -107,8 +109,8 @@ $numeroQuestoesTotais = calculaNumQuestoesTotal($idPaciente,$idAvaliacao); */
     </div>
     <div class="row justify-content-around" >
         <div class="col-md-auto"></div>
-        <div class="col-md-auto"><button type="button"  onclick="qnp(); paginacaoAvaliacao()" id="botaoAA" value="0" name="nproblema" class="btn btn-success btn-lg ">NÃO PROBLEMA</button></div>
-        <div class="col-md-auto"><button type="button"  onclick="qp(); cadNovaQuestao(); paginacaoAvaliacao()"  id="botaoAB" value="1" name="problema" class="btn btn-warning btn-lg ">PROBLEMA</button></div>
+        <div class="col-md-auto"><button type="button"  onclick="qnp(); paginacaoAvaliacao()"                   id="botaoAA" value="0" name="nproblema" class="btn btn-success btn-lg ">NÃO PROBLEMA</button></div>
+        <div class="col-md-auto"><button type="button"  onclick="qp(); cadNovaQuestao(); paginacaoAvaliacao()"  id="botaoAB" value="1" name="problema"  class="btn btn-warning btn-lg ">PROBLEMA</button></div>
         <div class="col-md-auto"></div>
     </div>
     <script src="../../js/gameEladeb.js"></script>  

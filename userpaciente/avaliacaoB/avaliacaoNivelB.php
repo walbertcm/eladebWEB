@@ -13,9 +13,10 @@
         $idAvaliacao    = $_SESSION["idavaliacao"];
     }
 
-//Função ->
+
     function calculaNumQuestoesNaoRespondidasNivelB($idPacienteD, $idAvaliacaoD){
         include('../../controller/conexaoDataBaseV2.php');
+        $numQuestoesNaoResolvidas=0;
         $sqlD = "SELECT `idavaliacao` FROM `avaliacao` where `idpaciente` = '$idPacienteD' AND `idavaliacao` = '$idAvaliacaoD' AND `etapa` = 2 AND `avaliacaoRealizada` = 0 ";
         $queryD = mysqli_query($conn, $sqlD);
         $numQuestoesNaoResolvidas = mysqli_num_rows($queryD);

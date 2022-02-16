@@ -30,7 +30,7 @@ $jsonAavaliacao =  json_decode($_POST['novaQuestao'], false);
     $avaliacaoRealizada  = $jsonAavaliacao->avaliacaoRealizada;
 
 //Insert no banco de dados -> ELADEB>Avaliação
-if(!empty($idpaciente)){  
+if(!empty($idPaciente)){  
    $sqlA= "INSERT INTO `avaliacao`(`idavaliacao`, `idcenario`, `idterapeuta`, `idpaciente`, `etapa`, `numquestao`, `resultado`, `grupopontuacao`, `datahora`, `avaliacaoRealizada`) VALUES ('$idAvaliacao ','$idCenario','$idTerapeuta','$idPaciente','$etapa','$numquestao','$resultado','$grupoPontuacao',CURRENT_TIMESTAMP,'$avaliacaoRealizada')";
    $queryA = mysqli_query($conn, $sqlA);
 }
