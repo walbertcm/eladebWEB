@@ -53,17 +53,27 @@ O nivel B e o nivel D são relativos as respostas de A e C
     }
 
 //Insere a nova avaliação nivel C
-function insereAvaliacaoNivelC($idAvaliacaoC, $idCenarioC, $idTerapeutaC, $idPacienteC, $numQuestaoC){
+    function insereAvaliacaoNivelC($idAvaliacaoC, $idCenarioC, $idTerapeutaC, $idPacienteC, $numQuestaoC){
+        include('../controller/conexaoDataBaseV2.php');
+        $sqlC = "INSERT INTO `avaliacao`(`idavaliacao`, `idcenario`, `idterapeuta`, `idpaciente`, `etapa`, `numquestao`, `resultado`, `avaliacaoRealizada`) VALUES ('$idAvaliacaoC','$idCenarioC','$idTerapeutaC','$idPacienteC',3,'$numQuestaoC',0,0)  ";
+        $queryC=mysqli_query($conn,$sqlC);
+    }
+
+//Prepara o resultado da Avaliação
+function insereResultadoAvaliacao($idAvaliacaoD, $idCenarioD, $idTerapeutaD, $idPacienteD){
     include('../controller/conexaoDataBaseV2.php');
-    $sqlC = "INSERT INTO `avaliacao`(`idavaliacao`, `idcenario`, `idterapeuta`, `idpaciente`, `etapa`, `numquestao`, `resultado`, `avaliacaoRealizada`) VALUES ('$idAvaliacaoC','$idCenarioC','$idTerapeutaC','$idPacienteC',3,'$numQuestaoC',0,0)  ";
-    $queryC=mysqli_query($conn,$sqlC);
-}
+    $sqlD = "INSERT INTO `resultadoAvaliacao` (`idAvaliacao`, `idCenario`, `idTerapeuta`, `idPaciente`, `dataHora`) VALUES ('$idAvaliacaoD', '$idCenarioD', '$idTerapeutaD', '$idPacienteD', CURRENT_TIMESTAMP);";
+    $queryD=mysqli_query($conn,$sqlD);
+}    
 
 //Processamento para construção da avaliação
     include('../controller/conexaoDataBaseV2.php');
     //Seleciona as perguntas do cenario
     $sqlB = "SELECT `idcenario`,`idpergunta` FROM `cenarioPerguntas` WHERE `idcenario` = $idCenario;  ";
     $queryB=mysqli_query($conn,$sqlB);
+    
+    insereResultadoAvaliacao($novoIdAvaliacaoY, $idCenario, $idTerapeuta, $idPaciente);
+
     while($dadoB = mysqli_fetch_array($queryB)){
         $idperguntaX = $dadoB['idpergunta'];
         //Insere as perguntas do cenario na avaliação do paciente
