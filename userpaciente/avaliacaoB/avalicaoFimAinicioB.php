@@ -9,15 +9,9 @@
     }else{
         $emailUsuario   = $_SESSION["emailUsuario"];
         $idUsuarioLogin = $_SESSION["idUsuarioLogin"];
+        $idPaciente     = $_SESSION["idpaciente"];
+        $idAvaliacao    = $_SESSION["idavaliacao"];
     }
-
-//Recebe variaveis metodo GET
-    $idPaciente  = $_GET['idpc'];
-    $idAvaliacao = $_GET['idav'];
-
-//Box
-    $_SESSION["idpaciente"]  = $idPaciente;
-    $_SESSION["idavaliacao"] = $idAvaliacao;
 ?>
 
 <!DOCTYPE html>
@@ -30,26 +24,25 @@
     </head>
     <body>
     <script type="text/javascript">
-        var gameEladeb;
-        function participar(){
-            gameEladeb = window.open("../userpaciente/avaliacaoB/avaliacaoNivelA.php","avaliacao");
-        }
         function sair(){
             window.close();
-            gameEladeb.close();
+        }
+
+        function avaliacaoB() {
+            location.replace("../avaliacaoB/avaliacaoNivelB.php")
         }
     </script>
 
     <div class="container-fluid container-md mt-3 ">
         <div>
-            <h2 class="text-center">Instruções</h2>
+            <h2 class="text-center">FIM DA ETAPA 01</h2>
         </div>
 
         <img id="images" width="400" height="400" class="mx-auto d-block"></img><br>
         
         <div class="text-center">
             <button type="button" onclick="sair()"  class="btn btn-danger  btn-lg ">SAIR  </button>
-            <button type="button" onclick="participar()" class="btn btn-success btn-lg ">PARTICIPAR</button>            
+            <button type="button" onclick="avaliacaoB()" class="btn btn-success btn-lg ">PARTICIPAR</button>            
             <br><br>
         </div>
     </div>

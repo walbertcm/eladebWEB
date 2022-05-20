@@ -39,6 +39,7 @@ function selecionaResultadoAvaliacao($idavaliacaoB, $idpacienteB, $idterapeutaB)
     }           
 }
 
+
 include('../controller/conexaoDataBaseV2.php');
 
 $sqlA="SELECT * FROM `avaliacao` WHERE `idterapeuta` = '$idterapeuta' AND `idpaciente`='$idpaciente' AND `idavaliacao`=$idavaliacao ORDER BY etapa, numquestao;";
@@ -226,7 +227,6 @@ $sqlA="SELECT * FROM `avaliacao` WHERE `idterapeuta` = '$idterapeuta' AND `idpac
 //Terminam as variaveis
     $queryA = mysqli_query($conn, $sqlA);
     while($dados= mysqli_fetch_array($queryA)){
-        $idQuestao = $dados['id'];
         $etapa = $dados['etapa'];
         $numquestao = $dados['numquestao'];
         $resultado = $dados['resultado'];
@@ -613,7 +613,7 @@ $sqlA="SELECT * FROM `avaliacao` WHERE `idterapeuta` = '$idterapeuta' AND `idpac
     <td class="tg-8d8j font-weight-bold text-center">Indicação</td>
 
   </tr>
-<form action="../userterapeuta/resultadoUpdateBack.php?idt='<?php echo $idterapeuta?>'&idpc='<?php echo $idpaciente ?>'&idav='<?php echo $idavaliacao ?>'" method="POST">
+<form action="../userterapeuta/resultadoUpdateBack.php" method="GET">
   <tr>
     <td class="tg-0lax rotate" rowspan="4">Condições de vida</td>
     <td class="tg-2b7s">1. Lugar de Vida</td>
@@ -994,13 +994,13 @@ $sqlA="SELECT * FROM `avaliacao` WHERE `idterapeuta` = '$idterapeuta' AND `idpac
     <td class="tg-7zrl text-center"><?php  echo $etapaB20?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaC20?></td>
     <td class="tg-7zrl text-center"><?php  echo $etapaD20?></td>
-    <td class="tg-7zrl text-center text-center"><select name="tipoAjudaF20" >
+    <td class="tg-7zrl text-center text-center"><select name="tipoAjudaF20" id="tipoAjudaF20" >
                                                          <option value="0" <?php if($etapaF20 == '0') {echo ("selected");}?>>Paciente</option>
                                                          <option value="1" <?php if($etapaF20 == '1') {echo ("selected");}?>>Terapeuta</option>  
                                                          <option value="2" <?php if($etapaF20 == '2') {echo ("selected");}?>>Ajuda Espec.</option>  
                                                 </select>
     </td>
-    <td class="tg-7zrl text-center text-center"><select name="configAjudaG20">
+    <td class="tg-7zrl text-center text-center"><select name="configAjudaG20" id="configAjudaG20">
                                                         <option value="0" <?php if($etapaG20 == '0') {echo ("selected");}?>>Paciente</option>
                                                         <option value="1" <?php if($etapaG20 == '1') {echo ("selected");}?>>Terapeuta</option>                                                                   
                                                 </select>
@@ -1030,7 +1030,9 @@ $sqlA="SELECT * FROM `avaliacao` WHERE `idterapeuta` = '$idterapeuta' AND `idpac
     </div>
 
     <div class="mb-3">
-                <button class="btn btn-primary" type="submit"  value="submit">ATUALIZAR</button>
+
+    <a class="button" href=<?php echo ("../userterapeuta/resultadoUpdateBack.php?idt='$idterapeuta'&idpc='$idpaciente'&idav='$idavaliacao' "); ?> class="btn btn-primary">Salvar</a>
+                
     </div>
 </form>
 </main>

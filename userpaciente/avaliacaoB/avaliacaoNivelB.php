@@ -27,7 +27,8 @@
 $totalPaginasNaoRespNivelB = calculaNumQuestoesNaoRespondidasNivelB($idPaciente, $idAvaliacao);
 
     if($totalPaginasNaoRespNivelB == 0){
-        header("Location: ../avaliacaoB/avaliacaoNivelC.php");
+        //header("Location: ../avaliacaoB/avaliacaoNivelC.php");
+        header("Location: ../avaliacaoB/avalicaoFimBinicioC.php");
     }
 
 //Obter o valor da paginação por GET
