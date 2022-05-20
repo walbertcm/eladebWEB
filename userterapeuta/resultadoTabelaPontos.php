@@ -1045,7 +1045,6 @@ $sqlA="SELECT * FROM `avaliacao` WHERE `idterapeuta` = '$idterapeuta' AND `idpac
             <textarea id="editor"><?php echo $textoAvaliação?></textarea>
         </div>
   </div>
-  
      
 </div>
 
